@@ -1,0 +1,60 @@
+{
+  "name": "pbwebdev/cardanopress-ispo",
+  "description": "A CardanoPress extension for ISPO",
+  "type": "wordpress-plugin",
+  "keywords": [
+    "generator-themeplate",
+    "themeplate",
+    "wordpress",
+    "plugin",
+    "cardanopress"
+  ],
+  "license": "GPL-2.0-only",
+  "authors": [
+    {
+      "name": "Gene Alyson Fortunado Torcende",
+      "email": "mail@pbwebdev.com",
+      "homepage": "https://pbwebdev.com"
+    }
+  ],
+  "config": {
+    "optimize-autoloader": true,
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true,
+  "require": {
+    "php": "^7.4|^8.0",
+    "ext-json": "*",
+    "cardanopress/framework": "^1.0",
+    "kermage/external-update-manager": "^2.2"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-latest",
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+    "wp-coding-standards/wpcs": "^2.2",
+    "squizlabs/php_codesniffer": "^3.5",
+    "phpcompatibility/phpcompatibility-wp": "^2.1",
+    "phpunit/phpunit": "^9.5",
+    "phpstan/phpstan": "^1.0",
+    "szepeviktor/phpstan-wordpress": "^1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "PBWebDev\\CardanoPress\\ISPO\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "analyse": "phpstan analyse --memory-limit=512M",
+    "lint": "phpcs --colors -p -s -v",
+    "fix": "phpcbf -p -v",
+    "test": "phpunit --colors=always"
+  }
+}

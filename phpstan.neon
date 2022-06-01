@@ -1,0 +1,8 @@
+parameters:
+  level: 5
+  excludePaths:
+    - vendor
+  scanFiles:
+    - cardanopress-ispo.php
+  dynamicConstantNames:
+    - CP_ISPO_FILE
