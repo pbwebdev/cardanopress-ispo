@@ -41,8 +41,8 @@
         class="form-range"
         type="range"
         step="1"
-        min="1"
-        x-bind:max="conclude - commence"
+        x-bind:min="control"
+        x-bind:max="limit"
     >
 
     <div class="row justify-content-between">

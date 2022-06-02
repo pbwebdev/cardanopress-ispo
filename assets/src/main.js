@@ -11,6 +11,8 @@ window.addEventListener('alpine:init', () => {
         maximum: 2,
         commence: 1,
         conclude: 2,
+        control: 1,
+        limit: 2,
         delegate: 1,
         epochs: 1,
         address: '',
@@ -18,16 +20,34 @@ window.addEventListener('alpine:init', () => {
         transactionHash: '',
 
         async init() {
-            this.ration = this.$root.dataset.ration
-            this.minimum = this.$root.dataset.minimum
-            this.maximum = this.$root.dataset.maximum
-            this.commence = this.$root.dataset.commence
-            this.conclude = this.$root.dataset.conclude
+            this.ration = parseInt(this.$root.dataset.ration)
+            this.minimum = parseInt(this.$root.dataset.minimum)
+            this.maximum = parseInt(this.$root.dataset.maximum)
+            this.commence = parseInt(this.$root.dataset.commence)
+            this.conclude = parseInt(this.$root.dataset.conclude)
+            this.delegate = this.minimum
+            this.limit = this.control + this.conclude - this.commence
 
             console.log('CardanoPress ISPO ready!')
         },
 
         getRewards() {
+            if (this.delegate < this.minimum) {
+                this.delegate = this.minimum
+            }
+
+            if (this.delegate > this.maximum) {
+                this.delegate = this.maximum
+            }
+
+            if (this.epochs < this.control) {
+                this.epochs = this.control
+            }
+
+            if (this.epochs > (this.limit)) {
+                this.epochs = this.limit
+            }
+
             return ((this.ration / 100) * this.delegate * this.epochs).toFixed(6)
         },
 
