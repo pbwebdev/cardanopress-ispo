@@ -61,6 +61,12 @@ class Actions implements HookInterface
             $page++;
         } while (100 === count($response));
 
+        $response = $blockfrost->getAccountDetails($stakeAddress);
+
+        if (! empty($response) && $response['active'] && $response['pool_id'] === $poolIds[$queryNetwork]) {
+            $rewards += $ration / 100 * $response['controlled_amount'] / 1000000;
+        }
+
         return $rewards;
     }
 
