@@ -9,26 +9,6 @@
  * @since   0.1.0
  */
 
-if (empty($ration)) {
-    $ration = cpISPO()->option('rewards_ration');
-}
-
-if (empty($minAda)) {
-    $minAda = cpISPO()->option('rewards_minimum');
-}
-
-if (empty($maxAda)) {
-    $maxAda = cpISPO()->option('rewards_maximum');
-}
-
-if (empty($commence)) {
-    $commence = cpISPO()->option('rewards_commence');
-}
-
-if (empty($conclude)) {
-    $conclude = cpISPO()->option('rewards_conclude');
-}
-
 ?>
 
 <div class="mb-3">
@@ -41,13 +21,13 @@ if (empty($conclude)) {
         class="form-range"
         type="range"
         step="1"
-        min="<?php echo $minAda; ?>"
-        max="<?php echo $maxAda; ?>"
+        x-bind:min="minimum"
+        x-bind:max="maximum"
     >
 
     <div class="row justify-content-between">
-        <div class="col-auto"><?php echo $minAda; ?> ADA</div>
-        <div class="col-auto"><?php echo $maxAda; ?> ADA</div>
+        <div class="col-auto"><span x-text="minimum"></span> ADA</div>
+        <div class="col-auto"><span x-text="maximum"></span> ADA</div>
     </div>
 </div>
 
@@ -62,11 +42,11 @@ if (empty($conclude)) {
         type="range"
         step="1"
         min="1"
-        max="<?php echo $conclude - $commence; ?>"
+        x-bind:max="conclude - commence"
     >
 
-    <div class='row justify-content-between'>
-        <div class="col-auto">Epoch <?php echo $commence; ?></div>
-        <div class="col-auto">Epoch <?php echo $conclude; ?></div>
+    <div class="row justify-content-between">
+        <div class="col-auto">Epoch <span x-text="commence"></span></div>
+        <div class="col-auto">Epoch <span x-text="conclude"></span></div>
     </div>
 </div>

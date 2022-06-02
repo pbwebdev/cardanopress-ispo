@@ -10,7 +10,7 @@
  */
 
 if (empty($text)) {
-    $text = 'Connect wallet';
+    $text = 'Connect';
 }
 
 if (empty($textConnected)) {

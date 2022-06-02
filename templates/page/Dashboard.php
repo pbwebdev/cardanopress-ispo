@@ -14,56 +14,104 @@ $minAda = cpISPO()->option('rewards_minimum');
 $maxAda = cpISPO()->option('rewards_maximum');
 $commence = cpISPO()->option('rewards_commence');
 $conclude = cpISPO()->option('rewards_conclude');
+$pool = cpISPO()->delegationPool();
 
 get_header();
 
 ?>
 
-<main class="">
+<main>
     <div
         x-data="cardanoPressISPO"
-        class="py-5"
         data-ration="<?php echo $ration; ?>"
         data-minimum="<?php echo $minAda; ?>"
         data-maximum="<?php echo $maxAda; ?>"
         data-commence="<?php echo $commence; ?>"
         data-conclude="<?php echo $conclude; ?>"
     >
-
-        <section id="banner" class="bd-masthead py-5">
-            <div class="container-xxl">
-                <div class="col-md-8 mx-auto text-center">
-                    <div class="banner">
-                        <h1>GoKey Initial Stake Pool Offering (ISPO)</h1>
-                        <p>We are currently running our ISPO to distribute the GoKey tokens to the delegates of the project. Delegate your Cardano wallet to the pool ticker: GOKEY to earn your rewards.</p>
-                        <a class="btn btn-primary" href="#calculator">Calculate Rewards</a>
-                        <a class="btn btn-secondary" href="#pool-delegate">Delegate</a>
-                    </div><!-- .banner -->
+        <section id="banner">
+            <div class="container-xxl py-5">
+                <div class="col col-md-8 mx-auto text-center">
+                    <h1><?php echo $pool['name'] ?? ''; ?> Initial Stake Pool Offering (ISPO)</h1>
+                    <p>We are currently running our ISPO to distribute the <span class="fw-bold"><?php echo $pool['ticker'] ?? ''; ?></span> tokens to the delegates of the project.</p>
+                    <p>Delegate your Cardano wallet to earn your rewards.</p>
+                    <a class="btn btn-primary" href="#calculator">Calculate Rewards</a>
+                    <a class="btn btn-secondary" href="#pool-delegate">Delegate</a>
                 </div>
             </div>
         </section>
 
         <section id="calculator" class="bg-light">
             <div class="container py-5">
+                <div class="col col-md-8 mx-auto text-center">
+                    <h2>Rewards Calculator Estimator</h2>
+                    <p>Check your potential rewards for delegating your ADA to our stake pool over a period of time.</p>
+                    <p>See how the extended loyalty bonuses can affect your final rewards.</p>
+                </div>
+
                 <?php cpISPO()->template('estimate-section'); ?>
             </div>
         </section>
 
         <div id="check-rewards">
             <div class="container py-5">
-                <div class=" col-md-8 mx-auto">
-                    <?php cpISPO()->template('track-section'); ?>
+                <div class="col col-md-8 mx-auto text-center">
+                    <h2>Check Your Rewards</h2>
+                    <p>Check your potential rewards for delegating your ADA to our stake pool over a period of time. See how the extended loyalty bonuses can affect your final rewards.</p>
                 </div>
+
+                <?php cpISPO()->template('track-section'); ?>
             </div>
         </div>
 
-
         <div id="pool-delegate" class="bg-light">
-            <div class="container col-md-8 mx-auto py-5 ">
+            <div class="container py-5">
+                <div class="col col-md-8 mx-auto text-center">
+                    <h2>Pool Stats & Delegate Your ADA</h2>
+                    <p>Check the pool and ensure that you're delegating to the correct and official one.</p>
+                    <p>Search for the pool ticker <span class="fw-bold"><?php echo $pool['ticker'] ?? ''; ?></span>, or search using the Pool ID. Ensure you are delegating to the correct stake pool.</p>
+                    <p>Pool ID: <span class="fw-bold"><?php echo $pool['pool_id'] ?? ''; ?></span></p>
+                    <span class="fa-solid fa-copy">Copy</span>  <span class="fa-solid fa-up-right-from-square">View</span>
+                </div>
+
+                <div class="row m-3">
+                    <div class="mb-4 col">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <p class="fs-4 mb-0"><?php echo $pool['active_stake'] ?? 0; ?></p>
+                                    <p class="text-sm text-muted mb-0">Active Stake</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-4 col">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <p class="fs-4 mb-0"><?php echo $pool['live_delegators'] ?? 0; ?></p>
+                                    <p class="text-sm text-muted mb-0">Delegates</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-4 col">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <p class="fs-4 mb-0"><?php echo $pool['blocks_minted'] ?? 0; ?></p>
+                                    <p class="text-sm text-muted mb-0">Blocks Minted</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <?php cpISPO()->template('delegate-section'); ?>
             </div>
         </div>
-
     </div>
 </main>
 

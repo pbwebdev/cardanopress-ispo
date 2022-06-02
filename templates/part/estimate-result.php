@@ -11,6 +11,4 @@
 
 ?>
 
-<h3>Rewards</h3>
-
-<input x-bind:value="getRewards()" type="text" class="form-control" readonly disabled>
+<input x-bind:value="getRewards()" type="text" class="form-control text-center" readonly disabled>
