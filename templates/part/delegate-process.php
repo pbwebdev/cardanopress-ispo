@@ -19,8 +19,6 @@ if (empty($textDelegated)) {
 
 ?>
 
-<h3>Delegate</h3>
-
 <div class="mt-3">
     <template x-if="!isConnected">
         <button class="btn btn-primary" type="button" disabled="true"><?php echo $text; ?></button>

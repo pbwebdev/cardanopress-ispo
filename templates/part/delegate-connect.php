@@ -10,7 +10,7 @@
  */
 
 if (empty($text)) {
-    $text = 'Connect';
+    $text = 'Connect wallet';
 }
 
 if (empty($textConnected)) {
@@ -19,7 +19,6 @@ if (empty($textConnected)) {
 
 ?>
 
-<h3>Connect</h3>
 
 <div class="mt-3">
     <template x-if="!isConnected">
