@@ -19,7 +19,7 @@ get_header();
 
 ?>
 
-<main class="container">
+<main class="">
     <div
         x-data="cardanoPressISPO"
         class="py-5"
@@ -29,21 +29,41 @@ get_header();
         data-commence="<?php echo $commence; ?>"
         data-conclude="<?php echo $conclude; ?>"
     >
-        <div class="row">
-            <div class="col col-sm-6">
+
+        <section id="banner" class="bd-masthead py-5">
+            <div class="container-xxl">
+                <div class="col-md-8 mx-auto text-center">
+                    <div class="banner">
+                        <h1>GoKey Initial Stake Pool Offering (ISPO)</h1>
+                        <p>We are currently running our ISPO to distribute the GoKey tokens to the delegates of the project. Delegate your Cardano wallet to the pool ticker: GOKEY to earn your rewards.</p>
+                        <a class="btn btn-primary" href="#calculator">Calculate Rewards</a>
+                        <a class="btn btn-secondary" href="#pool-delegate">Delegate</a>
+                    </div><!-- .banner -->
+                </div>
+            </div>
+        </section>
+
+        <section id="calculator" class="bg-light">
+            <div class="container py-5">
                 <?php cpISPO()->template('estimate-section'); ?>
             </div>
+        </section>
 
-            <div class="col col-sm-6 flex flex-col">
-                <?php cpISPO()->template('track-section'); ?>
+        <div id="check-rewards">
+            <div class="container py-5">
+                <div class=" col-md-8 mx-auto">
+                    <?php cpISPO()->template('track-section'); ?>
+                </div>
             </div>
         </div>
 
-        <hr>
 
-        <div class="py-3">
-            <?php cpISPO()->template('delegate-section'); ?>
+        <div id="pool-delegate" class="bg-light">
+            <div class="container col-md-8 mx-auto py-5 ">
+                <?php cpISPO()->template('delegate-section'); ?>
+            </div>
         </div>
+
     </div>
 </main>
 
