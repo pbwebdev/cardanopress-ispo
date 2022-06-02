@@ -16,4 +16,28 @@ class Profile extends AbstractProfile
     protected function initialize(): void
     {
     }
+
+    public function saveAccountDetails(array $data): bool
+    {
+        return $this->updateMeta($this->prefix . 'account_details', $data);
+    }
+
+    public function getAccountDetails(): array
+    {
+        $saved = $this->getMeta($this->prefix . 'account_details', true);
+
+        return $saved ?: [];
+    }
+
+    public function saveCalculatedRewards(float $rewards): bool
+    {
+        return $this->updateMeta($this->prefix . 'calculated_rewards', $rewards);
+    }
+
+    public function getCalculatedRewards(): float
+    {
+        $saved = $this->getMeta($this->prefix . 'calculated_rewards', true);
+
+        return $saved ?: 0.0;
+    }
 }

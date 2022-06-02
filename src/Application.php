@@ -32,11 +32,16 @@ class Application extends AbstractApplication
 
     public function setupHooks(): void
     {
+        $this->admin->setupHooks();
+        $this->manifest->setupHooks();
+        $this->templates->setupHooks();
+
         add_action('cardanopress_loaded', [$this, 'init']);
     }
 
     public function init(): void
     {
+        (new Actions())->setupHooks();
     }
 
     public function isReady(): bool
@@ -47,5 +52,34 @@ class Application extends AbstractApplication
         $blockfrost = class_exists($namespace . 'Blockfrost');
 
         return $function && $admin && $blockfrost;
+    }
+
+    public function userProfile(): Profile
+    {
+        static $user;
+
+        if (null === $user) {
+            $user = new Profile(wp_get_current_user());
+        }
+
+        return $user;
+    }
+
+    public function delegationPool(): array
+    {
+        if (! $this->isReady()) {
+            return [];
+        }
+
+        static $data;
+
+        if (null !== $data) {
+            return $data;
+        }
+
+        $poolData = $this->option('delegation_pool_data');
+        $data = $poolData[cardanoPress()->getNetwork()] ?? [];
+
+        return $data;
     }
 }
