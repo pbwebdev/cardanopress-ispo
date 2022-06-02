@@ -9,7 +9,8 @@ window.addEventListener('alpine:init', () => {
         ration: 1,
         minimum: 1,
         maximum: 2,
-        duration: 1,
+        commence: 1,
+        conclude: 2,
         delegate: 1,
         epochs: 1,
         address: '',
@@ -20,7 +21,8 @@ window.addEventListener('alpine:init', () => {
             this.ration = this.$root.dataset.ration
             this.minimum = this.$root.dataset.minimum
             this.maximum = this.$root.dataset.maximum
-            this.duration = this.$root.dataset.duration
+            this.commence = this.$root.dataset.commence
+            this.conclude = this.$root.dataset.conclude
 
             console.log('CardanoPress ISPO ready!')
         },

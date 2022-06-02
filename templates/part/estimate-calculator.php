@@ -21,8 +21,12 @@ if (empty($maxAda)) {
     $maxAda = cpISPO()->option('rewards_maximum');
 }
 
-if (empty($duration)) {
-    $duration = cpISPO()->option('rewards_duration');
+if (empty($commence)) {
+    $commence = cpISPO()->option('rewards_commence');
+}
+
+if (empty($conclude)) {
+    $conclude = cpISPO()->option('rewards_conclude');
 }
 
 ?>
@@ -58,11 +62,11 @@ if (empty($duration)) {
         type="range"
         step="1"
         min="1"
-        max="<?php echo $duration; ?>"
+        max="<?php echo $conclude - $commence; ?>"
     >
 
     <div class='row justify-content-between'>
-        <div class='col-auto'>1</div>
-        <div class="col-auto"><?php echo $duration; ?></div>
+        <div class="col-auto">Epoch <?php echo $commence; ?></div>
+        <div class="col-auto">Epoch <?php echo $conclude; ?></div>
     </div>
 </div>

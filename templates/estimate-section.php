@@ -21,8 +21,12 @@ if (empty($maxAda)) {
     $maxAda = cpISPO()->option('rewards_maximum');
 }
 
-if (empty($duration)) {
-    $duration = cpISPO()->option('rewards_duration');
+if (empty($commence)) {
+    $commence = cpISPO()->option('rewards_commence');
+}
+
+if (empty($conclude)) {
+    $conclude = cpISPO()->option('rewards_conclude');
 }
 
 ?>
@@ -30,7 +34,7 @@ if (empty($duration)) {
 <h2>Estimate</h2>
 
 <div class="py-3">
-    <?php cpISPO()->template('part/estimate-calculator', compact('ration', 'minAda', 'maxAda', 'duration')); ?>
+    <?php cpISPO()->template('part/estimate-calculator', compact('ration', 'minAda', 'maxAda', 'commence', 'conclude')); ?>
 
     <?php cpISPO()->template('part/estimate-result'); ?>
 </div>

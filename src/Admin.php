@@ -96,8 +96,17 @@ class Admin extends AbstractAdmin
                         'step' => 1,
                     ],
                 ],
-                'duration' => [
-                    'title' => __('# of Epochs', 'cardanopress-ispo'),
+                'commence' => [
+                    'title' => __('Commence at Epoch', 'cardanopress-ispo'),
+                    'type' => 'number',
+                    'default' => 1,
+                    'options' => [
+                        'min' => 1,
+                        'step' => 1,
+                    ],
+                ],
+                'conclude' => [
+                    'title' => __('Conclude at Epoch', 'cardanopress-ispo'),
                     'type' => 'number',
                     'default' => 2,
                     'options' => [

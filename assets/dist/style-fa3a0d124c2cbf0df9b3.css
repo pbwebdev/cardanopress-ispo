@@ -32,18 +32,11 @@
 .col-auto {
     grid-column: auto
 }
-.my-3 {
-    margin-top: 0.75rem;
-    margin-bottom: 0.75rem
+.mt-3 {
+    margin-top: 0.75rem
 }
 .mb-3 {
     margin-bottom: 0.75rem
-}
-.ml-2 {
-    margin-left: 0.5rem
-}
-.mt-3 {
-    margin-top: 0.75rem
 }
 .flex {
     display: flex
@@ -51,16 +44,12 @@
 .flex-col {
     flex-direction: column
 }
-.py-6 {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem
+.py-3 {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem
 }
 .py-5 {
     padding-top: 1.25rem;
     padding-bottom: 1.25rem
-}
-.py-3 {
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem
 }
 

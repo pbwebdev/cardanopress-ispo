@@ -12,7 +12,8 @@
 $ration = cpISPO()->option('rewards_ration');
 $minAda = cpISPO()->option('rewards_minimum');
 $maxAda = cpISPO()->option('rewards_maximum');
-$duration = cpISPO()->option('rewards_duration');
+$commence = cpISPO()->option('rewards_commence');
+$conclude = cpISPO()->option('rewards_conclude');
 
 get_header();
 
@@ -25,7 +26,8 @@ get_header();
         data-ration="<?php echo $ration; ?>"
         data-minimum="<?php echo $minAda; ?>"
         data-maximum="<?php echo $maxAda; ?>"
-        data-duration="<?php echo $duration; ?>"
+        data-commence="<?php echo $commence; ?>"
+        data-conclude="<?php echo $conclude; ?>"
     >
         <div class="row">
             <div class="col col-sm-6">
