@@ -75,7 +75,7 @@ class Actions implements HookInterface
                 }
 
                 if ($history['active_epoch'] >= $commence && $history['active_epoch'] <= $conclude) {
-                    $rewards += $ration / 100 * $history['amount'] / 1000000;
+                    $rewards += $ration / 100 * self::lovelaceToAda($history['amount']);
                 }
             }
 
@@ -95,7 +95,7 @@ class Actions implements HookInterface
         $response = $blockfrost->getAccountDetails($stakeAddress);
 
         if (! empty($response) && $response['active'] && $response['pool_id'] === $poolIds[$queryNetwork]) {
-            $rewards += $ration / 100 * $response['controlled_amount'] / 1000000;
+            $rewards += $ration / 100 * self::lovelaceToAda($response['controlled_amount']);
         }
 
         return $rewards;

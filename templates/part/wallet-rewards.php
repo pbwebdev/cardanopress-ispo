@@ -9,6 +9,8 @@
  * @since   0.1.0
  */
 
+use PBWebDev\CardanoPress\ISPO\Actions;
+
 if (empty($text)) {
     $text = 'Connect wallet';
 }
@@ -17,7 +19,7 @@ if (empty($rewards)) {
     $rewards = cpISPO()->userProfile()->getCalculatedRewards();
 }
 
-$rewards = number_format($rewards, 6);
+$rewards = Actions::adaPrecision($rewards);
 
 ?>
 
