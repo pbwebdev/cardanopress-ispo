@@ -121,10 +121,8 @@ class Admin extends AbstractAdmin
     public function getPoolDetails($newValue, $oldValue)
     {
         if (
-            ! empty($oldValue['delegation_pool_data']) && (
-                $newValue['delegation_pool_id'] === $oldValue['delegation_pool_id'] ||
-                empty(array_filter($newValue['blockfrost_project_id']))
-            )
+            ! empty($oldValue['delegation_pool_data']) &&
+            $newValue['delegation_pool_id'] === $oldValue['delegation_pool_id']
         ) {
             return $newValue;
         }
@@ -141,7 +139,9 @@ class Admin extends AbstractAdmin
             }
 
             $blockfrost = new Blockfrost($network);
-            $newValue['delegation_pool_data'][$network] = $blockfrost->getPoolDetails($poolId);
+            $information = $blockfrost->getPoolInfo($poolId);
+            $metaData = $blockfrost->getPoolDetails($poolId);
+            $newValue['delegation_pool_data'][$network] = array_merge($information, $metaData);
         }
 
         return $newValue;
