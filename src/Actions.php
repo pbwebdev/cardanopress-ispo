@@ -65,6 +65,12 @@ class Actions implements HookInterface
             return $rewards;
         }
 
+        $latest = $blockfrost->getEpochsLatest();
+
+        if (empty($latest) || $latest['epoch'] > $conclude) {
+            return $rewards;
+        }
+
         $response = $blockfrost->getAccountDetails($stakeAddress);
 
         if (! empty($response) && $response['active'] && $response['pool_id'] === $poolIds[$queryNetwork]) {
