@@ -17,6 +17,11 @@ $maxAda = cpISPO()->option('rewards_maximum');
 $commence = cpISPO()->option('rewards_commence');
 $conclude = cpISPO()->option('rewards_conclude');
 $pool = cpISPO()->delegationPool();
+$links = [
+    'mainnet' => 'https://cardanoscan.io/pool/',
+    'testnet' => 'https://testnet.cardanoscan.io/pool/',
+];
+$link = $links[cpISPO()->userProfile()->connectedNetwork()];
 
 get_header();
 
@@ -73,7 +78,12 @@ get_header();
                     <p>Check the pool and ensure that you're delegating to the correct and official one.</p>
                     <p>Search for the pool ticker <span class="fw-bold"><?php echo $pool['ticker'] ?? ''; ?></span>, or search using the Pool ID. Ensure you are delegating to the correct stake pool.</p>
                     <p>Pool ID: <span class="fw-bold"><?php echo $pool['pool_id'] ?? ''; ?></span></p>
-                    <span class="fa-solid fa-copy">Copy</span>  <span class="fa-solid fa-up-right-from-square">View</span>
+                    <span class="m-1">
+                        <a href="#" @click.prevent="clipboardValue('<?php echo $pool['pool_id'] ?? ''; ?>')" title="Copy to clipboard">Copy</a>
+                    </span>
+                    <span class="m-1">
+                        <a href="<?php echo $link . $pool['hex'] ?? ''; ?>" target="_blank" title="View on Cardanoscan">View</a>
+                    </span>
                 </div>
 
                 <div class="row m-3">
