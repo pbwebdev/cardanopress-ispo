@@ -9,7 +9,7 @@
  * @since   0.1.0
  */
 
-use PBWebDev\CardanoPress\ISPO\Actions;
+use CardanoPress\Helpers\NumberHelper;
 
 $ration = cpISPO()->option('rewards_ration');
 $minAda = cpISPO()->option('rewards_minimum');
@@ -81,7 +81,7 @@ get_header();
                         <div class="card h-100">
                             <div class="card-body">
                                 <div class="d-flex align-items-center justify-content-between">
-                                    <p class="fs-4 mb-0"><?php echo Actions::shortRounded(($pool['active_stake'] ?? 0) / 1000000); ?></p>
+                                    <p class="fs-4 mb-0"><?php echo NumberHelper::shortRounded(($pool['active_stake'] ?? 0) / 1000000); ?></p>
                                     <p class="text-sm text-muted mb-0">Active Stake</p>
                                 </div>
                             </div>
@@ -92,7 +92,7 @@ get_header();
                         <div class="card h-100">
                             <div class="card-body">
                                 <div class="d-flex align-items-center justify-content-between">
-                                    <p class="fs-4 mb-0"><?php echo Actions::shortRounded($pool['live_delegators'] ?? 0); ?></p>
+                                    <p class="fs-4 mb-0"><?php echo NumberHelper::shortRounded($pool['live_delegators'] ?? 0); ?></p>
                                     <p class="text-sm text-muted mb-0">Delegates</p>
                                 </div>
                             </div>
@@ -103,7 +103,7 @@ get_header();
                         <div class="card h-100">
                             <div class="card-body">
                                 <div class="d-flex align-items-center justify-content-between">
-                                    <p class="fs-4 mb-0"><?php echo Actions::shortRounded($pool['blocks_minted'] ?? 0); ?></p>
+                                    <p class="fs-4 mb-0"><?php echo NumberHelper::shortRounded($pool['blocks_minted'] ?? 0); ?></p>
                                     <p class="text-sm text-muted mb-0">Blocks Minted</p>
                                 </div>
                             </div>

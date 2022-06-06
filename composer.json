@@ -1,5 +1,5 @@
 {
-  "name": "pbwebdev/cardanopress-ispo",
+  "name": "cardanopress/plugin-ispo",
   "description": "A CardanoPress extension for ISPO",
   "type": "wordpress-plugin",
   "keywords": [

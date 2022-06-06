@@ -51,10 +51,10 @@ class ComposerStaticInite45e712142ec90906103b464ad6f31ba
         ),
         'ThemePlate\\' => 
         array (
-            0 => __DIR__ . '/..' . '/themeplate/logger/src',
-            1 => __DIR__ . '/..' . '/themeplate/page',
-            2 => __DIR__ . '/..' . '/themeplate/settings',
-            3 => __DIR__ . '/..' . '/themeplate/enqueue',
+            0 => __DIR__ . '/..' . '/themeplate/enqueue',
+            1 => __DIR__ . '/..' . '/themeplate/logger/src',
+            2 => __DIR__ . '/..' . '/themeplate/page',
+            3 => __DIR__ . '/..' . '/themeplate/settings',
         ),
         'Psr\\Log\\' => 
         array (
@@ -62,8 +62,8 @@ class ComposerStaticInite45e712142ec90906103b464ad6f31ba
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -99,10 +99,13 @@ class ComposerStaticInite45e712142ec90906103b464ad6f31ba
         'CardanoPress\\Clients\\BlockfrostClient' => __DIR__ . '/..' . '/cardanopress/framework/src/Clients/BlockfrostClient.php',
         'CardanoPress\\Foundation\\AbstractAdmin' => __DIR__ . '/..' . '/cardanopress/framework/src/Foundation/AbstractAdmin.php',
         'CardanoPress\\Foundation\\AbstractApplication' => __DIR__ . '/..' . '/cardanopress/framework/src/Foundation/AbstractApplication.php',
+        'CardanoPress\\Foundation\\AbstractBlockfrost' => __DIR__ . '/..' . '/cardanopress/framework/src/Foundation/AbstractBlockfrost.php',
         'CardanoPress\\Foundation\\AbstractInstaller' => __DIR__ . '/..' . '/cardanopress/framework/src/Foundation/AbstractInstaller.php',
         'CardanoPress\\Foundation\\AbstractManifest' => __DIR__ . '/..' . '/cardanopress/framework/src/Foundation/AbstractManifest.php',
         'CardanoPress\\Foundation\\AbstractProfile' => __DIR__ . '/..' . '/cardanopress/framework/src/Foundation/AbstractProfile.php',
         'CardanoPress\\Foundation\\AbstractTemplates' => __DIR__ . '/..' . '/cardanopress/framework/src/Foundation/AbstractTemplates.php',
+        'CardanoPress\\Helpers\\NumberHelper' => __DIR__ . '/..' . '/cardanopress/framework/src/Helpers/NumberHelper.php',
+        'CardanoPress\\Helpers\\WalletHelper' => __DIR__ . '/..' . '/cardanopress/framework/src/Helpers/WalletHelper.php',
         'CardanoPress\\Interfaces\\AdminInterface' => __DIR__ . '/..' . '/cardanopress/framework/src/Interfaces/AdminInterface.php',
         'CardanoPress\\Interfaces\\ApplicationInterface' => __DIR__ . '/..' . '/cardanopress/framework/src/Interfaces/ApplicationInterface.php',
         'CardanoPress\\Interfaces\\HookInterface' => __DIR__ . '/..' . '/cardanopress/framework/src/Interfaces/HookInterface.php',

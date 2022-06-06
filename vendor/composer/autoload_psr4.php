@@ -7,9 +7,9 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'ThemePlate\\Core\\' => array($vendorDir . '/themeplate/core'),
-    'ThemePlate\\' => array($vendorDir . '/themeplate/logger/src', $vendorDir . '/themeplate/page', $vendorDir . '/themeplate/settings', $vendorDir . '/themeplate/enqueue'),
+    'ThemePlate\\' => array($vendorDir . '/themeplate/enqueue', $vendorDir . '/themeplate/logger/src', $vendorDir . '/themeplate/page', $vendorDir . '/themeplate/settings'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
-    'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src', $vendorDir . '/psr/http-factory/src'),
+    'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-factory/src', $vendorDir . '/psr/http-message/src'),
     'Psr\\Http\\Client\\' => array($vendorDir . '/psr/http-client/src'),
     'PBWebDev\\CardanoPress\\ISPO\\' => array($baseDir . '/src'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),

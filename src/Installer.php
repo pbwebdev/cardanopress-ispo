@@ -30,25 +30,6 @@ class Installer extends AbstractInstaller
         add_filter('plugin_action_links_' . $this->pluginBaseName, [$this, 'mergeSettingsLink']);
     }
 
-    public function noticeNeedingCorePlugin(): void
-    {
-        if ($this->application->isReady()) {
-            return;
-        }
-
-        ob_start();
-
-        ?>
-        <div class="notice notice-info">
-            <p>
-                <strong>CardanoPress - ISPO</strong> requires the core plugin for its full functionality.
-            </p>
-        </div>
-        <?php
-
-        echo ob_get_clean();
-    }
-
     public function doUpgrade(string $currentVersion, string $appVersion): void
     {
     }

@@ -7,6 +7,8 @@
 
 namespace PBWebDev\CardanoPress\ISPO;
 
+use CardanoPress\Helpers\NumberHelper;
+use CardanoPress\Helpers\WalletHelper;
 use CardanoPress\Interfaces\HookInterface;
 use PBWebDev\CardanoPress\Blockfrost;
 use WP_User;
@@ -21,38 +23,12 @@ class Actions implements HookInterface
         add_action('wp_ajax_cp-ispo_delegation_data', [$this, 'getDelegationData']);
     }
 
-    public static function lovelaceToAda(int $number): int
-    {
-        return $number / 1000000;
-    }
-
-    public static function adaPrecision(int $number): string
-    {
-        return number_format($number, 6);
-    }
-
-    public static function shortRounded(int $number): string
-    {
-        $units = ['', 'K', 'M', 'B', 'T'];
-
-        for ($i = 0; $number >= 1000; $i++) {
-            $number /= 1000;
-        }
-
-        return round($number, 2) . $units[$i];
-    }
-
     public function getAccountDetails(WP_User $user)
     {
         $userProfile = new Profile($user);
         $rewards = $this->calculateRewards($userProfile->connectedStake(), $userProfile->connectedNetwork());
 
         $userProfile->saveCalculatedRewards($rewards);
-    }
-
-    protected function getNetworkFromStake(string $address): string
-    {
-        return 0 === strpos($address, 'stake1') ? 'mainnet' : 'testnet';
     }
 
     protected function calculateRewards(string $stakeAddress, string $queryNetwork): float
@@ -75,7 +51,7 @@ class Actions implements HookInterface
                 }
 
                 if ($history['active_epoch'] >= $commence && $history['active_epoch'] <= $conclude) {
-                    $rewards += $ration / 100 * self::lovelaceToAda($history['amount']);
+                    $rewards += $ration / 100 * NumberHelper::lovelaceToAda($history['amount']);
                 }
             }
 
@@ -95,7 +71,7 @@ class Actions implements HookInterface
         $response = $blockfrost->getAccountDetails($stakeAddress);
 
         if (! empty($response) && $response['active'] && $response['pool_id'] === $poolIds[$queryNetwork]) {
-            $rewards += $ration / 100 * self::lovelaceToAda($response['controlled_amount']);
+            $rewards += $ration / 100 * NumberHelper::lovelaceToAda($response['controlled_amount']);
         }
 
         return $rewards;
@@ -110,7 +86,7 @@ class Actions implements HookInterface
         }
 
         $stakeAddress = $_POST['stakeAddress'];
-        $queryNetwork = $this->getNetworkFromStake($stakeAddress);
+        $queryNetwork = WalletHelper::getNetworkFromStake($stakeAddress);
 
         wp_send_json_success($this->calculateRewards($stakeAddress, $queryNetwork));
     }

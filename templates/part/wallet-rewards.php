@@ -9,7 +9,7 @@
  * @since   0.1.0
  */
 
-use PBWebDev\CardanoPress\ISPO\Actions;
+use CardanoPress\Helpers\NumberHelper;
 
 if (empty($text)) {
     $text = 'Connect wallet';
@@ -19,7 +19,7 @@ if (empty($rewards)) {
     $rewards = cpISPO()->userProfile()->getCalculatedRewards();
 }
 
-$rewards = Actions::adaPrecision($rewards);
+$rewards = NumberHelper::adaPrecision($rewards);
 
 ?>
 
