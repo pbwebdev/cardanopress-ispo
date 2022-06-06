@@ -9,6 +9,13 @@
  * @since   0.1.0
  */
 
+$links = [
+    'mainnet' => 'https://cardanoscan.io/transaction/',
+    'testnet' => 'https://testnet.cardanoscan.io/transaction/',
+];
+
+$link = $links[cpISPO()->userProfile()->connectedNetwork()];
+
 ?>
 
 <div class="col-md-8 mx-auto text-center">
@@ -32,7 +39,7 @@
     <template x-if="isConnected && transactionHash">
         <div class="py-3">
             <h3>Delegation Result</h3>
-            <p><a x-bind:href="'https://cardanoscan.io/transaction/' + transactionHash" target="_blank">View transaction</a> on CardanoScan.</p>
+            <p><a x-bind:href="'<?php echo $link; ?>' + transactionHash" target="_blank">View transaction</a> on CardanoScan.</p>
         </div>
     </template>
 
