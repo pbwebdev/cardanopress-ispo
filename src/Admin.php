@@ -114,6 +114,16 @@ class Admin extends AbstractAdmin
                         'step' => 1,
                     ],
                 ],
+                'multiplier' => [
+                    'title' => __('Loyalty multiplier', 'cardanopress-ispo'),
+                    'description' => __('Every qualifying epoch', 'cardanopress-ispo'),
+                    'type' => 'number',
+                    'default' => 1,
+                    'options' => [
+                        'min' => 1,
+                        'step' => 0.001,
+                    ],
+                ],
             ],
         ]);
     }
