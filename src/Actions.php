@@ -31,6 +31,11 @@ class Actions implements HookInterface
         $userProfile->saveCalculatedRewards($rewards);
     }
 
+    protected function calculateReward(float $ration, int $lovelace, float $multiplier): float
+    {
+        return $ration / 100 * NumberHelper::lovelaceToAda($lovelace) * $multiplier;
+    }
+
     protected function calculateRewards(string $stakeAddress, string $queryNetwork): float
     {
         $application = Application::getInstance();
@@ -52,7 +57,13 @@ class Actions implements HookInterface
                 }
 
                 if ($history['active_epoch'] >= $commence && $history['active_epoch'] <= $conclude) {
-                    $rewards += $ration / 100 * NumberHelper::lovelaceToAda($history['amount']) * $multiplier;
+                    $lovelace = $history['amount'];
+                    $rewards += apply_filters(
+                        'cp-ispo-epoch_calculated_reward',
+                        $this->calculateReward($ration, $lovelace, $multiplier),
+                        $history['active_epoch'],
+                        compact('ration', 'lovelace', 'multiplier', 'rewards'),
+                    );
                 }
             }
 
@@ -60,22 +71,28 @@ class Actions implements HookInterface
         } while (100 === count($response));
 
         if (0 === $rewards) {
-            return $rewards;
+            return apply_filters('cp-ispo-total_accumulated_rewards', $rewards, compact('ration', 'multiplier'));
         }
 
         $latest = $blockfrost->getEpochsLatest();
 
         if (empty($latest) || $latest['epoch'] > $conclude) {
-            return $rewards;
+            return apply_filters('cp-ispo-total_accumulated_rewards', $rewards, compact('ration', 'multiplier'));
         }
 
         $response = $blockfrost->getAccountDetails($stakeAddress);
 
         if (! empty($response) && $response['active'] && $response['pool_id'] === $poolIds[$queryNetwork]) {
-            $rewards += $ration / 100 * NumberHelper::lovelaceToAda($response['controlled_amount']) * $multiplier;
+            $lovelace = $response['controlled_amount'];
+            $rewards += apply_filters(
+                'cp-ispo-epoch_calculated_reward',
+                $this->calculateReward($ration, $lovelace, $multiplier),
+                $latest['epoch'],
+                compact('ration', 'lovelace', 'multiplier', 'rewards'),
+            );
         }
 
-        return $rewards;
+        return apply_filters('cp-ispo-total_accumulated_rewards', $rewards, compact('ration', 'multiplier'));
     }
 
     public function getStakeRewards(): void
