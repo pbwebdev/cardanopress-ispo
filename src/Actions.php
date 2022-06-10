@@ -57,6 +57,8 @@ class Actions implements HookInterface
                 }
 
                 if ($history['active_epoch'] >= $commence && $history['active_epoch'] <= $conclude) {
+                    do_action('cp-ispo-qualified_epoch_for_rewards', $history['active_epoch'], $stakeAddress);
+
                     $lovelace = $history['amount'];
                     $rewards += apply_filters(
                         'cp-ispo-epoch_calculated_reward',
@@ -83,6 +85,8 @@ class Actions implements HookInterface
         $response = $blockfrost->getAccountDetails($stakeAddress);
 
         if (! empty($response) && $response['active'] && $response['pool_id'] === $poolIds[$queryNetwork]) {
+            do_action('cp-ispo-qualified_epoch_for_rewards', $latest['epoch'], $stakeAddress);
+
             $lovelace = $response['controlled_amount'];
             $rewards += apply_filters(
                 'cp-ispo-epoch_calculated_reward',
