@@ -23,7 +23,7 @@ class Admin extends AbstractAdmin
         add_action('plugins_loaded', function () {
             $this->settingsPage('CardanoPress - ISPO', [
                 'parent' => Application::getInstance()->isReady() ? 'cardanopress' : '',
-                'menu' => 'ISPO Settings',
+                'menu_title' => 'ISPO Settings',
             ]);
         });
 
@@ -36,9 +36,8 @@ class Admin extends AbstractAdmin
 
     public function delegationSettings(): void
     {
-        $this->optionFields([
-            'id' => 'delegation',
-            'title' => __('Delegation Settings', 'cardanopress-ispo'),
+        $this->optionFields(__('Delegation Settings', 'cardanopress-ispo'), [
+            'data_prefix' => 'delegation_',
             'fields' => [
                 'pool_id' => [
                     'type' => 'group',
@@ -63,9 +62,8 @@ class Admin extends AbstractAdmin
 
     public function rewardsSettings(): void
     {
-        $this->optionFields([
-            'id' => 'rewards',
-            'title' => __('Rewards Settings', 'cardanopress-ispo'),
+        $this->optionFields(__('Rewards Settings', 'cardanopress-ispo'), [
+            'data_prefix' => 'rewards_',
             'fields' => [
                 'ration' => [
                     'title' => __('Ratio Per ADA', 'cardanopress-ispo'),
