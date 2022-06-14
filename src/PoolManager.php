@@ -26,6 +26,34 @@ class PoolManager
     public const IDENTIFIER = 'cp-ispo';
     public const EXPIRATION = 15; // in minutes
 
+    public const DATA_STRUCTURE = [
+        'pool_id' => '',
+        'hex' => '',
+        'vrf_key' => '',
+        'blocks_minted' => 0,
+        'blocks_epoch' => 0,
+        'live_stake' => 0,
+        'live_size' => 0.0,
+        'live_saturation' => 0.0,
+        'live_delegators' => 0,
+        'active_stake' => 0,
+        'active_size' => 0.0,
+        'declared_pledge' => 0,
+        'live_pledge' => 0,
+        'margin_cost' => 0.0,
+        'fixed_cost' => 0,
+        'reward_account' => '',
+        'owners' => [''],
+        'registration' => [''],
+        'retirement' => [''],
+        'url' => '',
+        'hash' => '',
+        'ticker' => '',
+        'name' => '',
+        'description' => '',
+        'homepage' => '',
+    ];
+
     public function __construct(LoggerInterface $logger)
     {
         $this->setInstance($this);

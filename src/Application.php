@@ -76,9 +76,9 @@ class Application extends AbstractApplication
             return $data;
         }
 
-        $network = cpISPO()->userProfile()->connectedNetwork() ?: 'mainnet';
+        $network = $this->userProfile()->connectedNetwork() ?: 'mainnet';
         $poolData = $this->poolManager->getData();
-        $data = $poolData[$network] ?? [];
+        $data = $poolData[$network] ?? $this->poolManager::DATA_STRUCTURE;
 
         return $data;
     }
