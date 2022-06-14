@@ -14,7 +14,8 @@ $links = [
     'testnet' => 'https://testnet.cardanoscan.io/transaction/',
 ];
 
-$link = $links[cpISPO()->userProfile()->connectedNetwork()];
+$network = cpISPO()->userProfile()->connectedNetwork() ?: 'mainnet';
+$link = $links[$network];
 
 ?>
 

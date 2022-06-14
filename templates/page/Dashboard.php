@@ -21,7 +21,8 @@ $links = [
     'mainnet' => 'https://cardanoscan.io/pool/',
     'testnet' => 'https://testnet.cardanoscan.io/pool/',
 ];
-$link = $links[cpISPO()->userProfile()->connectedNetwork()];
+$network = cpISPO()->userProfile()->connectedNetwork() ?: 'mainnet';
+$link = $links[$network];
 
 get_header();
 
