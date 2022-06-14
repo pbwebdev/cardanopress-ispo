@@ -58,10 +58,18 @@ class PoolManager
         $poolData = [];
 
         foreach ($application->option('delegation_pool_id') as $queryNetwork => $poolId) {
+            if (! Blockfrost::isReady($queryNetwork)) {
+                continue;
+            }
+
             $blockfrost = new Blockfrost($queryNetwork);
             $information = $blockfrost->getPoolInfo($poolId);
             $metaData = $blockfrost->getPoolDetails($poolId);
             $poolData[$queryNetwork] = array_merge($information, $metaData);
+        }
+
+        if (empty($poolData)) {
+            return new WP_Error(self::IDENTIFIER, __('Blockfrost not ready', 'cardanopress-ispo'));
         }
 
         return $poolData;

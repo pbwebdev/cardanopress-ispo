@@ -26,7 +26,13 @@ class Actions implements HookInterface
     public function getAccountDetails(WP_User $user)
     {
         $userProfile = new Profile($user);
-        $rewards = $this->calculateRewards($userProfile->connectedStake(), $userProfile->connectedNetwork());
+        $queryNetwork = $userProfile->connectedNetwork();
+
+        if (! Blockfrost::isReady($queryNetwork)) {
+            return;
+        }
+
+        $rewards = $this->calculateRewards($userProfile->connectedStake(), $queryNetwork);
 
         $userProfile->saveCalculatedRewards($rewards);
     }
@@ -109,6 +115,10 @@ class Actions implements HookInterface
 
         $stakeAddress = $_POST['stakeAddress'];
         $queryNetwork = WalletHelper::getNetworkFromStake($stakeAddress);
+
+        if (! Blockfrost::isReady($queryNetwork)) {
+            wp_send_json_error(sprintf(__('Unsupported network %s', 'cardanopress-ispo'), $queryNetwork));
+        }
 
         wp_send_json_success($this->calculateRewards($stakeAddress, $queryNetwork));
     }
