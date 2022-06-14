@@ -9,13 +9,10 @@
  * @since   0.1.0
  */
 
-$links = [
-    'mainnet' => 'https://cardanoscan.io/transaction/',
-    'testnet' => 'https://testnet.cardanoscan.io/transaction/',
-];
+use PBWebDev\CardanoPress\ISPO\Actions;
 
-$network = cpISPO()->userProfile()->connectedNetwork() ?: 'mainnet';
-$link = $links[$network];
+$network = cpISPO()->userProfile()->connectedNetwork();
+$link = Actions::getCardanoscanLink($network, 'transaction/');
 
 ?>
 

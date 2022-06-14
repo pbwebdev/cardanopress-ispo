@@ -23,6 +23,22 @@ class Actions implements HookInterface
         add_action('wp_ajax_cp-ispo_delegation_data', [$this, 'getDelegationData']);
     }
 
+    public static function getCardanoscanLink(string $network, string $endpoint): string
+    {
+        $base = [
+            'mainnet' => 'https://cardanoscan.io/',
+            'testnet' => 'https://testnet.cardanoscan.io/',
+        ];
+
+        $network = strtolower($network);
+
+        if (! in_array($network, array_keys($base), true)) {
+            $network = 'mainnet';
+        }
+
+        return $base[$network] . $endpoint;
+    }
+
     public function getAccountDetails(WP_User $user)
     {
         $userProfile = new Profile($user);

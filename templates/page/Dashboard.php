@@ -10,6 +10,7 @@
  */
 
 use CardanoPress\Helpers\NumberHelper;
+use PBWebDev\CardanoPress\ISPO\Actions;
 
 $ration = cpISPO()->option('rewards_ration');
 $minAda = cpISPO()->option('rewards_minimum');
@@ -17,12 +18,8 @@ $maxAda = cpISPO()->option('rewards_maximum');
 $commence = cpISPO()->option('rewards_commence');
 $conclude = cpISPO()->option('rewards_conclude');
 $pool = cpISPO()->delegationPool();
-$links = [
-    'mainnet' => 'https://cardanoscan.io/pool/',
-    'testnet' => 'https://testnet.cardanoscan.io/pool/',
-];
-$network = cpISPO()->userProfile()->connectedNetwork() ?: 'mainnet';
-$link = $links[$network];
+$network = cpISPO()->userProfile()->connectedNetwork();
+$link = Actions::getCardanoscanLink($network, 'pool/');
 
 get_header();
 
