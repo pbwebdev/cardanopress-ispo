@@ -8,7 +8,6 @@
 namespace PBWebDev\CardanoPress\ISPO;
 
 use CardanoPress\Foundation\AbstractAdmin;
-use PBWebDev\CardanoPress\Blockfrost;
 
 class Admin extends AbstractAdmin
 {
@@ -31,7 +30,6 @@ class Admin extends AbstractAdmin
             $this->delegationSettings();
             $this->rewardsSettings();
         });
-        add_filter('pre_update_option_' . self::OPTION_KEY, [$this, 'getPoolDetails'], 10, 2);
     }
 
     public function delegationSettings(): void
@@ -125,34 +123,5 @@ class Admin extends AbstractAdmin
                 ],
             ],
         ]);
-    }
-
-    public function getPoolDetails($newValue, $oldValue)
-    {
-        if (
-            ! empty($oldValue['delegation_pool_data']) &&
-            $newValue['delegation_pool_id'] === $oldValue['delegation_pool_id']
-        ) {
-            return $newValue;
-        }
-
-        if (! Application::getInstance()->isReady()) {
-            return $newValue;
-        }
-
-        $newValue['delegation_pool_data'] = $oldValue['delegation_pool_data'] ?? [];
-
-        foreach ($newValue['delegation_pool_id'] as $network => $poolId) {
-            if (! Blockfrost::isReady($network)) {
-                continue;
-            }
-
-            $blockfrost = new Blockfrost($network);
-            $information = $blockfrost->getPoolInfo($poolId);
-            $metaData = $blockfrost->getPoolDetails($poolId);
-            $newValue['delegation_pool_data'][$network] = array_merge($information, $metaData);
-        }
-
-        return $newValue;
     }
 }
