@@ -29,7 +29,9 @@
     "php": "^7.4|^8.0",
     "ext-json": "*",
     "cardanopress/framework": "^1.0",
-    "kermage/external-update-manager": "^2.2"
+    "kermage/external-update-manager": "^2.2",
+    "themeplate/cache": "^2.5",
+    "themeplate/process": "^2.6"
   },
   "require-dev": {
     "roave/security-advisories": "dev-latest",

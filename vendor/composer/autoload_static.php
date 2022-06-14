@@ -8,21 +8,23 @@ class ComposerStaticInite45e712142ec90906103b464ad6f31ba
 {
     public static $files = array (
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
-        'af4b52693518d6f741d0dab964786a35' => __DIR__ . '/..' . '/themeplate/core/functions.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         'cffb582bbe3444c214b7b73b61493f7d' => __DIR__ . '/..' . '/themeplate/enqueue/Enqueue.php',
         'e2fb8214a7589690aae8ec82f7aa8973' => __DIR__ . '/..' . '/kermage/external-update-manager/class-external-update-manager.php',
+        'a1e09ce905c79a09f3e2f7956bc7e184' => __DIR__ . '/..' . '/themeplate/cache/Cache.php',
     );
 
     public static $prefixLengthsPsr4 = array (
         'T' => 
         array (
             'ThemePlate\\Settings\\' => 20,
+            'ThemePlate\\Process\\' => 19,
             'ThemePlate\\Page\\' => 16,
             'ThemePlate\\Enqueue\\' => 19,
             'ThemePlate\\Core\\' => 16,
+            'ThemePlate\\Cache\\' => 17,
             'ThemePlate\\' => 11,
         ),
         'P' => 
@@ -53,6 +55,10 @@ class ComposerStaticInite45e712142ec90906103b464ad6f31ba
         array (
             0 => __DIR__ . '/..' . '/themeplate/settings/src',
         ),
+        'ThemePlate\\Process\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/themeplate/process/src',
+        ),
         'ThemePlate\\Page\\' => 
         array (
             0 => __DIR__ . '/..' . '/themeplate/page/src',
@@ -64,6 +70,10 @@ class ComposerStaticInite45e712142ec90906103b464ad6f31ba
         'ThemePlate\\Core\\' => 
         array (
             0 => __DIR__ . '/..' . '/themeplate/core/src',
+        ),
+        'ThemePlate\\Cache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/themeplate/cache/src',
         ),
         'ThemePlate\\' => 
         array (
@@ -339,6 +349,7 @@ class ComposerStaticInite45e712142ec90906103b464ad6f31ba
         'PBWebDev\\CardanoPress\\ISPO\\Application' => __DIR__ . '/../..' . '/src/Application.php',
         'PBWebDev\\CardanoPress\\ISPO\\Installer' => __DIR__ . '/../..' . '/src/Installer.php',
         'PBWebDev\\CardanoPress\\ISPO\\Manifest' => __DIR__ . '/../..' . '/src/Manifest.php',
+        'PBWebDev\\CardanoPress\\ISPO\\PoolData' => __DIR__ . '/../..' . '/src/PoolData.php',
         'PBWebDev\\CardanoPress\\ISPO\\Profile' => __DIR__ . '/../..' . '/src/Profile.php',
         'PBWebDev\\CardanoPress\\ISPO\\Templates' => __DIR__ . '/../..' . '/src/Templates.php',
         'Psr\\Http\\Client\\ClientExceptionInterface' => __DIR__ . '/..' . '/psr/http-client/src/ClientExceptionInterface.php',
@@ -369,6 +380,19 @@ class ComposerStaticInite45e712142ec90906103b464ad6f31ba
         'Psr\\Log\\Test\\DummyTest' => __DIR__ . '/..' . '/psr/log/Psr/Log/Test/DummyTest.php',
         'Psr\\Log\\Test\\LoggerInterfaceTest' => __DIR__ . '/..' . '/psr/log/Psr/Log/Test/LoggerInterfaceTest.php',
         'Psr\\Log\\Test\\TestLogger' => __DIR__ . '/..' . '/psr/log/Psr/Log/Test/TestLogger.php',
+        'ThemePlate\\Cache\\CacheManager' => __DIR__ . '/..' . '/themeplate/cache/src/CacheManager.php',
+        'ThemePlate\\Cache\\Handlers\\AbstractHandler' => __DIR__ . '/..' . '/themeplate/cache/src/Handlers/AbstractHandler.php',
+        'ThemePlate\\Cache\\Handlers\\DataHandler' => __DIR__ . '/..' . '/themeplate/cache/src/Handlers/DataHandler.php',
+        'ThemePlate\\Cache\\Handlers\\FileHandler' => __DIR__ . '/..' . '/themeplate/cache/src/Handlers/FileHandler.php',
+        'ThemePlate\\Cache\\Handlers\\HandlerInterface' => __DIR__ . '/..' . '/themeplate/cache/src/Handlers/HandlerInterface.php',
+        'ThemePlate\\Cache\\StorageManager' => __DIR__ . '/..' . '/themeplate/cache/src/StorageManager.php',
+        'ThemePlate\\Cache\\Storages\\AbstractStorage' => __DIR__ . '/..' . '/themeplate/cache/src/Storages/AbstractStorage.php',
+        'ThemePlate\\Cache\\Storages\\MetadataStorage' => __DIR__ . '/..' . '/themeplate/cache/src/Storages/MetadataStorage.php',
+        'ThemePlate\\Cache\\Storages\\OptionsStorage' => __DIR__ . '/..' . '/themeplate/cache/src/Storages/OptionsStorage.php',
+        'ThemePlate\\Cache\\Storages\\PostMetaStorage' => __DIR__ . '/..' . '/themeplate/cache/src/Storages/PostMetaStorage.php',
+        'ThemePlate\\Cache\\Storages\\StorageInterface' => __DIR__ . '/..' . '/themeplate/cache/src/Storages/StorageInterface.php',
+        'ThemePlate\\Cache\\Storages\\TermMetaStorage' => __DIR__ . '/..' . '/themeplate/cache/src/Storages/TermMetaStorage.php',
+        'ThemePlate\\Cache\\Storages\\UserMetaStorage' => __DIR__ . '/..' . '/themeplate/cache/src/Storages/UserMetaStorage.php',
         'ThemePlate\\Core\\Config' => __DIR__ . '/..' . '/themeplate/core/src/Config.php',
         'ThemePlate\\Core\\Field' => __DIR__ . '/..' . '/themeplate/core/src/Field.php',
         'ThemePlate\\Core\\Field\\CheckboxField' => __DIR__ . '/..' . '/themeplate/core/src/Field/CheckboxField.php',
@@ -388,6 +412,7 @@ class ComposerStaticInite45e712142ec90906103b464ad6f31ba
         'ThemePlate\\Core\\Fields' => __DIR__ . '/..' . '/themeplate/core/src/Fields.php',
         'ThemePlate\\Core\\Form' => __DIR__ . '/..' . '/themeplate/core/src/Form.php',
         'ThemePlate\\Core\\Handler' => __DIR__ . '/..' . '/themeplate/core/src/Handler.php',
+        'ThemePlate\\Core\\Helper\\AssetsHelper' => __DIR__ . '/..' . '/themeplate/core/src/Helper/AssetsHelper.php',
         'ThemePlate\\Core\\Helper\\BoxHelper' => __DIR__ . '/..' . '/themeplate/core/src/Helper/BoxHelper.php',
         'ThemePlate\\Core\\Helper\\FormHelper' => __DIR__ . '/..' . '/themeplate/core/src/Helper/FormHelper.php',
         'ThemePlate\\Core\\Helper\\MainHelper' => __DIR__ . '/..' . '/themeplate/core/src/Helper/MainHelper.php',
@@ -400,6 +425,9 @@ class ComposerStaticInite45e712142ec90906103b464ad6f31ba
         'ThemePlate\\Page\\CommonInterface' => __DIR__ . '/..' . '/themeplate/page/src/CommonInterface.php',
         'ThemePlate\\Page\\MenuPage' => __DIR__ . '/..' . '/themeplate/page/src/MenuPage.php',
         'ThemePlate\\Page\\SubMenuPage' => __DIR__ . '/..' . '/themeplate/page/src/SubMenuPage.php',
+        'ThemePlate\\Process\\Async' => __DIR__ . '/..' . '/themeplate/process/src/Async.php',
+        'ThemePlate\\Process\\Report' => __DIR__ . '/..' . '/themeplate/process/src/Report.php',
+        'ThemePlate\\Process\\Tasks' => __DIR__ . '/..' . '/themeplate/process/src/Tasks.php',
         'ThemePlate\\Settings\\OptionBox' => __DIR__ . '/..' . '/themeplate/settings/src/OptionBox.php',
         'ThemePlate\\Settings\\OptionHandler' => __DIR__ . '/..' . '/themeplate/settings/src/OptionHandler.php',
     );

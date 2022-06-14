@@ -20,6 +20,8 @@ class Application extends AbstractApplication
     use Instantiable;
     use Templatable;
 
+    protected PoolManager $poolManager;
+
     protected function initialize(): void
     {
         $this->setInstance($this);
@@ -28,6 +30,7 @@ class Application extends AbstractApplication
         $this->admin = new Admin($this->logger('admin'));
         $this->manifest = new Manifest($path . 'assets/dist', $this->getData('Version'));
         $this->templates = new Templates($path . 'templates');
+        $this->poolManager = new PoolManager($this->logger('poolManager'));
     }
 
     public function setupHooks(): void
@@ -67,18 +70,15 @@ class Application extends AbstractApplication
 
     public function delegationPool(): array
     {
-        if (! $this->isReady()) {
-            return [];
-        }
-
         static $data;
 
         if (null !== $data) {
             return $data;
         }
 
-        $poolData = $this->option('delegation_pool_data');
-        $data = $poolData[cardanoPress()->getNetwork()] ?? [];
+        $network = cpISPO()->userProfile()->connectedNetwork() ?: 'mainnet';
+        $poolData = $this->poolManager->getData();
+        $data = $poolData[$network] ?? [];
 
         return $data;
     }

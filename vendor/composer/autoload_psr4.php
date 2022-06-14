@@ -7,9 +7,11 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'ThemePlate\\Settings\\' => array($vendorDir . '/themeplate/settings/src'),
+    'ThemePlate\\Process\\' => array($vendorDir . '/themeplate/process/src'),
     'ThemePlate\\Page\\' => array($vendorDir . '/themeplate/page/src'),
     'ThemePlate\\Enqueue\\' => array($vendorDir . '/themeplate/enqueue/src'),
     'ThemePlate\\Core\\' => array($vendorDir . '/themeplate/core/src'),
+    'ThemePlate\\Cache\\' => array($vendorDir . '/themeplate/cache/src'),
     'ThemePlate\\' => array($vendorDir . '/themeplate/logger/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-factory/src', $vendorDir . '/psr/http-message/src'),
