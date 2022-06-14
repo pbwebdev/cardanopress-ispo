@@ -89,7 +89,9 @@ get_header();
                         <div class="card h-100">
                             <div class="card-body">
                                 <div class="d-flex align-items-center justify-content-between">
-                                    <p class="fs-4 mb-0"><?php echo NumberHelper::shortRounded($pool['active_stake'] / 1000000); ?></p>
+                                    <p class="fs-4 mb-0">
+                                        <?php echo NumberHelper::shortRounded(NumberHelper::lovelaceToAda($pool['active_stake'])); ?>
+                                    </p>
                                     <p class="text-sm text-muted mb-0">Active Stake</p>
                                 </div>
                             </div>
