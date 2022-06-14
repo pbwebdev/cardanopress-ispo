@@ -26,8 +26,34 @@ class Installer extends AbstractInstaller
         parent::setupHooks();
 
         add_action('admin_notices', [$this, 'noticeNeedingCorePlugin']);
+        add_action('admin_notices', [$this, 'noticeApplicationNotReady']);
         add_action(self::DATA_PREFIX . 'upgrading', [$this, 'doUpgrade'], 10, 2);
         add_filter('plugin_action_links_' . $this->pluginBaseName, [$this, 'mergeSettingsLink']);
+    }
+
+    public function noticeApplicationNotReady(): void
+    {
+        $poolIds = $this->application->option('delegation_pool_id');
+
+        if ('' !== $poolIds['mainnet']) {
+            return;
+        }
+
+        $message = sprintf(
+            '<strong>%1$s</strong> requires a delegation pool ID. %2$s',
+            $this->application->getData('Name'),
+            $this->getSettingsLink(__('Please set here', 'cardanopress-ispo'), '_blank')
+        );
+
+        ob_start();
+
+        ?>
+        <div class="notice notice-info">
+            <p><?php echo $message; ?></p>
+        </div>
+        <?php
+
+        echo ob_get_clean();
     }
 
     public function doUpgrade(string $currentVersion, string $appVersion): void
