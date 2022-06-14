@@ -58,7 +58,7 @@ class PoolManager
         $poolData = [];
 
         foreach ($application->option('delegation_pool_id') as $queryNetwork => $poolId) {
-            if (! Blockfrost::isReady($queryNetwork)) {
+            if (! Blockfrost::isReady($queryNetwork) || '' === $poolId) {
                 continue;
             }
 
