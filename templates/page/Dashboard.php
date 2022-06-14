@@ -83,7 +83,7 @@ get_header();
                         <a href="#" @click.prevent="clipboardValue('<?php echo $pool['pool_id'] ?? ''; ?>')" title="Copy to clipboard">Copy</a>
                     </span>
                     <span class="m-1">
-                        <a href="<?php echo $link . $pool['hex'] ?? ''; ?>" target="_blank" title="View on Cardanoscan">View</a>
+                        <a href="<?php echo $link . ($pool['hex'] ?? ''); ?>" target="_blank" title="View on Cardanoscan">View</a>
                     </span>
                 </div>
 
