@@ -67,6 +67,17 @@ class Actions implements HookInterface
         $commence = $application->option('rewards_commence');
         $conclude = $application->option('rewards_conclude');
         $multiplier = $application->option('rewards_multiplier');
+        $customRewards = apply_filters(
+            'cp-ispo-force_wallet_rewards',
+            null,
+            $stakeAddress,
+            compact('ration', 'multiplier')
+        );
+
+        if (null !== $customRewards) {
+            return $customRewards;
+        }
+
         $rewards = 0;
         $page = 1;
 
