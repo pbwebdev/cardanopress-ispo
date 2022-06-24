@@ -6,7 +6,7 @@
  * Author:      Gene Alyson Fortunado Torcende
  * Author URI:  https://cardanopress.io
  * Description: A CardanoPress extension for ISPO
- * Version:     0.4.0
+ * Version:     0.5.0
  * License:     GPL-2.0-only
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  *
