@@ -3,7 +3,7 @@
 /**
  * The template for displaying the track section.
  *
- * This can be overridden by copying it to yourtheme/cardanopress/ispo/delegate-section.php.
+ * This can be overridden by copying it to yourtheme/cardanopress/ispo/track-section.php.
  *
  * @package ThemePlate
  * @since   0.1.0
