@@ -12,8 +12,22 @@
 ?>
 
 <div class="mb-3">
-    <label for="delegate-field" class="form-label">Delegated</label>
-    <span x-text="delegate" class="form-label ms-2 fw-bold"></span>
+    <div class="row align-items-center">
+        <div class="col-auto">
+            <label for="delegate-field" class="form-label mb-0">Delegated</label>
+        </div>
+
+        <div class="col-auto">
+            <input
+                x-model="delegate"
+                class="form-control fw-bold"
+                type="number"
+                step="1"
+                x-bind:min="minimum"
+                x-bind:max="maximum"
+            >
+        </div>
+    </div>
 
     <input
         x-model="delegate"
@@ -25,7 +39,7 @@
         x-bind:max="maximum"
     >
 
-    <div class="row justify-content-between">
+    <div class="row align-items-center justify-content-between">
         <div class="col-auto"><span x-text="minimum"></span> ADA</div>
         <div class="col-auto"><span x-text="maximum"></span> ADA</div>
     </div>
