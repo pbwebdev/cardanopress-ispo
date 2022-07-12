@@ -14,7 +14,7 @@ if (empty($text)) {
 }
 
 if (empty($placeholder)) {
-    $placeholder = 'Stake Address';
+    $placeholder = 'e.g. stake1u8x94....';
 }
 
 ?>

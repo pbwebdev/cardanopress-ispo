@@ -33,7 +33,7 @@
     <div class="card m-3 p-3">
         <div class="row align-items-center">
             <div class="col-8">
-                <p>Enter your wallet address.</p>
+                <p>Enter your wallet stake address (BECH32 format).</p>
 
                 <?php cpISPO()->template('part/track-process'); ?>
             </div>
