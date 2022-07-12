@@ -132,6 +132,28 @@ class Actions implements HookInterface
         return apply_filters('cp-ispo-total_accumulated_rewards', $rewards, compact('ration', 'multiplier'));
     }
 
+    protected function filterStakeAddress(string $inputAddress): string
+    {
+        if (0 === strpos($inputAddress, 'stake1') || 0 === strpos($inputAddress, 'stake_test1')) {
+            return $inputAddress;
+        }
+
+        if (0 === strpos($inputAddress, 'addr1') || 0 === strpos($inputAddress, 'addr_test1')) {
+            $queryNetwork = WalletHelper::getNetworkFromAddress($inputAddress);
+
+            if (! Blockfrost::isReady($queryNetwork)) {
+                wp_send_json_error(sprintf(__('Unsupported network %s', 'cardanopress-ispo'), $queryNetwork));
+            }
+
+            $blockfrost = new Blockfrost($queryNetwork);
+            $addressDetails = $blockfrost->getAddressDetails($inputAddress);
+
+            return $addressDetails['stake_address'] ?? '';
+        }
+
+        return '';
+    }
+
     public function getStakeRewards(): void
     {
         check_ajax_referer('cardanopress-actions');
@@ -140,7 +162,12 @@ class Actions implements HookInterface
             wp_send_json_error(__('Something is wrong. Please try again', 'cardanopress-ispo'));
         }
 
-        $stakeAddress = $_POST['stakeAddress'];
+        $stakeAddress = $this->filterStakeAddress($_POST['stakeAddress']);
+
+        if ('' === $stakeAddress) {
+            wp_send_json_error(__('Invalid address format provided.', 'cardanopress-ispo'));
+        }
+
         $queryNetwork = WalletHelper::getNetworkFromStake($stakeAddress);
 
         if (! Blockfrost::isReady($queryNetwork)) {
