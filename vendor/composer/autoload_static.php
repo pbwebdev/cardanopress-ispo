@@ -349,7 +349,7 @@ class ComposerStaticInite45e712142ec90906103b464ad6f31ba
         'PBWebDev\\CardanoPress\\ISPO\\Application' => __DIR__ . '/../..' . '/src/Application.php',
         'PBWebDev\\CardanoPress\\ISPO\\Installer' => __DIR__ . '/../..' . '/src/Installer.php',
         'PBWebDev\\CardanoPress\\ISPO\\Manifest' => __DIR__ . '/../..' . '/src/Manifest.php',
-        'PBWebDev\\CardanoPress\\ISPO\\PoolData' => __DIR__ . '/../..' . '/src/PoolData.php',
+        'PBWebDev\\CardanoPress\\ISPO\\PoolManager' => __DIR__ . '/../..' . '/src/PoolManager.php',
         'PBWebDev\\CardanoPress\\ISPO\\Profile' => __DIR__ . '/../..' . '/src/Profile.php',
         'PBWebDev\\CardanoPress\\ISPO\\Templates' => __DIR__ . '/../..' . '/src/Templates.php',
         'Psr\\Http\\Client\\ClientExceptionInterface' => __DIR__ . '/..' . '/psr/http-client/src/ClientExceptionInterface.php',

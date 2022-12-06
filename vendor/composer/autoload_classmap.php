@@ -236,7 +236,7 @@ return array(
     'PBWebDev\\CardanoPress\\ISPO\\Application' => $baseDir . '/src/Application.php',
     'PBWebDev\\CardanoPress\\ISPO\\Installer' => $baseDir . '/src/Installer.php',
     'PBWebDev\\CardanoPress\\ISPO\\Manifest' => $baseDir . '/src/Manifest.php',
-    'PBWebDev\\CardanoPress\\ISPO\\PoolData' => $baseDir . '/src/PoolData.php',
+    'PBWebDev\\CardanoPress\\ISPO\\PoolManager' => $baseDir . '/src/PoolManager.php',
     'PBWebDev\\CardanoPress\\ISPO\\Profile' => $baseDir . '/src/Profile.php',
     'PBWebDev\\CardanoPress\\ISPO\\Templates' => $baseDir . '/src/Templates.php',
     'Psr\\Http\\Client\\ClientExceptionInterface' => $vendorDir . '/psr/http-client/src/ClientExceptionInterface.php',
