@@ -37,7 +37,7 @@ $link = Actions::getCardanoscanLink($network, 'transaction/');
     <template x-if="isConnected && transactionHash">
         <div class="py-3">
             <h3>Delegation Result</h3>
-            <p><a x-bind:href="'<?php echo $link; ?>' + transactionHash" target="_blank">View transaction</a> on CardanoScan.</p>
+            <p><a x-bind:href="'<?php echo esc_attr($link); ?>' + transactionHash" target="_blank">View transaction</a> on CardanoScan.</p>
         </div>
     </template>
 

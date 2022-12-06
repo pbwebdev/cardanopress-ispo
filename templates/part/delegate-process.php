@@ -21,14 +21,14 @@ if (empty($textDelegated)) {
 
 <div class="mt-3">
     <template x-if="!isConnected">
-        <button class="btn btn-primary" type="button" disabled="true"><?php echo $text; ?></button>
+        <button class="btn btn-primary" type="button" disabled="true"><?php echo esc_html($text); ?></button>
     </template>
 
     <template x-if="isConnected && !transactionHash">
-        <button class="btn btn-primary" type="button" @click="handleDelegation()" x-bind:disabled="isProcessing"><?php echo $text; ?></button>
+        <button class="btn btn-primary" type="button" @click="handleDelegation()" x-bind:disabled="isProcessing"><?php echo esc_html($text); ?></button>
     </template>
 
     <template x-if="isConnected && transactionHash">
-        <button class="btn btn-primary" type="button" disabled="true"><?php echo $textDelegated; ?></button>
+        <button class="btn btn-primary" type="button" disabled="true"><?php echo esc_html($textDelegated); ?></button>
     </template>
 </div>

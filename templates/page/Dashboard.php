@@ -28,17 +28,17 @@ get_header();
 <main>
     <div
         x-data="cardanoPressISPO"
-        data-ration="<?php echo $ration; ?>"
-        data-minimum="<?php echo $minAda; ?>"
-        data-maximum="<?php echo $maxAda; ?>"
-        data-commence="<?php echo $commence; ?>"
-        data-conclude="<?php echo $conclude; ?>"
+        data-ration="<?php echo esc_attr($ration); ?>"
+        data-minimum="<?php echo esc_attr($minAda); ?>"
+        data-maximum="<?php echo esc_attr($maxAda); ?>"
+        data-commence="<?php echo esc_attr($commence); ?>"
+        data-conclude="<?php echo esc_attr($conclude); ?>"
     >
         <section id="banner">
             <div class="container-xxl py-5">
                 <div class="col col-md-8 mx-auto text-center">
-                    <h1><?php echo $pool['name']; ?> Initial Stake Pool Offering (ISPO)</h1>
-                    <p>We are currently running our ISPO to distribute the <span class="fw-bold"><?php echo $pool['ticker']; ?></span> tokens to the delegates of the project.</p>
+                    <h1><?php echo esc_html($pool['name']); ?> Initial Stake Pool Offering (ISPO)</h1>
+                    <p>We are currently running our ISPO to distribute the <span class="fw-bold"><?php echo esc_html($pool['ticker']); ?></span> tokens to the delegates of the project.</p>
                     <p>Delegate your Cardano wallet to earn your rewards.</p>
                     <a class="btn btn-primary" href="#calculator">Calculate Rewards</a>
                     <a class="btn btn-secondary" href="#pool-delegate">Delegate</a>
@@ -74,13 +74,13 @@ get_header();
                 <div class="col col-md-8 mx-auto text-center">
                     <h2>Pool Stats & Delegate Your ADA</h2>
                     <p>Check the pool and ensure that you're delegating to the correct and official one.</p>
-                    <p>Search for the pool ticker <span class="fw-bold"><?php echo $pool['ticker']; ?></span>, or search using the Pool ID. Ensure you are delegating to the correct stake pool.</p>
-                    <p>Pool ID: <span class="fw-bold"><?php echo $pool['pool_id']; ?></span></p>
+                    <p>Search for the pool ticker <span class="fw-bold"><?php echo esc_html($pool['ticker']); ?></span>, or search using the Pool ID. Ensure you are delegating to the correct stake pool.</p>
+                    <p>Pool ID: <span class="fw-bold"><?php echo esc_html($pool['pool_id']); ?></span></p>
                     <span class="m-1">
-                        <a href="#" @click.prevent="clipboardValue('<?php echo $pool['pool_id']; ?>')" title="Copy to clipboard">Copy</a>
+                        <a href="#" @click.prevent="clipboardValue('<?php echo esc_js($pool['pool_id']); ?>')" title="Copy to clipboard">Copy</a>
                     </span>
                     <span class="m-1">
-                        <a href="<?php echo $link . $pool['hex']; ?>" target="_blank" title="View on Cardanoscan">View</a>
+                        <a href="<?php echo esc_attr($link . $pool['hex']); ?>" target="_blank" title="View on Cardanoscan">View</a>
                     </span>
                 </div>
 
@@ -90,7 +90,7 @@ get_header();
                             <div class="card-body">
                                 <div class="d-flex align-items-center justify-content-between">
                                     <p class="fs-4 mb-0">
-                                        <?php echo NumberHelper::shortRounded(NumberHelper::lovelaceToAda($pool['active_stake'])); ?>
+                                        <?php echo esc_html(NumberHelper::shortRounded(NumberHelper::lovelaceToAda($pool['active_stake']))); ?>
                                     </p>
                                     <p class="text-sm text-muted mb-0">Active Stake</p>
                                 </div>
@@ -102,7 +102,7 @@ get_header();
                         <div class="card h-100">
                             <div class="card-body">
                                 <div class="d-flex align-items-center justify-content-between">
-                                    <p class="fs-4 mb-0"><?php echo NumberHelper::shortRounded($pool['live_delegators']); ?></p>
+                                    <p class="fs-4 mb-0"><?php echo esc_html(NumberHelper::shortRounded($pool['live_delegators'])); ?></p>
                                     <p class="text-sm text-muted mb-0">Delegates</p>
                                 </div>
                             </div>
@@ -113,7 +113,7 @@ get_header();
                         <div class="card h-100">
                             <div class="card-body">
                                 <div class="d-flex align-items-center justify-content-between">
-                                    <p class="fs-4 mb-0"><?php echo NumberHelper::shortRounded($pool['blocks_minted']); ?></p>
+                                    <p class="fs-4 mb-0"><?php echo esc_html(NumberHelper::shortRounded($pool['blocks_minted'])); ?></p>
                                     <p class="text-sm text-muted mb-0">Blocks Minted</p>
                                 </div>
                             </div>

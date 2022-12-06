@@ -28,5 +28,5 @@ $rewards = NumberHelper::adaPrecision($rewards);
 </template>
 
 <template x-if="isConnected">
-    <input value="<?php echo $rewards; ?>" type="text" class="form-control text-center" readonly disabled>
+    <input value="<?php echo esc_attr($rewards); ?>" type="text" class="form-control text-center" readonly disabled>
 </template>
