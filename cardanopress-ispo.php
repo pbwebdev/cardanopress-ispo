@@ -33,9 +33,6 @@ if (! defined('CP_ISPO_FILE')) {
 // Load the main plugin class
 require_once plugin_dir_path(CP_ISPO_FILE) . 'vendor/autoload.php';
 
-// Instantiate the updater
-EUM_Handler::run(CP_ISPO_FILE, 'https://raw.githubusercontent.com/CardanoPress/plugin-ispo/main/update-data.json');
-
 // Instantiate
 function cpISPO(): Application
 {
