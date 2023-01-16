@@ -10,6 +10,7 @@ namespace PBWebDev\CardanoPress\ISPO;
 use CardanoPress\Helpers\NumberHelper;
 use CardanoPress\Helpers\WalletHelper;
 use CardanoPress\Interfaces\HookInterface;
+use DateTimeZone;
 use PBWebDev\CardanoPress\Blockfrost;
 use WP_User;
 
@@ -37,6 +38,18 @@ class Actions implements HookInterface
         }
 
         return $base[$network] . $endpoint;
+    }
+
+    public static function toUnixTimestamp(string $epoch): string
+    {
+        return $epoch * 432000 + 1506203091;
+    }
+
+    public static function toUTC(string $epoch): string
+    {
+        $format = get_option('date_format') . ' ' . get_option('time_format');
+
+        return wp_date($format, self::toUnixTimestamp($epoch), new DateTimeZone('UTC'));
     }
 
     public function getAccountDetails(WP_User $user)

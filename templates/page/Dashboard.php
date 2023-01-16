@@ -40,6 +40,7 @@ get_header();
                     <h1><?php echo esc_html($pool['name']); ?> Initial Stake Pool Offering (ISPO)</h1>
                     <p>We are currently running our ISPO to distribute the <span class="fw-bold"><?php echo esc_html($pool['ticker']); ?></span> tokens to the delegates of the project.</p>
                     <p>Delegate your Cardano wallet to earn your rewards.</p>
+                    <p>Starts: <?php echo Actions::toUTC($commence); ?> UTC | Ends: <?php echo Actions::toUTC($conclude); ?> UTC</p>
                     <a class="btn btn-primary" href="#calculator">Calculate Rewards</a>
                     <a class="btn btn-secondary" href="#pool-delegate">Delegate</a>
                 </div>
