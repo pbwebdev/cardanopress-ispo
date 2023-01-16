@@ -27,9 +27,24 @@ class Admin extends AbstractAdmin
         });
 
         add_action('init', function () {
+            $this->generalSettings();
             $this->delegationSettings();
             $this->rewardsSettings();
         });
+    }
+
+    public function generalSettings(): void
+    {
+        $this->optionFields(__('General Settings', 'cardanopress-ispo'), [
+            'data_prefix' => '',
+            'fields' => [
+                'allocated_tokens' => [
+                    'title' => __('Allocated Tokens', 'cardanopress-ispo'),
+                    'type' => 'number',
+                    'default' => '',
+                ],
+            ],
+        ]);
     }
 
     public function delegationSettings(): void

@@ -17,6 +17,7 @@ $minAda = cpISPO()->option('rewards_minimum');
 $maxAda = cpISPO()->option('rewards_maximum');
 $commence = cpISPO()->option('rewards_commence');
 $conclude = cpISPO()->option('rewards_conclude');
+$tokens = cpISPO()->option('allocated_tokens');
 $pool = cpISPO()->delegationPool();
 $network = cpISPO()->userProfile()->connectedNetwork();
 $link = Actions::getCardanoscanLink($network, 'pool/');
@@ -41,6 +42,9 @@ get_header();
                     <p>We are currently running our ISPO to distribute the <span class="fw-bold"><?php echo esc_html($pool['ticker']); ?></span> tokens to the delegates of the project.</p>
                     <p>Delegate your Cardano wallet to earn your rewards.</p>
                     <p>Starts: <?php echo Actions::toUTC($commence); ?> UTC | Ends: <?php echo Actions::toUTC($conclude); ?> UTC</p>
+                    <?php if ($tokens) : ?>
+                        <p>Allocated Tokens: <?php echo number_format($tokens); ?></p>
+                    <?php endif; ?>
                     <a class="btn btn-primary" href="#calculator">Calculate Rewards</a>
                     <a class="btn btn-secondary" href="#pool-delegate">Delegate</a>
                 </div>
