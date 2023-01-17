@@ -3,7 +3,7 @@
         'name' => 'cardanopress/plugin-ispo',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '876bbd7d066bddbd6406fb99c105474560d939a5',
+        'reference' => 'c4fdd84811d1b843a35db4b16cfc6e1d2b5b0789',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'cardanopress/framework' => array(
-            'pretty_version' => 'v1.2.1',
-            'version' => '1.2.1.0',
-            'reference' => '70c0e800ff833683eb5d71e058d8dd681b84fdf1',
+            'pretty_version' => 'v1.3.0',
+            'version' => '1.3.0.0',
+            'reference' => 'd8ccc9c77e9ad2e8cfd9956cc97e1ed8ecacbef6',
             'type' => 'library',
             'install_path' => __DIR__ . '/../cardanopress/framework',
             'aliases' => array(),
@@ -22,7 +22,7 @@
         'cardanopress/plugin-ispo' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '876bbd7d066bddbd6406fb99c105474560d939a5',
+            'reference' => 'c4fdd84811d1b843a35db4b16cfc6e1d2b5b0789',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
