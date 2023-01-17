@@ -155,6 +155,7 @@ class Actions implements HookInterface
             $queryNetwork = WalletHelper::getNetworkFromAddress($inputAddress);
 
             if (! Blockfrost::isReady($queryNetwork)) {
+                /* translators: %s: cardano environment */
                 wp_send_json_error(sprintf(__('Unsupported network %s', 'cardanopress-ispo'), $queryNetwork));
             }
 
