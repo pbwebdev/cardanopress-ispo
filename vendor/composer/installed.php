@@ -55,15 +55,6 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
-        'kermage/external-update-manager' => array(
-            'pretty_version' => 'v2.2.0',
-            'version' => '2.2.0.0',
-            'reference' => '00506d4e76047026d0c19f39223a8f2051593686',
-            'type' => 'wordpress-dropin',
-            'install_path' => __DIR__ . '/../kermage/external-update-manager',
-            'aliases' => array(),
-            'dev_requirement' => false,
-        ),
         'monolog/monolog' => array(
             'pretty_version' => '2.8.0',
             'version' => '2.8.0.0',

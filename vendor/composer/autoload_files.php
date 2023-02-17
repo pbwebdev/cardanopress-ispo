@@ -11,6 +11,5 @@ return array(
     '6e3fae29631ef280660b3cdad06f25a8' => $vendorDir . '/symfony/deprecation-contracts/function.php',
     '37a3dc5111fe8f707ab4c132ef1dbc62' => $vendorDir . '/guzzlehttp/guzzle/src/functions_include.php',
     'cffb582bbe3444c214b7b73b61493f7d' => $vendorDir . '/themeplate/enqueue/Enqueue.php',
-    'e2fb8214a7589690aae8ec82f7aa8973' => $vendorDir . '/kermage/external-update-manager/class-external-update-manager.php',
     'a1e09ce905c79a09f3e2f7956bc7e184' => $vendorDir . '/themeplate/cache/Cache.php',
 );
