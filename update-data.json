@@ -1,0 +1,15 @@
+{
+  "new_version"    : "1.0.0",
+  "homepage"       : "https://wordpress.org/plugins/cardanopress-ispo/",
+  "download_link"  : "https://downloads.wordpress.org/plugin/cardanopress-ispo.zip",
+  "last_updated"   : "2023-02-17",
+  "author"         : "Gene Alyson Fortunado Torcende",
+  "author_profile" : "https://cardanopress.io",
+  "requires"       : "5.8.0",
+  "tested"         : "6.1.1",
+  "requires_php"   : "7.4",
+  "upgrade_notice" : "Please do the update now to seamlessly use the official WordPress Plugin Directory version",
+  "sections"       : {
+    "description"  : "<p>The CardanoPress ISPO plugins allows any project to run their own Initial Stake Pool Offering (ISPO); comes\nwith a dashboard calculator layout and a delegation mechanism within a few clicks.</p>"
+  }
+}
