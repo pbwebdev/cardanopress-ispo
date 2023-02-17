@@ -133,7 +133,18 @@ This plugin does not collect or process any personal user data unless you expres
 You can follow our [GitHub release](https://github.com/CardanoPress/plugin-ispo/releases) for full details on updates
 to the plugins.
 
-= v0.7.0 Latest =
+= 1.1.0 =
+Official repository release (exact same version as 0.8.0)
+
+= 0.8.0 =
+Set and show the number of tokens allocated to the project
+Provide helper methods for epoch conversion
+Ready for translations
+
+= 1.0.0 =
+First stable release (exact same version as 0.7.0)
+
+= v0.7.0 =
 Check and clean URLs
 Update all dependencies
 
