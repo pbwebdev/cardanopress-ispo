@@ -10,6 +10,8 @@
  * License:     GPL-2.0-only
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  *
+ * Text Domain: cardanopress-ispo
+ *
  * @package ThemePlate
  * @since   0.1.0
  */
@@ -39,10 +41,6 @@ function cpISPO(): Application
     static $application;
 
     if (null === $application) {
-        if (! function_exists('get_plugins')) {
-            require_once ABSPATH . 'wp-admin/includes/plugin.php';
-        }
-
         $application = new Application(CP_ISPO_FILE);
     }
 

@@ -40,8 +40,9 @@ class Installer extends AbstractInstaller
         }
 
         $message = sprintf(
-            '<strong>%1$s</strong> requires a delegation pool ID. %2$s',
-            $this->application->getData('Name'),
+            /* translators: 1: plugin name 2: settings link */
+            __('%1$s requires a delegation pool ID. %2$s', 'cardanopress-ispo'),
+            '<strong>' . $this->application->getData('Name') . '</strong>',
             $this->getSettingsLink(__('Please set here', 'cardanopress-ispo'), '_blank')
         );
 
