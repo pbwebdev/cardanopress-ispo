@@ -10,7 +10,7 @@
     "php": "^7.4|^8.0",
     "ext-json": "*",
     "automattic/jetpack-autoloader": "^2.11",
-    "cardanopress/framework": "^1.0",
+    "cardanopress/framework": "^2.0",
     "themeplate/cache": "^2.5",
     "themeplate/process": "^2.6"
   },

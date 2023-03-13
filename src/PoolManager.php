@@ -11,8 +11,8 @@ use CardanoPress\Traits\Instantiable;
 use CardanoPress\Traits\Loggable;
 use PBWebDev\CardanoPress\Blockfrost;
 use Psr\Log\LoggerInterface;
-use ThemePlate\Cache\CacheManager;
-use ThemePlate\Process\Tasks;
+use CardanoPress\ISPO\Dependencies\ThemePlate\Cache\CacheManager;
+use CardanoPress\ISPO\Dependencies\ThemePlate\Process\Tasks;
 use WP_Error;
 
 class PoolManager

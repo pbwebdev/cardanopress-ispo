@@ -33,7 +33,7 @@ if (! defined('CP_ISPO_FILE')) {
 }
 
 // Load the main plugin class
-require_once plugin_dir_path(CP_ISPO_FILE) . 'vendor/autoload.php';
+require_once plugin_dir_path(CP_ISPO_FILE) . 'dependencies/vendor/autoload_packages.php';
 
 // Instantiate
 function cpISPO(): Application
