@@ -26,7 +26,11 @@
   "minimum-stability": "stable",
   "prefer-stable": true,
   "require": {
-    "php": "^7.4|^8.0"
+    "php": "^7.4|^8.0",
+    "ext-json": "*",
+    "cardanopress/framework": "^1.0",
+    "themeplate/cache": "^2.5",
+    "themeplate/process": "^2.6"
   },
   "require-dev": {
     "roave/security-advisories": "dev-latest",

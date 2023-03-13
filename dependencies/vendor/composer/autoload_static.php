@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInite45e712142ec90906103b464ad6f31ba
+class ComposerStaticInitcdb091b026806e0f074ce99c52568d0a
 {
     public static $files = array (
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
@@ -345,14 +345,6 @@ class ComposerStaticInite45e712142ec90906103b464ad6f31ba
         'Monolog\\SignalHandler' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/SignalHandler.php',
         'Monolog\\Test\\TestCase' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Test/TestCase.php',
         'Monolog\\Utils' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Utils.php',
-        'PBWebDev\\CardanoPress\\ISPO\\Actions' => __DIR__ . '/../..' . '/src/Actions.php',
-        'PBWebDev\\CardanoPress\\ISPO\\Admin' => __DIR__ . '/../..' . '/src/Admin.php',
-        'PBWebDev\\CardanoPress\\ISPO\\Application' => __DIR__ . '/../..' . '/src/Application.php',
-        'PBWebDev\\CardanoPress\\ISPO\\Installer' => __DIR__ . '/../..' . '/src/Installer.php',
-        'PBWebDev\\CardanoPress\\ISPO\\Manifest' => __DIR__ . '/../..' . '/src/Manifest.php',
-        'PBWebDev\\CardanoPress\\ISPO\\PoolManager' => __DIR__ . '/../..' . '/src/PoolManager.php',
-        'PBWebDev\\CardanoPress\\ISPO\\Profile' => __DIR__ . '/../..' . '/src/Profile.php',
-        'PBWebDev\\CardanoPress\\ISPO\\Templates' => __DIR__ . '/../..' . '/src/Templates.php',
         'Psr\\Http\\Client\\ClientExceptionInterface' => __DIR__ . '/..' . '/psr/http-client/src/ClientExceptionInterface.php',
         'Psr\\Http\\Client\\ClientInterface' => __DIR__ . '/..' . '/psr/http-client/src/ClientInterface.php',
         'Psr\\Http\\Client\\NetworkExceptionInterface' => __DIR__ . '/..' . '/psr/http-client/src/NetworkExceptionInterface.php',
@@ -437,9 +429,9 @@ class ComposerStaticInite45e712142ec90906103b464ad6f31ba
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInite45e712142ec90906103b464ad6f31ba::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInite45e712142ec90906103b464ad6f31ba::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInite45e712142ec90906103b464ad6f31ba::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitcdb091b026806e0f074ce99c52568d0a::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitcdb091b026806e0f074ce99c52568d0a::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitcdb091b026806e0f074ce99c52568d0a::$classMap;
 
         }, null, ClassLoader::class);
     }
