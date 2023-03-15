@@ -147,6 +147,8 @@ class Actions implements HookInterface
 
     protected function filterStakeAddress(string $inputAddress): string
     {
+        $inputAddress = sanitize_text_field($inputAddress);
+
         if (0 === strpos($inputAddress, 'stake1') || 0 === strpos($inputAddress, 'stake_test1')) {
             return $inputAddress;
         }
