@@ -82,6 +82,10 @@ class Application extends AbstractApplication
         $poolData = $this->poolManager->getData();
         $data = $poolData[$network] ?? $this->poolManager::DATA_STRUCTURE;
 
+        if (empty($data)) {
+            $data = $this->poolManager::DATA_STRUCTURE;
+        }
+
         return $data;
     }
 }
