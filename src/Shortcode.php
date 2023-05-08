@@ -20,7 +20,31 @@ class Shortcode extends AbstractShortcode
 
     public function setupHooks(): void
     {
+        add_shortcode('cp-ispo_component', [$this, 'doComponent']);
         add_shortcode('cp-ispo_template', [$this, 'doTemplate']);
+    }
+
+    public function doComponent($attributes, ?string $content = null): string
+    {
+        $html = sprintf(
+            '<div x-data="cardanoPressISPO" data-%s="%s" data-%s="%s" data-%s="%s" data-%s="%s" data-%s="%s">',
+            'ration',
+            $this->application->option('rewards_ration'),
+            'minimum',
+            $this->application->option('rewards_minimum'),
+            'maximum',
+            $this->application->option('rewards_maximum'),
+            'commence',
+            $this->application->option('rewards_commence'),
+            'conclude',
+            $this->application->option('rewards_conclude')
+        );
+        $html .= apply_filters('the_content', $content);
+        $html .= '</div>';
+
+        wp_enqueue_script(Manifest::HANDLE_PREFIX . 'script');
+
+        return trim($html);
     }
 
     public function doTemplate(array $attributes): string
