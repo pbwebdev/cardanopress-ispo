@@ -11,6 +11,7 @@ use CardanoPress\Helpers\NumberHelper;
 use CardanoPress\Helpers\WalletHelper;
 use CardanoPress\Interfaces\HookInterface;
 use DateTimeZone;
+use PBWebDev\CardanoPress\Actions\CoreAction;
 use PBWebDev\CardanoPress\Blockfrost;
 use WP_User;
 
@@ -147,8 +148,7 @@ class Actions implements HookInterface
             $queryNetwork = WalletHelper::getNetworkFromAddress($inputAddress);
 
             if (! Blockfrost::isReady($queryNetwork)) {
-                /* translators: %s: cardano environment */
-                wp_send_json_error(sprintf(__('Unsupported network %s', 'cardanopress-ispo'), $queryNetwork));
+                wp_send_json_error(sprintf(CoreAction::getAjaxMessage('unsupportedNetwork'), $queryNetwork));
             }
 
             $blockfrost = new Blockfrost($queryNetwork);
@@ -165,7 +165,7 @@ class Actions implements HookInterface
         check_ajax_referer('cardanopress-actions');
 
         if (empty($_POST['stakeAddress']) || ! Application::getInstance()->isReady()) {
-            wp_send_json_error(__('Something is wrong. Please try again', 'cardanopress-ispo'));
+            wp_send_json_error(CoreAction::getAjaxMessage('somethingWrong'));
         }
 
         $stakeAddress = $this->filterStakeAddress($_POST['stakeAddress']);
@@ -177,7 +177,7 @@ class Actions implements HookInterface
         $queryNetwork = WalletHelper::getNetworkFromStake($stakeAddress);
 
         if (! Blockfrost::isReady($queryNetwork)) {
-            wp_send_json_error(sprintf(__('Unsupported network %s', 'cardanopress-ispo'), $queryNetwork));
+            wp_send_json_error(sprintf(CoreAction::getAjaxMessage('unsupportedNetwork'), $queryNetwork));
         }
 
         wp_send_json_success($this->calculateRewards($stakeAddress, $queryNetwork));
@@ -191,7 +191,7 @@ class Actions implements HookInterface
         $response = $poolData['hex'] ?? '';
 
         if (empty($response)) {
-            wp_send_json_error(__('Something is wrong. Please try again', 'cardanopress-ispo'));
+            wp_send_json_error(CoreAction::getAjaxMessage('somethingWrong'));
         }
 
         wp_send_json_success($response);
