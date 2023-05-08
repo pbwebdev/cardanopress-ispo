@@ -48,6 +48,7 @@ class Actions implements HookInterface
     public static function toUTC(string $epoch): string
     {
         $format = get_option('date_format') . ' ' . get_option('time_format');
+        $format = apply_filters('cp-ispo-date_format', $format);
 
         return wp_date($format, self::toUnixTimestamp($epoch), new DateTimeZone('UTC'));
     }
