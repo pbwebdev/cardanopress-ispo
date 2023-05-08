@@ -47,6 +47,7 @@ class Application extends AbstractApplication
         load_plugin_textdomain($this->getData('TextDomain'));
 
         (new Actions())->setupHooks();
+        (new Shortcode())->setupHooks();
     }
 
     public function isReady(): bool

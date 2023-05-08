@@ -51,31 +51,7 @@ class ComposerStaticInitcdb091b026806e0f074ce99c52568d0a
     );
 
     public static $classMap = array (
-        'CardanoPress\\ISPO\\Dependencies\\ThemePlate\\Cache\\CacheManager' => __DIR__ . '/../..' . '/ThemePlate/Cache/CacheManager.php',
-        'CardanoPress\\ISPO\\Dependencies\\ThemePlate\\Cache\\Handlers\\AbstractHandler' => __DIR__ . '/../..' . '/ThemePlate/Cache/Handlers/AbstractHandler.php',
-        'CardanoPress\\ISPO\\Dependencies\\ThemePlate\\Cache\\Handlers\\DataHandler' => __DIR__ . '/../..' . '/ThemePlate/Cache/Handlers/DataHandler.php',
-        'CardanoPress\\ISPO\\Dependencies\\ThemePlate\\Cache\\Handlers\\FileHandler' => __DIR__ . '/../..' . '/ThemePlate/Cache/Handlers/FileHandler.php',
-        'CardanoPress\\ISPO\\Dependencies\\ThemePlate\\Cache\\Handlers\\HandlerInterface' => __DIR__ . '/../..' . '/ThemePlate/Cache/Handlers/HandlerInterface.php',
-        'CardanoPress\\ISPO\\Dependencies\\ThemePlate\\Cache\\StorageManager' => __DIR__ . '/../..' . '/ThemePlate/Cache/StorageManager.php',
-        'CardanoPress\\ISPO\\Dependencies\\ThemePlate\\Cache\\Storages\\AbstractStorage' => __DIR__ . '/../..' . '/ThemePlate/Cache/Storages/AbstractStorage.php',
-        'CardanoPress\\ISPO\\Dependencies\\ThemePlate\\Cache\\Storages\\MetadataStorage' => __DIR__ . '/../..' . '/ThemePlate/Cache/Storages/MetadataStorage.php',
-        'CardanoPress\\ISPO\\Dependencies\\ThemePlate\\Cache\\Storages\\OptionsStorage' => __DIR__ . '/../..' . '/ThemePlate/Cache/Storages/OptionsStorage.php',
-        'CardanoPress\\ISPO\\Dependencies\\ThemePlate\\Cache\\Storages\\PostMetaStorage' => __DIR__ . '/../..' . '/ThemePlate/Cache/Storages/PostMetaStorage.php',
-        'CardanoPress\\ISPO\\Dependencies\\ThemePlate\\Cache\\Storages\\StorageInterface' => __DIR__ . '/../..' . '/ThemePlate/Cache/Storages/StorageInterface.php',
-        'CardanoPress\\ISPO\\Dependencies\\ThemePlate\\Cache\\Storages\\TermMetaStorage' => __DIR__ . '/../..' . '/ThemePlate/Cache/Storages/TermMetaStorage.php',
-        'CardanoPress\\ISPO\\Dependencies\\ThemePlate\\Cache\\Storages\\UserMetaStorage' => __DIR__ . '/../..' . '/ThemePlate/Cache/Storages/UserMetaStorage.php',
-        'CardanoPress\\ISPO\\Dependencies\\ThemePlate\\Process\\Async' => __DIR__ . '/../..' . '/ThemePlate/Process/Async.php',
-        'CardanoPress\\ISPO\\Dependencies\\ThemePlate\\Process\\Report' => __DIR__ . '/../..' . '/ThemePlate/Process/Report.php',
-        'CardanoPress\\ISPO\\Dependencies\\ThemePlate\\Process\\Tasks' => __DIR__ . '/../..' . '/ThemePlate/Process/Tasks.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'PBWebDev\\CardanoPress\\ISPO\\Actions' => __DIR__ . '/../..' . '/../src/Actions.php',
-        'PBWebDev\\CardanoPress\\ISPO\\Admin' => __DIR__ . '/../..' . '/../src/Admin.php',
-        'PBWebDev\\CardanoPress\\ISPO\\Application' => __DIR__ . '/../..' . '/../src/Application.php',
-        'PBWebDev\\CardanoPress\\ISPO\\Installer' => __DIR__ . '/../..' . '/../src/Installer.php',
-        'PBWebDev\\CardanoPress\\ISPO\\Manifest' => __DIR__ . '/../..' . '/../src/Manifest.php',
-        'PBWebDev\\CardanoPress\\ISPO\\PoolManager' => __DIR__ . '/../..' . '/../src/PoolManager.php',
-        'PBWebDev\\CardanoPress\\ISPO\\Profile' => __DIR__ . '/../..' . '/../src/Profile.php',
-        'PBWebDev\\CardanoPress\\ISPO\\Templates' => __DIR__ . '/../..' . '/../src/Templates.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
