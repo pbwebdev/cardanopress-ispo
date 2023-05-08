@@ -26,23 +26,12 @@ class Actions implements HookInterface
 
     public static function getCardanoscanLink(string $network, string $endpoint): string
     {
-        $base = [
-            'mainnet' => 'https://cardanoscan.io/',
-            'testnet' => 'https://testnet.cardanoscan.io/',
-        ];
-
-        $network = strtolower($network);
-
-        if (! in_array($network, array_keys($base), true)) {
-            $network = 'mainnet';
-        }
-
-        return $base[$network] . $endpoint;
+        return WalletHelper::getCardanoscanLink($network, $endpoint);
     }
 
     public static function toUnixTimestamp(string $epoch): string
     {
-        return $epoch * 432000 + 1506203091;
+        return NumberHelper::toUnixTimestamp($epoch);
     }
 
     public static function toUTC(string $epoch): string
