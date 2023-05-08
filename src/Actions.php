@@ -169,6 +169,15 @@ class Actions implements HookInterface
         }
 
         $stakeAddress = $this->filterStakeAddress($_POST['stakeAddress']);
+        $currentUser = wp_get_current_user();
+
+        if (null !== $currentUser) {
+            $userProfile = new Profile($currentUser);
+
+            if ($userProfile->connectedStake() === $stakeAddress) {
+                wp_send_json_success($userProfile->getCalculatedRewards());
+            }
+        }
 
         if ('' === $stakeAddress) {
             wp_send_json_error(__('Invalid address format provided.', 'cardanopress-ispo'));
