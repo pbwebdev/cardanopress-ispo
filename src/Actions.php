@@ -52,88 +52,9 @@ class Actions implements HookInterface
             return;
         }
 
-        $rewards = $this->calculateRewards($userProfile->connectedStake(), $queryNetwork);
+        $rewards = Manager::getRewards($userProfile->connectedStake(), $queryNetwork);
 
         $userProfile->saveCalculatedRewards($rewards);
-    }
-
-    protected function calculateReward(float $ration, int $lovelace, float $multiplier): float
-    {
-        return $ration / 100 * NumberHelper::lovelaceToAda($lovelace) * $multiplier;
-    }
-
-    protected function calculateRewards(string $stakeAddress, string $queryNetwork): float
-    {
-        $application = Application::getInstance();
-        $poolIds = $application->option('delegation_pool_id');
-        $blockfrost = new Blockfrost($queryNetwork);
-        $ration = $application->option('rewards_ration');
-        $commence = $application->option('rewards_commence');
-        $conclude = $application->option('rewards_conclude');
-        $multiplier = $application->option('rewards_multiplier');
-        $customRewards = apply_filters(
-            'cp-ispo-force_wallet_rewards',
-            null,
-            $stakeAddress,
-            compact('ration', 'multiplier')
-        );
-
-        if (null !== $customRewards) {
-            return $customRewards;
-        }
-
-        $rewards = 0;
-        $page = 1;
-
-        do {
-            $response = $blockfrost->getAccountHistory($stakeAddress, $page);
-
-            foreach ($response as $history) {
-                if ($history['pool_id'] !== $poolIds[$queryNetwork]) {
-                    continue;
-                }
-
-                if ($history['active_epoch'] >= $commence && $history['active_epoch'] <= $conclude) {
-                    do_action('cp-ispo-qualified_epoch_for_rewards', $history['active_epoch'], $stakeAddress);
-
-                    $lovelace = $history['amount'];
-                    $rewards += apply_filters(
-                        'cp-ispo-epoch_calculated_reward',
-                        $this->calculateReward($ration, $lovelace, $multiplier),
-                        $history['active_epoch'],
-                        compact('ration', 'lovelace', 'multiplier', 'rewards'),
-                    );
-                }
-            }
-
-            $page++;
-        } while (100 === count($response));
-
-        if (0 === $rewards) {
-            return apply_filters('cp-ispo-total_accumulated_rewards', $rewards, compact('ration', 'multiplier'));
-        }
-
-        $latest = $blockfrost->getEpochsLatest();
-
-        if (empty($latest) || $latest['epoch'] > $conclude) {
-            return apply_filters('cp-ispo-total_accumulated_rewards', $rewards, compact('ration', 'multiplier'));
-        }
-
-        $response = $blockfrost->getAccountDetails($stakeAddress);
-
-        if (! empty($response) && $response['active'] && $response['pool_id'] === $poolIds[$queryNetwork]) {
-            do_action('cp-ispo-qualified_epoch_for_rewards', $latest['epoch'], $stakeAddress);
-
-            $lovelace = $response['controlled_amount'];
-            $rewards += apply_filters(
-                'cp-ispo-epoch_calculated_reward',
-                $this->calculateReward($ration, $lovelace, $multiplier),
-                $latest['epoch'],
-                compact('ration', 'lovelace', 'multiplier', 'rewards'),
-            );
-        }
-
-        return apply_filters('cp-ispo-total_accumulated_rewards', $rewards, compact('ration', 'multiplier'));
     }
 
     protected function filterStakeAddress(string $inputAddress): string
@@ -189,7 +110,7 @@ class Actions implements HookInterface
             wp_send_json_error(sprintf(CoreAction::getAjaxMessage('unsupportedNetwork'), $queryNetwork));
         }
 
-        wp_send_json_success($this->calculateRewards($stakeAddress, $queryNetwork));
+        wp_send_json_success(Manager::getRewards($stakeAddress, $queryNetwork));
     }
 
     public function getDelegationData(): void
