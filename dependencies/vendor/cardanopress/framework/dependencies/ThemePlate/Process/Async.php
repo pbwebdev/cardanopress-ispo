@@ -3,11 +3,11 @@
 /**
  * Helper for background process
  *
- * @package ThemePlate
+ * @package CardanoPress\Dependencies\ThemePlate
  * @since 0.1.0
  */
 
-namespace CardanoPress\ISPO\Dependencies\ThemePlate\Process;
+namespace CardanoPress\Dependencies\ThemePlate\Process;
 
 use Throwable;
 

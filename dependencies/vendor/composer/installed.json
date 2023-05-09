@@ -56,24 +56,24 @@
         },
         {
             "name": "cardanopress/framework",
-            "version": "v2.0.0",
-            "version_normalized": "2.0.0.0",
+            "version": "v2.2.0",
+            "version_normalized": "2.2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CardanoPress/framework.git",
-                "reference": "fdf0f75ba39267048bcbd2396616f1338339c909"
+                "reference": "f1f006417fc618685210bff60b93794f03cdcdc5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CardanoPress/framework/zipball/fdf0f75ba39267048bcbd2396616f1338339c909",
-                "reference": "fdf0f75ba39267048bcbd2396616f1338339c909",
+                "url": "https://api.github.com/repos/CardanoPress/framework/zipball/f1f006417fc618685210bff60b93794f03cdcdc5",
+                "reference": "f1f006417fc618685210bff60b93794f03cdcdc5",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "php": "^7.4|^8.0"
             },
-            "time": "2023-02-16T09:58:23+00:00",
+            "time": "2023-05-02T08:49:50+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -106,107 +106,9 @@
             ],
             "support": {
                 "issues": "https://github.com/CardanoPress/framework/issues",
-                "source": "https://github.com/CardanoPress/framework/tree/v2.0.0"
+                "source": "https://github.com/CardanoPress/framework/tree/v2.2.0"
             },
             "install-path": "../cardanopress/framework"
-        },
-        {
-            "name": "themeplate/cache",
-            "version": "v2.5.0",
-            "version_normalized": "2.5.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ThemePlate/Cache.git",
-                "reference": "1f55719eff094bb0711285eebf3f7cc7f03ab671"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ThemePlate/Cache/zipball/1f55719eff094bb0711285eebf3f7cc7f03ab671",
-                "reference": "1f55719eff094bb0711285eebf3f7cc7f03ab671",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.4|^8.0"
-            },
-            "require-dev": {
-                "themeplate/tester": "^1.3"
-            },
-            "suggest": {
-                "themeplate/process": "^2.4"
-            },
-            "time": "2022-05-27T16:17:13+00:00",
-            "type": "library",
-            "installation-source": "dist",
-            "autoload": {
-                "files": [
-                    "Cache.php"
-                ],
-                "psr-4": {
-                    "ThemePlate\\Cache\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-3.0-only"
-            ],
-            "authors": [
-                {
-                    "name": "Gene Alyson Fortunado Torcende",
-                    "email": "genealyson.torcende@gmail.com"
-                }
-            ],
-            "description": "Convenient fragment caching methods",
-            "support": {
-                "issues": "https://github.com/ThemePlate/Cache/issues",
-                "source": "https://github.com/ThemePlate/Cache/tree/v2.5.0"
-            },
-            "install-path": "../themeplate/cache"
-        },
-        {
-            "name": "themeplate/process",
-            "version": "v2.6.0",
-            "version_normalized": "2.6.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ThemePlate/Process.git",
-                "reference": "ce3b9ffbe1308661e6d3f7c3ef3ab50360baaf59"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ThemePlate/Process/zipball/ce3b9ffbe1308661e6d3f7c3ef3ab50360baaf59",
-                "reference": "ce3b9ffbe1308661e6d3f7c3ef3ab50360baaf59",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.4|^8.0"
-            },
-            "require-dev": {
-                "themeplate/tester": "^1.3"
-            },
-            "time": "2022-05-26T01:07:19+00:00",
-            "type": "library",
-            "installation-source": "dist",
-            "autoload": {
-                "psr-4": {
-                    "ThemePlate\\Process\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-3.0-only"
-            ],
-            "authors": [
-                {
-                    "name": "Gene Alyson Fortunado Torcende",
-                    "email": "genealyson.torcende@gmail.com"
-                }
-            ],
-            "description": "ThemePlate background process",
-            "support": {
-                "issues": "https://github.com/ThemePlate/Process/issues",
-                "source": "https://github.com/ThemePlate/Process/tree/v2.6.0"
-            },
-            "install-path": "../themeplate/process"
         }
     ],
     "dev": true,

@@ -1,17 +1,17 @@
 <?php
 
 /**
- * @package ThemePlate
+ * @package CardanoPress\Dependencies\ThemePlate
  * @since   0.1.0
  */
 
-namespace CardanoPress\ISPO\Dependencies\ThemePlate\Cache;
+namespace CardanoPress\Dependencies\ThemePlate\Cache;
 
-use CardanoPress\ISPO\Dependencies\ThemePlate\Cache\Storages\OptionsStorage;
-use CardanoPress\ISPO\Dependencies\ThemePlate\Cache\Storages\PostMetaStorage;
-use CardanoPress\ISPO\Dependencies\ThemePlate\Cache\Storages\StorageInterface;
-use CardanoPress\ISPO\Dependencies\ThemePlate\Cache\Storages\TermMetaStorage;
-use CardanoPress\ISPO\Dependencies\ThemePlate\Cache\Storages\UserMetaStorage;
+use CardanoPress\Dependencies\ThemePlate\Cache\Storages\OptionsStorage;
+use CardanoPress\Dependencies\ThemePlate\Cache\Storages\PostMetaStorage;
+use CardanoPress\Dependencies\ThemePlate\Cache\Storages\StorageInterface;
+use CardanoPress\Dependencies\ThemePlate\Cache\Storages\TermMetaStorage;
+use CardanoPress\Dependencies\ThemePlate\Cache\Storages\UserMetaStorage;
 
 class StorageManager {
 

@@ -52,6 +52,17 @@ class ComposerStaticInitcdb091b026806e0f074ce99c52568d0a
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'PBWebDev\\CardanoPress\\ISPO\\Actions' => __DIR__ . '/../..' . '/../src/Actions.php',
+        'PBWebDev\\CardanoPress\\ISPO\\Admin' => __DIR__ . '/../..' . '/../src/Admin.php',
+        'PBWebDev\\CardanoPress\\ISPO\\Application' => __DIR__ . '/../..' . '/../src/Application.php',
+        'PBWebDev\\CardanoPress\\ISPO\\Exporter' => __DIR__ . '/../..' . '/../src/Exporter.php',
+        'PBWebDev\\CardanoPress\\ISPO\\Installer' => __DIR__ . '/../..' . '/../src/Installer.php',
+        'PBWebDev\\CardanoPress\\ISPO\\Manager' => __DIR__ . '/../..' . '/../src/Manager.php',
+        'PBWebDev\\CardanoPress\\ISPO\\Manifest' => __DIR__ . '/../..' . '/../src/Manifest.php',
+        'PBWebDev\\CardanoPress\\ISPO\\PoolManager' => __DIR__ . '/../..' . '/../src/PoolManager.php',
+        'PBWebDev\\CardanoPress\\ISPO\\Profile' => __DIR__ . '/../..' . '/../src/Profile.php',
+        'PBWebDev\\CardanoPress\\ISPO\\Shortcode' => __DIR__ . '/../..' . '/../src/Shortcode.php',
+        'PBWebDev\\CardanoPress\\ISPO\\Templates' => __DIR__ . '/../..' . '/../src/Templates.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

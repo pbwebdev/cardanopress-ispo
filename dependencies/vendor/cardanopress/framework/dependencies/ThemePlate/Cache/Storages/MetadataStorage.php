@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package ThemePlate
+ * @package CardanoPress\Dependencies\ThemePlate
  * @since   0.1.0
  */
 
-namespace CardanoPress\ISPO\Dependencies\ThemePlate\Cache\Storages;
+namespace CardanoPress\Dependencies\ThemePlate\Cache\Storages;
 
 class MetadataStorage extends AbstractStorage {
 

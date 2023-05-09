@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package ThemePlate
+ * @package CardanoPress\Dependencies\ThemePlate
  * @since   0.1.0
  */
 
-namespace CardanoPress\ISPO\Dependencies\ThemePlate\Process;
+namespace CardanoPress\Dependencies\ThemePlate\Process;
 
 class Report {
 

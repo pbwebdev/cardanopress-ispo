@@ -1,14 +1,14 @@
 <?php
 
 /**
- * @package ThemePlate
+ * @package CardanoPress\Dependencies\ThemePlate
  * @since   0.1.0
  */
 
-namespace CardanoPress\ISPO\Dependencies\ThemePlate\Cache\Handlers;
+namespace CardanoPress\Dependencies\ThemePlate\Cache\Handlers;
 
-use CardanoPress\ISPO\Dependencies\ThemePlate\Cache\Storages\StorageInterface;
-use CardanoPress\ISPO\Dependencies\ThemePlate\Process\Tasks;
+use CardanoPress\Dependencies\ThemePlate\Cache\Storages\StorageInterface;
+use CardanoPress\Dependencies\ThemePlate\Process\Tasks;
 
 interface HandlerInterface {
 
