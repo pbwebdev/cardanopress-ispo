@@ -11,8 +11,8 @@ use CardanoPress\Traits\Instantiable;
 use CardanoPress\Traits\Loggable;
 use PBWebDev\CardanoPress\Blockfrost;
 use Psr\Log\LoggerInterface;
-use CardanoPress\ISPO\Dependencies\ThemePlate\Cache\CacheManager;
-use CardanoPress\ISPO\Dependencies\ThemePlate\Process\Tasks;
+use CardanoPress\Dependencies\ThemePlate\Cache\CacheManager;
+use CardanoPress\Dependencies\ThemePlate\Process\Tasks;
 use WP_Error;
 
 class PoolManager
@@ -84,6 +84,9 @@ class PoolManager
         }
 
         $poolData = [];
+        $keys = cardanoPress()->option('blockfrost_project_id');
+
+        Blockfrost::useProjectIds($keys['mainnet'] ?? '', $keys['testnet'] ?? '');
 
         foreach ($application->option('delegation_pool_id') as $queryNetwork => $poolId) {
             if (! Blockfrost::isReady($queryNetwork) || '' === $poolId) {
