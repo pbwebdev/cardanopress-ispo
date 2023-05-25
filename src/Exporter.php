@@ -102,9 +102,6 @@ class Exporter implements HookInterface
 
     protected function getData(string $network, string $pool_id): array
     {
-        $application = Application::getInstance();
-        $ration = $application->option('rewards_ration');
-        $multiplier = $application->option('rewards_multiplier');
         $blockfrost = new Blockfrost($network);
         $delegations = [];
         $page = 1;
@@ -115,10 +112,8 @@ class Exporter implements HookInterface
             $this->log(__METHOD__ . ' count=' . count($response));
 
             foreach ($response as $delegation) {
-                $stake_address = $delegation['address'];
-                $lovelace_amount = $delegation['live_stake'];
-                $calculated_reward = $ration / 100 * NumberHelper::lovelaceToAda($lovelace_amount) * $multiplier;
-                $delegations[] = compact('stake_address', 'lovelace_amount', 'calculated_reward');
+                $this->log(__CLASS__ . '::doAction ' . $delegation['address']);
+                $delegations[] = $this->getHistory($blockfrost, $delegation['address'], $pool_id);
             }
 
             $page++;
@@ -132,6 +127,45 @@ class Exporter implements HookInterface
         $this->log(__METHOD__ . ' page #' . $page);
 
         $response = $blockfrost->request('pools/' . $pool_id . '/delegators', compact('page'));
+
+        return 200 === $response['status_code'] ? $response['data'] : [];
+    }
+
+    protected function getHistory(Blockfrost $blockfrost, string $stake_address, string $pool_id): array
+    {
+        $application = Application::getInstance();
+        $ration = $application->option('rewards_ration');
+        $multiplier = $application->option('rewards_multiplier');
+        $delegation = [$stake_address];
+        $page = 1;
+
+        do {
+            $response = $this->requestHistory($blockfrost, $stake_address, $page);
+
+            $this->log(__METHOD__ . ' count=' . count($response));
+
+            foreach ($response as $history) {
+                if ($history['pool_id'] !== $pool_id) {
+                    continue;
+                }
+
+                $lovelace_amount = $history['amount'];
+                $calculated_reward = $ration / 100 * NumberHelper::lovelaceToAda($lovelace_amount) * $multiplier;
+                $delegation[] = $lovelace_amount;
+                $delegation[] = $calculated_reward;
+            }
+
+            $page++;
+        } while (100 === count($response));
+
+        return $delegation;
+    }
+
+    protected function requestHistory(Blockfrost $blockfrost, string $stake_address, int $page): array
+    {
+        $this->log(__METHOD__ . ' page #' . $page);
+
+        $response = $blockfrost->request('accounts/' . $stake_address . '/history', compact('page'));
 
         return 200 === $response['status_code'] ? $response['data'] : [];
     }
