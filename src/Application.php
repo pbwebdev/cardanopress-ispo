@@ -21,6 +21,7 @@ class Application extends AbstractApplication
     use Templatable;
 
     protected PoolManager $poolManager;
+    protected Exporter $exporter;
 
     protected function initialize(): void
     {
@@ -31,6 +32,7 @@ class Application extends AbstractApplication
         $this->manifest = new Manifest($path . 'assets/dist', $this->getData('Version'));
         $this->templates = new Templates($path . 'templates');
         $this->poolManager = new PoolManager($this->logger('poolManager'));
+        $this->exporter = new Exporter($this->logger('exporter'));
     }
 
     public function setupHooks(): void
@@ -38,6 +40,7 @@ class Application extends AbstractApplication
         $this->admin->setupHooks();
         $this->manifest->setupHooks();
         $this->templates->setupHooks();
+        $this->exporter->setupHooks();
 
         add_action('cardanopress_loaded', [$this, 'init']);
     }

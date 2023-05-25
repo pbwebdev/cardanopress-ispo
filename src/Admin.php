@@ -30,6 +30,7 @@ class Admin extends AbstractAdmin
             $this->generalSettings();
             $this->delegationSettings();
             $this->rewardsSettings();
+            $this->exportSettings();
         });
     }
 
@@ -135,6 +136,26 @@ class Admin extends AbstractAdmin
                         'min' => 1,
                         'step' => 0.001,
                     ],
+                ],
+            ],
+        ]);
+    }
+
+    public function exportSettings(): void
+    {
+        $this->optionFields(__('Export Data', 'cardanopress-ispo'), [
+            'data_prefix' => 'export_',
+            'context' => 'side',
+            'fields' => [
+                'mainnet' => [
+                    'title' => __('Mainnet', 'cardanopress-ispo'),
+                    'type' => 'html',
+                    'default' => Exporter::actionButton('mainnet'),
+                ],
+                'testnet' => [
+                    'title' => __('Testnet', 'cardanopress-ispo'),
+                    'type' => 'html',
+                    'default' => Exporter::actionButton('testnet'),
                 ],
             ],
         ]);

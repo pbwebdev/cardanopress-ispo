@@ -39,59 +39,59 @@ return array(
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/ManifestGenerator.php'
 	),
 	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\Autoloader' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $vendorDir . '/jetpack-autoloader/class-autoloader.php'
 	),
 	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\Autoloader_Handler' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $vendorDir . '/jetpack-autoloader/class-autoloader-handler.php'
 	),
 	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\Autoloader_Locator' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $vendorDir . '/jetpack-autoloader/class-autoloader-locator.php'
 	),
 	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\Container' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $vendorDir . '/jetpack-autoloader/class-container.php'
 	),
 	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\Hook_Manager' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $vendorDir . '/jetpack-autoloader/class-hook-manager.php'
 	),
 	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\Latest_Autoloader_Guard' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $vendorDir . '/jetpack-autoloader/class-latest-autoloader-guard.php'
 	),
 	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\Manifest_Reader' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $vendorDir . '/jetpack-autoloader/class-manifest-reader.php'
 	),
 	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\PHP_Autoloader' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $vendorDir . '/jetpack-autoloader/class-php-autoloader.php'
 	),
 	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\Path_Processor' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $vendorDir . '/jetpack-autoloader/class-path-processor.php'
 	),
 	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\Plugin_Locator' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $vendorDir . '/jetpack-autoloader/class-plugin-locator.php'
 	),
 	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\Plugins_Handler' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $vendorDir . '/jetpack-autoloader/class-plugins-handler.php'
 	),
 	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\Shutdown_Handler' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $vendorDir . '/jetpack-autoloader/class-shutdown-handler.php'
 	),
 	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\Version_Loader' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $vendorDir . '/jetpack-autoloader/class-version-loader.php'
 	),
 	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\Version_Selector' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $vendorDir . '/jetpack-autoloader/class-version-selector.php'
 	),
 	'CardanoPress\\Clients\\BlockfrostClient' => array(
@@ -1202,68 +1202,164 @@ return array(
 		'version' => '2.0.0.0',
 		'path'    => $vendorDir . '/cardanopress/framework/src/Helpers/WalletHelper.php'
 	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\AbstractCsv' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/AbstractCsv.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\ByteSequence' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/ByteSequence.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\CannotInsertRecord' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/CannotInsertRecord.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\CharsetConverter' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/CharsetConverter.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\ColumnConsistency' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/ColumnConsistency.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\EncloseField' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/EncloseField.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\EscapeFormula' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/EscapeFormula.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Exception' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/Exception.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\HTMLConverter' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/HTMLConverter.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Info' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/Info.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\InvalidArgument' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/InvalidArgument.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\MapIterator' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/MapIterator.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\RFC4180Field' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/RFC4180Field.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Reader' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/Reader.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\ResultSet' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/ResultSet.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Statement' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/Statement.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Stream' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/Stream.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\SyntaxError' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/SyntaxError.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\TabularDataReader' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/TabularDataReader.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\UnableToProcessCsv' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/UnableToProcessCsv.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\UnavailableFeature' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/UnavailableFeature.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\UnavailableStream' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/UnavailableStream.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Writer' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/Writer.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\XMLConverter' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/XMLConverter.php'
+	),
 	'CardanoPress\\ISPO\\Dependencies\\ThemePlate\\Cache\\CacheManager' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $baseDir . '/ThemePlate/Cache/CacheManager.php'
 	),
 	'CardanoPress\\ISPO\\Dependencies\\ThemePlate\\Cache\\Handlers\\AbstractHandler' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $baseDir . '/ThemePlate/Cache/Handlers/AbstractHandler.php'
 	),
 	'CardanoPress\\ISPO\\Dependencies\\ThemePlate\\Cache\\Handlers\\DataHandler' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $baseDir . '/ThemePlate/Cache/Handlers/DataHandler.php'
 	),
 	'CardanoPress\\ISPO\\Dependencies\\ThemePlate\\Cache\\Handlers\\FileHandler' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $baseDir . '/ThemePlate/Cache/Handlers/FileHandler.php'
 	),
 	'CardanoPress\\ISPO\\Dependencies\\ThemePlate\\Cache\\Handlers\\HandlerInterface' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $baseDir . '/ThemePlate/Cache/Handlers/HandlerInterface.php'
 	),
 	'CardanoPress\\ISPO\\Dependencies\\ThemePlate\\Cache\\StorageManager' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $baseDir . '/ThemePlate/Cache/StorageManager.php'
 	),
 	'CardanoPress\\ISPO\\Dependencies\\ThemePlate\\Cache\\Storages\\AbstractStorage' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $baseDir . '/ThemePlate/Cache/Storages/AbstractStorage.php'
 	),
 	'CardanoPress\\ISPO\\Dependencies\\ThemePlate\\Cache\\Storages\\MetadataStorage' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $baseDir . '/ThemePlate/Cache/Storages/MetadataStorage.php'
 	),
 	'CardanoPress\\ISPO\\Dependencies\\ThemePlate\\Cache\\Storages\\OptionsStorage' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $baseDir . '/ThemePlate/Cache/Storages/OptionsStorage.php'
 	),
 	'CardanoPress\\ISPO\\Dependencies\\ThemePlate\\Cache\\Storages\\PostMetaStorage' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $baseDir . '/ThemePlate/Cache/Storages/PostMetaStorage.php'
 	),
 	'CardanoPress\\ISPO\\Dependencies\\ThemePlate\\Cache\\Storages\\StorageInterface' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $baseDir . '/ThemePlate/Cache/Storages/StorageInterface.php'
 	),
 	'CardanoPress\\ISPO\\Dependencies\\ThemePlate\\Cache\\Storages\\TermMetaStorage' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $baseDir . '/ThemePlate/Cache/Storages/TermMetaStorage.php'
 	),
 	'CardanoPress\\ISPO\\Dependencies\\ThemePlate\\Cache\\Storages\\UserMetaStorage' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $baseDir . '/ThemePlate/Cache/Storages/UserMetaStorage.php'
 	),
 	'CardanoPress\\ISPO\\Dependencies\\ThemePlate\\Process\\Async' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $baseDir . '/ThemePlate/Process/Async.php'
 	),
 	'CardanoPress\\ISPO\\Dependencies\\ThemePlate\\Process\\Report' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $baseDir . '/ThemePlate/Process/Report.php'
 	),
 	'CardanoPress\\ISPO\\Dependencies\\ThemePlate\\Process\\Tasks' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $baseDir . '/ThemePlate/Process/Tasks.php'
 	),
 	'CardanoPress\\Interfaces\\AdminInterface' => array(
@@ -1327,19 +1423,19 @@ return array(
 		'path'    => $vendorDir . '/cardanopress/framework/src/Traits/Templatable.php'
 	),
 	'ComposerAutoloaderInitcdb091b026806e0f074ce99c52568d0a' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $vendorDir . '/composer/autoload_real.php'
 	),
 	'Composer\\Autoload\\ClassLoader' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $vendorDir . '/composer/ClassLoader.php'
 	),
 	'Composer\\Autoload\\ComposerStaticInitcdb091b026806e0f074ce99c52568d0a' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $vendorDir . '/composer/autoload_static.php'
 	),
 	'Composer\\InstalledVersions' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $vendorDir . '/composer/InstalledVersions.php'
 	),
 	'Container' => array(
@@ -1359,35 +1455,39 @@ return array(
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-manifest-reader.php'
 	),
 	'PBWebDev\\CardanoPress\\ISPO\\Actions' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $baseDir . '/../src/Actions.php'
 	),
 	'PBWebDev\\CardanoPress\\ISPO\\Admin' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $baseDir . '/../src/Admin.php'
 	),
 	'PBWebDev\\CardanoPress\\ISPO\\Application' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $baseDir . '/../src/Application.php'
 	),
+	'PBWebDev\\CardanoPress\\ISPO\\Exporter' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/../src/Exporter.php'
+	),
 	'PBWebDev\\CardanoPress\\ISPO\\Installer' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $baseDir . '/../src/Installer.php'
 	),
 	'PBWebDev\\CardanoPress\\ISPO\\Manifest' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $baseDir . '/../src/Manifest.php'
 	),
 	'PBWebDev\\CardanoPress\\ISPO\\PoolManager' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $baseDir . '/../src/PoolManager.php'
 	),
 	'PBWebDev\\CardanoPress\\ISPO\\Profile' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $baseDir . '/../src/Profile.php'
 	),
 	'PBWebDev\\CardanoPress\\ISPO\\Templates' => array(
-		'version' => 'dev-develop',
+		'version' => 'dev-main',
 		'path'    => $baseDir . '/../src/Templates.php'
 	),
 	'PHP_Autoloader' => array(

@@ -12,7 +12,8 @@
     "automattic/jetpack-autoloader": "^2.11",
     "cardanopress/framework": "^2.0",
     "themeplate/cache": "^2.5",
-    "themeplate/process": "^2.6"
+    "themeplate/process": "^2.6",
+    "league/csv": "^9.8"
   },
   "autoload": {
     "exclude-from-classmap": ["vendor/"],

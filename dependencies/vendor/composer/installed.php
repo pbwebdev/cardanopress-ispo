@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => '__root__',
-        'pretty_version' => 'dev-develop',
-        'version' => 'dev-develop',
-        'reference' => 'e370599378564b1bc0c0e24de756e0c4bea64989',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '7f34a5eece09c920b2f940610b754ecaca98ae08',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => 'dev-develop',
-            'version' => 'dev-develop',
-            'reference' => 'e370599378564b1bc0c0e24de756e0c4bea64989',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '7f34a5eece09c920b2f940610b754ecaca98ae08',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -34,6 +34,15 @@
             'reference' => 'fdf0f75ba39267048bcbd2396616f1338339c909',
             'type' => 'library',
             'install_path' => __DIR__ . '/../cardanopress/framework',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'league/csv' => array(
+            'pretty_version' => '9.8.0',
+            'version' => '9.8.0.0',
+            'reference' => '9d2e0265c5d90f5dd601bc65ff717e05cec19b47',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../league/csv',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
