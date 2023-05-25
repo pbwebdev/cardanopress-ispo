@@ -70,7 +70,7 @@ class Exporter implements HookInterface
             $csv = Writer::createFromStream(tmpfile());
 
             $this->log(__METHOD__ . ' ' . $pool_id);
-            $csv->insertOne(['stake_address', 'lovelace_amount', 'calculated_reward']);
+            $csv->insertOne(['stake_address', 'total_rewards', 'active_epoch', 'lovelace_amount', 'calculated_reward']);
             $csv->insertAll($this->getData($network, $pool_id));
             $csv->output(date('Y-m-d-H-i') . '-data.csv');
         } catch (Exception $exception) {
@@ -136,7 +136,8 @@ class Exporter implements HookInterface
         $application = Application::getInstance();
         $ration = $application->option('rewards_ration');
         $multiplier = $application->option('rewards_multiplier');
-        $delegation = [$stake_address];
+        $total_rewards = 0;
+        $delegation = compact('stake_address', 'total_rewards');
         $page = 1;
 
         do {
@@ -149,14 +150,20 @@ class Exporter implements HookInterface
                     continue;
                 }
 
+                $active_epoch = $history['active_epoch'];
                 $lovelace_amount = $history['amount'];
                 $calculated_reward = $ration / 100 * NumberHelper::lovelaceToAda($lovelace_amount) * $multiplier;
-                $delegation[] = $lovelace_amount;
-                $delegation[] = $calculated_reward;
+                $total_rewards += $calculated_reward;
+
+                $delegation['epoch_' . $active_epoch] = $active_epoch;
+                $delegation['lovelace_amount_' . $active_epoch] = $lovelace_amount;
+                $delegation['calculated_reward_' . $active_epoch] = $calculated_reward;
             }
 
             $page++;
         } while (100 === count($response));
+
+        $delegation['total_rewards'] = $total_rewards;
 
         return $delegation;
     }
