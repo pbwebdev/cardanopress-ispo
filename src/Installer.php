@@ -61,5 +61,32 @@ class Installer extends AbstractInstaller
 
     public function doUpgrade(string $currentVersion, string $appVersion): void
     {
+        if (version_compare($currentVersion, '1.3.0', '<')) {
+            $this->migrateSettings();
+        }
+    }
+
+    public function migrateSettings(): void
+    {
+        $this->log(__('Migrating settings', 'cardanopress'));
+
+        $optionsValue = get_option(Admin::OPTION_KEY, []);
+
+        if (empty($optionsValue)) {
+            return;
+        }
+
+        $optionsValue['settings'] = [[
+            'allocated_tokens' => $optionsValue['allocated_tokens'],
+            'pool_id' => $optionsValue['delegation_pool_id'],
+            'ration' => $optionsValue['rewards_ration'],
+            'minimum' => $optionsValue['rewards_minimum'],
+            'maximum' => $optionsValue['rewards_maximum'],
+            'commence' => $optionsValue['rewards_commence'],
+            'conclude' => $optionsValue['rewards_conclude'],
+            'multiplier' => $optionsValue['rewards_multiplier'],
+        ]];
+
+        update_option(Admin::OPTION_KEY, $optionsValue);
     }
 }
