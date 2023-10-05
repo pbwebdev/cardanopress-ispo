@@ -89,4 +89,26 @@ class Application extends AbstractApplication
 
         return $data;
     }
+
+    public function option(string $key)
+    {
+        $map = [
+            'allocated_tokens' => 'allocated_tokens',
+            'delegation_pool_id' => 'pool_id',
+            'rewards_ration' => 'ration',
+            'rewards_minimum' => 'minimum',
+            'rewards_maximum' => 'maximum',
+            'rewards_commence' => 'commence',
+            'rewards_conclude' => 'conclude',
+            'rewards_multiplier' => 'multiplier',
+        ];
+
+        if (in_array($key, array_keys($map), true)) {
+            $settings = $this->admin->getOption('settings');
+
+            return $settings[0][$map[$key]] ?? '';
+        }
+
+        return $this->admin->getOption($key);
+    }
 }
