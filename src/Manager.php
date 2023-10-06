@@ -12,41 +12,36 @@ use PBWebDev\CardanoPress\Blockfrost;
 
 class Manager
 {
+    protected static function getPoolIDs(array $settings): array
+    {
+        return array_column(array_column($settings, 'pool_id'), 'mainnet');
+    }
+
     public static function calculateReward(float $ration, int $lovelace, float $multiplier): float
     {
         return $ration / 100 * NumberHelper::lovelaceToAda($lovelace) * $multiplier;
     }
 
-    public static function getRewards(string $stakeAddress, string $queryNetwork): float
+    protected static function calculateRewards(Blockfrost $blockfrost, string $stakeAddress, array $settings): float
     {
-        $blockfrost = new Blockfrost($queryNetwork);
-        $application = Application::getInstance();
-        $poolIds = $application->option('delegation_pool_id');
-        $ration = $application->option('rewards_ration');
-        $multiplier = $application->option('rewards_multiplier');
-        $commence = $application->option('rewards_commence');
-        $conclude = $application->option('rewards_conclude');
-        $customRewards = apply_filters(
-            'cp-ispo-force_wallet_rewards',
-            null,
-            $stakeAddress,
-            compact('ration', 'multiplier')
-        );
-
-        if (null !== $customRewards) {
-            return $customRewards;
-        }
-
-        $rewards = 0;
+        $poolIds = self::getPoolIDs($settings);
+        $rewards = 0.0;
         $page = 1;
 
         do {
             $response = $blockfrost->getAccountHistory($stakeAddress, $page);
 
             foreach ($response as $history) {
-                if ($history['pool_id'] !== $poolIds[$queryNetwork]) {
+                $index = array_search($history['pool_id'], $poolIds, true);
+
+                if (false === $index) {
                     continue;
                 }
+
+                $ration = $settings[$index]['ration'];
+                $multiplier = $settings[$index]['multiplier'];
+                $commence = $settings[$index]['commence'];
+                $conclude = $settings[$index]['conclude'];
 
                 if ($history['active_epoch'] >= $commence && $history['active_epoch'] <= $conclude) {
                     do_action('cp-ispo-qualified_epoch_for_rewards', $history['active_epoch'], $stakeAddress);
@@ -64,7 +59,44 @@ class Manager
             $page++;
         } while (100 === count($response));
 
-        if (0 === $rewards) {
+        return $rewards;
+    }
+
+    public static function getRewards(string $stakeAddress, string $queryNetwork): float
+    {
+        $blockfrost = new Blockfrost($queryNetwork);
+        $application = Application::getInstance();
+        $settings = $application->option('settings');
+        $poolIds = self::getPoolIDs($settings);
+        $account = $blockfrost->getAccountDetails($stakeAddress);
+        $ration = 1;
+        $multiplier = 1;
+        $conclude = 0;
+
+        if (! empty($account) && $account['active']) {
+            $index = array_search($account['pool_id'], $poolIds, true);
+
+            if (false !== $index) {
+                $ration = $settings[$index]['ration'];
+                $multiplier = $settings[$index]['multiplier'];
+                $conclude = $settings[$index]['conclude'];
+            }
+        }
+
+        $customRewards = apply_filters(
+            'cp-ispo-force_wallet_rewards',
+            null,
+            $stakeAddress,
+            compact('ration', 'multiplier')
+        );
+
+        if (null !== $customRewards) {
+            return $customRewards;
+        }
+
+        $rewards = self::calculateRewards($blockfrost, $stakeAddress, $settings);
+
+        if (0.0 === $rewards) {
             return apply_filters('cp-ispo-total_accumulated_rewards', $rewards, compact('ration', 'multiplier'));
         }
 
@@ -74,12 +106,10 @@ class Manager
             return apply_filters('cp-ispo-total_accumulated_rewards', $rewards, compact('ration', 'multiplier'));
         }
 
-        $response = $blockfrost->getAccountDetails($stakeAddress);
-
-        if (! empty($response) && $response['active'] && $response['pool_id'] === $poolIds[$queryNetwork]) {
+        if (! empty($account) && $account['active'] && in_array($account['pool_id'], $poolIds, true)) {
             do_action('cp-ispo-qualified_epoch_for_rewards', $latest['epoch'], $stakeAddress);
 
-            $lovelace = $response['controlled_amount'];
+            $lovelace = $account['controlled_amount'];
             $rewards += apply_filters(
                 'cp-ispo-epoch_calculated_reward',
                 self::calculateReward($ration, $lovelace, $multiplier),
