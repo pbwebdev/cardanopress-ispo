@@ -79,17 +79,9 @@ class Application extends AbstractApplication
             $data = $this->poolManager->getData();
         }
 
-        $showcase = get_post_meta(get_the_ID(), Admin::OPTION_KEY . '_pool_id', true);
+        $showcase = get_post_meta(get_the_ID(), Admin::OPTION_KEY . '_pool_id', true) ?: array_key_first($data);
 
-        if (empty($showcase)) {
-            $showcase = array_key_first($data);
-        }
-
-        if (! array_key_exists($showcase, $data)) {
-            return $this->poolManager::DATA_STRUCTURE;
-        }
-
-        return $data[$showcase];
+        return $data[$showcase] ?: PoolManager::DATA_STRUCTURE;
     }
 
     public function option(string $key)

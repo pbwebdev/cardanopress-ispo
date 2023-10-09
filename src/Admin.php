@@ -63,7 +63,6 @@ class Admin extends AbstractAdmin
                     'mainnet' => [
                         'title' => __('Mainnet', 'cardanopress-ispo'),
                         'type' => 'text',
-                        'required' => true,
                     ],
                     'testnet' => [
                         'title' => __('Testnet', 'cardanopress-ispo'),
@@ -181,6 +180,10 @@ class Admin extends AbstractAdmin
         ob_start(); ?>
 
         <style>
+            #themeplate_general-settings, #themeplate_delegation-settings, #themeplate_rewards-settings {
+                display: none;
+            }
+
             .ispo-pool-settings .themeplate-clone .type-group {
                 margin-top: 0;
                 margin-left: 1em;
@@ -197,6 +200,10 @@ class Admin extends AbstractAdmin
         $poolIds = [];
 
         foreach ($this->getOption('settings') as $setting) {
+            if (empty($setting['pool_id'])) {
+                continue;
+            }
+
             foreach ($setting['pool_id'] as $poolId) {
                 $poolIds[$poolId] = $poolId;
             }
@@ -215,7 +222,6 @@ class Admin extends AbstractAdmin
                 'title' => __('Showcase Pool', 'cardanopress-ispo'),
                 'type' => 'select',
                 'options' => $poolIds,
-                'none' => true,
             ],
         ])->location('page')->create();
 
