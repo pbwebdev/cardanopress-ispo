@@ -88,15 +88,17 @@ class PoolManager
 
         Blockfrost::useProjectIds($keys['mainnet'] ?? '', $keys['testnet'] ?? '');
 
-        foreach ($application->option('delegation_pool_id') as $queryNetwork => $poolId) {
-            if (! Blockfrost::isReady($queryNetwork) || '' === $poolId) {
-                continue;
-            }
+        foreach ($application->option('settings') as $setting) {
+            foreach ($setting['pool_id'] as $queryNetwork => $poolId) {
+                if (! Blockfrost::isReady($queryNetwork) || '' === $poolId) {
+                    continue;
+                }
 
-            $blockfrost = new Blockfrost($queryNetwork);
-            $information = $blockfrost->getPoolInfo($poolId);
-            $metaData = $blockfrost->getPoolDetails($poolId);
-            $poolData[$queryNetwork] = array_merge($information, $metaData);
+                $blockfrost = new Blockfrost($queryNetwork);
+                $information = $blockfrost->getPoolInfo($poolId);
+                $metaData = $blockfrost->getPoolDetails($poolId);
+                $poolData[$poolId] = array_merge($information, $metaData);
+            }
         }
 
         if (empty($poolData)) {

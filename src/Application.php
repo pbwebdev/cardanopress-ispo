@@ -75,19 +75,15 @@ class Application extends AbstractApplication
     {
         static $data;
 
-        if (null !== $data) {
-            return $data;
+        if (null === $data) {
+            $data = $this->poolManager->getData();
         }
-
-        $network = $this->userProfile()->connectedNetwork() ?: 'mainnet';
-        $poolData = $this->poolManager->getData();
-        $data = $poolData[$network] ?? $this->poolManager::DATA_STRUCTURE;
 
         if (empty($data)) {
-            $data = $this->poolManager::DATA_STRUCTURE;
+            return $this->poolManager::DATA_STRUCTURE;
         }
 
-        return $data;
+        return $data[array_key_first($data)];
     }
 
     public function option(string $key)
