@@ -7,6 +7,7 @@
 
 namespace PBWebDev\CardanoPress\ISPO;
 
+use CardanoPress\Dependencies\ThemePlate\Meta\PostMeta;
 use CardanoPress\Foundation\AbstractAdmin;
 
 class Admin extends AbstractAdmin
@@ -31,6 +32,7 @@ class Admin extends AbstractAdmin
             $this->delegationSettings();
             $this->rewardsSettings();
             $this->poolSettings();
+            $this->dashboardSettings();
         });
 
         add_action('themeplate_settings_cp-ispo_advanced', [$this, 'customStyle']);
@@ -188,5 +190,35 @@ class Admin extends AbstractAdmin
 
         <?php
         echo wp_kses(ob_get_clean(), ['style' => []]);
+    }
+
+    public function dashboardSettings(): void
+    {
+        $poolIds = [];
+
+        foreach ($this->getOption('settings') as $setting) {
+            foreach ($setting['pool_id'] as $poolId) {
+                $poolIds[$poolId] = $poolId;
+            }
+        }
+
+        $postMeta = new PostMeta(__('ISPO Settings', 'cardanopress-ispo'), [
+            'data_prefix' => self::OPTION_KEY . '_',
+            'show_on' => [
+                'key' => 'template',
+                'value' => 'Dashboard.php',
+            ]
+        ]);
+
+        $postMeta->fields([
+            'pool_id' => [
+                'title' => __('Showcase Pool', 'cardanopress-ispo'),
+                'type' => 'select',
+                'options' => $poolIds,
+                'none' => true,
+            ],
+        ])->location('page')->create();
+
+        $this->storeConfig($postMeta->get_config());
     }
 }
