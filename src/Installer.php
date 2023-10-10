@@ -33,9 +33,9 @@ class Installer extends AbstractInstaller
 
     public function noticeApplicationNotReady(): void
     {
-        $poolIds = $this->application->option('delegation_pool_id');
+        $poolIds = array_column($this->application->option('settings'), 'pool_id');
 
-        if ('' !== $poolIds['mainnet']) {
+        if (empty($poolIds)) {
             return;
         }
 
@@ -76,16 +76,20 @@ class Installer extends AbstractInstaller
             return;
         }
 
-        $optionsValue['settings'] = [[
-            'allocated_tokens' => $optionsValue['allocated_tokens'],
-            'pool_id' => $optionsValue['delegation_pool_id'],
-            'ration' => $optionsValue['rewards_ration'],
-            'minimum' => $optionsValue['rewards_minimum'],
-            'maximum' => $optionsValue['rewards_maximum'],
-            'commence' => $optionsValue['rewards_commence'],
-            'conclude' => $optionsValue['rewards_conclude'],
-            'multiplier' => $optionsValue['rewards_multiplier'],
-        ]];
+        $optionsValue['settings'] = [];
+
+        foreach ($optionsValue['delegation_pool_id'] as $poolId) {
+            $optionsValue['settings'][] = [
+                'pool_id' => $poolId,
+                'allocated_tokens' => $optionsValue['allocated_tokens'],
+                'ration' => $optionsValue['rewards_ration'],
+                'minimum' => $optionsValue['rewards_minimum'],
+                'maximum' => $optionsValue['rewards_maximum'],
+                'commence' => $optionsValue['rewards_commence'],
+                'conclude' => $optionsValue['rewards_conclude'],
+                'multiplier' => $optionsValue['rewards_multiplier'],
+            ];
+        }
 
         update_option(Admin::OPTION_KEY, $optionsValue);
     }

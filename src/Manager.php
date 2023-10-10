@@ -14,7 +14,7 @@ class Manager
 {
     protected static function getPoolIDs(array $settings): array
     {
-        return array_column(array_column($settings, 'pool_id'), 'mainnet');
+        return array_column($settings, 'pool_id');
     }
 
     public static function calculateReward(float $ration, int $lovelace, float $multiplier): float

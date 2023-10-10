@@ -54,21 +54,7 @@ class Admin extends AbstractAdmin
         return [
             'pool_id' => [
                 'title' => __('Bech32 ID', 'cardanopress-ispo'),
-                'type' => 'group',
-                'default' => [
-                    'mainnet' => '',
-                    'testnet' => '',
-                ],
-                'fields' => [
-                    'mainnet' => [
-                        'title' => __('Mainnet', 'cardanopress-ispo'),
-                        'type' => 'text',
-                    ],
-                    'testnet' => [
-                        'title' => __('Testnet', 'cardanopress-ispo'),
-                        'type' => 'text',
-                    ],
-                ],
+                'type' => 'text',
             ],
         ];
     }
@@ -146,9 +132,29 @@ class Admin extends AbstractAdmin
 
     public function delegationSettings(): void
     {
+        $fields =  $this->delegationFields();
+
+        $fields['pool_id']['type'] = 'group';
+        $fields['pool_id'] += [
+            'default' => [
+                'mainnet' => '',
+                'testnet' => '',
+            ],
+                        'fields' => [
+                'mainnet' => [
+                    'title' => __('Mainnet', 'cardanopress-ispo'),
+                    'type' => 'text',
+                ],
+                'testnet' => [
+                    'title' => __('Testnet', 'cardanopress-ispo'),
+                    'type' => 'text',
+                ],
+            ],
+        ];
+
         $this->optionFields(__('Delegation Settings', 'cardanopress-ispo'), [
             'data_prefix' => 'delegation_',
-            'fields' => $this->delegationFields(),
+            'fields' => $fields,
         ]);
     }
 
@@ -162,6 +168,13 @@ class Admin extends AbstractAdmin
 
     public function poolSettings(): void
     {
+        $fields = $this->delegationFields() + [
+            'network' => [
+                'type' => 'hidden',
+                'default'  => 'mainnet',
+            ],
+        ] + $this->generalFields() + $this->rewardsFields();
+
         $this->optionFields(__('Pool Settings', 'cardanopress-ispo'), [
             'data_prefix' => '',
             'fields' => [
@@ -169,7 +182,7 @@ class Admin extends AbstractAdmin
                     'type' => 'group',
                     'style' => 'ispo-pool-settings',
                     'repeatable' => true,
-                    'fields' => $this->delegationFields() + $this->generalFields() + $this->rewardsFields(),
+                    'fields' => $fields,
                 ],
             ],
         ]);
@@ -197,18 +210,6 @@ class Admin extends AbstractAdmin
 
     public function dashboardSettings(): void
     {
-        $poolIds = [];
-
-        foreach ($this->getOption('settings') as $setting) {
-            if (empty($setting['pool_id'])) {
-                continue;
-            }
-
-            foreach ($setting['pool_id'] as $poolId) {
-                $poolIds[$poolId] = $poolId;
-            }
-        }
-
         $postMeta = new PostMeta(__('ISPO Settings', 'cardanopress-ispo'), [
             'data_prefix' => self::OPTION_KEY . '_',
             'show_on' => [
@@ -221,7 +222,7 @@ class Admin extends AbstractAdmin
             'pool_id' => [
                 'title' => __('Showcase Pool', 'cardanopress-ispo'),
                 'type' => 'select',
-                'options' => $poolIds,
+                'options' => array_column($this->getOption('settings'), 'pool_id'),
             ],
         ])->location('page')->create();
 
