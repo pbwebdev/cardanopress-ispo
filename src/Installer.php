@@ -33,9 +33,7 @@ class Installer extends AbstractInstaller
 
     public function noticeApplicationNotReady(): void
     {
-        $poolIds = array_column($this->application->option('settings'), 'pool_id');
-
-        if (empty($poolIds)) {
+        if (empty(Manager::getPoolIDs())) {
             return;
         }
 

@@ -12,9 +12,20 @@ use PBWebDev\CardanoPress\Blockfrost;
 
 class Manager
 {
-    protected static function getPoolIDs(array $settings): array
+    public static function getSettings(int $index = null): array
     {
-        return array_column($settings, 'pool_id');
+        $settings = Application::getInstance()->option('settings');
+
+        if (null === $index) {
+            return $settings;
+        }
+
+        return $settings[$index];
+    }
+
+    public static function getPoolIDs(): array
+    {
+        return array_column(self::getSettings(), 'pool_id');
     }
 
     public static function calculateReward(float $ration, int $lovelace, float $multiplier): float
@@ -22,9 +33,8 @@ class Manager
         return $ration / 100 * NumberHelper::lovelaceToAda($lovelace) * $multiplier;
     }
 
-    protected static function calculateRewards(Blockfrost $blockfrost, string $stakeAddress, array $settings): float
+    protected static function calculateRewards(Blockfrost $blockfrost, string $stakeAddress): float
     {
-        $poolIds = self::getPoolIDs($settings);
         $rewards = 0.0;
         $page = 1;
 
@@ -32,16 +42,17 @@ class Manager
             $response = $blockfrost->getAccountHistory($stakeAddress, $page);
 
             foreach ($response as $history) {
-                $index = array_search($history['pool_id'], $poolIds, true);
+                $index = array_search($history['pool_id'], self::getPoolIDs(), true);
 
                 if (false === $index) {
                     continue;
                 }
 
-                $ration = $settings[$index]['ration'];
-                $multiplier = $settings[$index]['multiplier'];
-                $commence = $settings[$index]['commence'];
-                $conclude = $settings[$index]['conclude'];
+                $settings = self::getSettings($index);
+                $ration = $settings['ration'];
+                $multiplier = $settings['multiplier'];
+                $commence = $settings['commence'];
+                $conclude = $settings['conclude'];
 
                 if ($history['active_epoch'] >= $commence && $history['active_epoch'] <= $conclude) {
                     do_action('cp-ispo-qualified_epoch_for_rewards', $history['active_epoch'], $stakeAddress);
@@ -65,9 +76,7 @@ class Manager
     public static function getRewards(string $stakeAddress, string $queryNetwork): float
     {
         $blockfrost = new Blockfrost($queryNetwork);
-        $application = Application::getInstance();
-        $settings = $application->option('settings');
-        $poolIds = self::getPoolIDs($settings);
+        $poolIds = self::getPoolIDs();
         $account = $blockfrost->getAccountDetails($stakeAddress);
         $ration = 1;
         $multiplier = 1;
@@ -77,9 +86,10 @@ class Manager
             $index = array_search($account['pool_id'], $poolIds, true);
 
             if (false !== $index) {
-                $ration = $settings[$index]['ration'];
-                $multiplier = $settings[$index]['multiplier'];
-                $conclude = $settings[$index]['conclude'];
+                $settings = self::getSettings($index);
+                $ration = $settings['ration'];
+                $multiplier = $settings['multiplier'];
+                $conclude = $settings['conclude'];
             }
         }
 
@@ -94,7 +104,7 @@ class Manager
             return $customRewards;
         }
 
-        $rewards = self::calculateRewards($blockfrost, $stakeAddress, $settings);
+        $rewards = self::calculateRewards($blockfrost, $stakeAddress);
 
         if (0.0 === $rewards) {
             return apply_filters('cp-ispo-total_accumulated_rewards', $rewards, compact('ration', 'multiplier'));

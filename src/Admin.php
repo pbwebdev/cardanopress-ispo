@@ -196,12 +196,6 @@ class Admin extends AbstractAdmin
             #themeplate_general-settings, #themeplate_delegation-settings, #themeplate_rewards-settings {
                 display: none;
             }
-
-            .ispo-pool-settings .themeplate-clone .type-group {
-                margin-top: 0;
-                margin-left: 1em;
-                margin-right: 1em;
-            }
         </style>
 
         <?php
@@ -222,7 +216,7 @@ class Admin extends AbstractAdmin
             'pool_id' => [
                 'title' => __('Showcase Pool', 'cardanopress-ispo'),
                 'type' => 'select',
-                'options' => array_column($this->getOption('settings'), 'pool_id'),
+                'options' => array_combine(Manager::getPoolIDs(), Manager::getPoolIDs()),
             ],
         ])->location('page')->create();
 
