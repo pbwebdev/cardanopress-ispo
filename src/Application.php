@@ -99,8 +99,14 @@ class Application extends AbstractApplication
 
         if (in_array($key, array_keys($map), true)) {
             $settings = $this->admin->getOption('settings');
+            $showcase = get_post_meta(get_the_ID(), Admin::OPTION_KEY . '_pool_id', true);
+            $showcase = array_search($showcase, Manager::getPoolIDs(), true);
 
-            return $settings[0][$map[$key]] ?? '';
+            if (false === $showcase) {
+                $showcase = 0;
+            }
+
+            return $settings[$showcase][$map[$key]] ?? '';
         }
 
         return $this->admin->getOption($key);
