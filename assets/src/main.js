@@ -20,7 +20,7 @@ window.addEventListener('alpine:init', () => {
         transactionHash: '',
 
         async init() {
-            this.ration = parseInt(this.$root.dataset.ration)
+            this.ration = parseFloat(this.$root.dataset.ration)
             this.minimum = parseInt(this.$root.dataset.minimum)
             this.maximum = parseInt(this.$root.dataset.maximum)
             this.commence = parseInt(this.$root.dataset.commence)
