@@ -90,7 +90,19 @@ class PoolManager
 
         foreach ($application->option('settings') as $setting) {
             $poolId = $setting['pool_id'];
-            $blockfrost = new Blockfrost($setting['network'] ?? 'mainnet');
+            $queryNetwork = $setting['network'] ?? 'mainnet';
+
+            if (empty($poolId)) {
+                continue;
+            }
+
+            if (!Blockfrost::isReady($queryNetwork)) {
+                $poolData[$poolId] = [];
+
+                continue;
+            }
+
+            $blockfrost = new Blockfrost($queryNetwork);
             $information = $blockfrost->getPoolInfo($poolId);
             $metaData = $blockfrost->getPoolDetails($poolId);
             $poolData[$poolId] = array_merge($information, $metaData);
