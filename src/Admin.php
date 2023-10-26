@@ -183,6 +183,9 @@ class Admin extends AbstractAdmin
                     'style' => 'ispo-pool-settings',
                     'repeatable' => true,
                     'fields' => $fields,
+                    'default' => array_map(function ($field) {
+                        return $field['default'] ?? '';
+                    }, $fields),
                 ],
             ],
         ]);
