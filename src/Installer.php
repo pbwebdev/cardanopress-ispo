@@ -33,7 +33,7 @@ class Installer extends AbstractInstaller
 
     public function noticeApplicationNotReady(): void
     {
-        if (empty(Manager::getPoolIDs())) {
+        if (! empty(Manager::getPoolIDs())) {
             return;
         }
 
