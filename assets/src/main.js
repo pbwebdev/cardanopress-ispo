@@ -18,6 +18,7 @@ window.addEventListener('alpine:init', () => {
         address: '',
         trackedReward: '',
         transactionHash: '',
+        extraReward: null,
 
         async init() {
             this.ration = parseFloat(this.$root.dataset.ration)
@@ -78,6 +79,7 @@ window.addEventListener('alpine:init', () => {
 
         async handleTracking() {
             this.trackedReward = ''
+            this.extraReward = null
 
             cardanoPress.api.addNotice({
                 id: 'ispo-tracking',
@@ -91,7 +93,8 @@ window.addEventListener('alpine:init', () => {
             cardanoPress.api.removeNotice('ispo-tracking')
 
             if (response.success) {
-                this.trackedReward = response.data.toFixed(6)
+                this.trackedReward = response.data.amount.toFixed(6)
+                this.extraReward = response.data.extra
             } else {
                 cardanoPress.api.addNotice({ type: 'warning', text: response.data })
             }

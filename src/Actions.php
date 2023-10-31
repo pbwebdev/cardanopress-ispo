@@ -96,7 +96,10 @@ class Actions implements HookInterface
             $userProfile = new Profile($currentUser);
 
             if ($userProfile->connectedStake() === $stakeAddress) {
-                wp_send_json_success($userProfile->getCalculatedRewards());
+                wp_send_json_success([
+                    'amount' => $userProfile->getCalculatedRewards(),
+                    'extra' => apply_filters('cp-ispo-extra_tracked_rewards', null, $stakeAddress),
+                ]);
             }
         }
 
@@ -110,7 +113,10 @@ class Actions implements HookInterface
             wp_send_json_error(sprintf(CoreAction::getAjaxMessage('unsupportedNetwork'), $queryNetwork));
         }
 
-        wp_send_json_success(Manager::getRewards($stakeAddress, $queryNetwork));
+        wp_send_json_success([
+            'amount' => Manager::getRewards($stakeAddress, $queryNetwork),
+            'extra' => apply_filters('cp-ispo-extra_tracked_rewards', null, $stakeAddress),
+        ]);
     }
 
     public function getDelegationData(): void
