@@ -62,7 +62,7 @@ class Manager
                         'cp-ispo-epoch_calculated_reward',
                         self::calculateReward($ration, $lovelace, $multiplier),
                         $history['active_epoch'],
-                        compact('ration', 'lovelace', 'multiplier', 'rewards', 'history'),
+                        compact('ration', 'lovelace', 'multiplier', 'rewards', 'history', 'stakeAddress'),
                     );
                 }
             }
@@ -107,13 +107,21 @@ class Manager
         $rewards = self::calculateRewards($blockfrost, $stakeAddress);
 
         if (0.0 === $rewards) {
-            return apply_filters('cp-ispo-total_accumulated_rewards', $rewards, compact('ration', 'multiplier'));
+            return apply_filters(
+                'cp-ispo-total_accumulated_rewards',
+                $rewards,
+                compact('ration', 'multiplier', 'stakeAddress')
+            );
         }
 
         $latest = $blockfrost->getEpochsLatest();
 
         if (empty($latest) || $latest['epoch'] > $conclude) {
-            return apply_filters('cp-ispo-total_accumulated_rewards', $rewards, compact('ration', 'multiplier'));
+            return apply_filters(
+                'cp-ispo-total_accumulated_rewards',
+                $rewards,
+                compact('ration', 'multiplier', 'stakeAddress')
+            );
         }
 
         if (! empty($account) && $account['active'] && in_array($account['pool_id'], $poolIds, true)) {
@@ -124,10 +132,14 @@ class Manager
                 'cp-ispo-epoch_calculated_reward',
                 self::calculateReward($ration, $lovelace, $multiplier),
                 $latest['epoch'],
-                compact('ration', 'lovelace', 'multiplier', 'rewards', 'account'),
+                compact('ration', 'lovelace', 'multiplier', 'rewards', 'account', 'stakeAddress'),
             );
         }
 
-        return apply_filters('cp-ispo-total_accumulated_rewards', $rewards, compact('ration', 'multiplier'));
+        return apply_filters(
+            'cp-ispo-total_accumulated_rewards',
+            $rewards,
+            compact('ration', 'multiplier', 'stakeAddress')
+        );
     }
 }
