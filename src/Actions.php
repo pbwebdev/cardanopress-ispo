@@ -23,11 +23,16 @@ class Actions implements HookInterface
         add_action('wp_ajax_nopriv_cp-ispo_track_rewards', [$this, 'getStakeRewards']);
         add_action('wp_ajax_cp-ispo_track_rewards', [$this, 'getStakeRewards']);
         add_action('wp_ajax_cp-ispo_delegation_data', [$this, 'getDelegationData']);
+        add_action('wp_enqueue_scripts', [$this, 'localizeMessages'], 20);
     }
 
     protected static function customizableMessages(string $type): array
     {
         $data = [
+            'script' => [
+                'delegating' => __('Processing...', 'cardanopress-ispo'),
+                'tracking' => __('Tracking...', 'cardanopress-ispo'),
+            ],
             'ajax' => [
                 'successfulTrack' => __('Successfully tracked rewards.', 'cardanopress-ispo'),
             ],
@@ -51,6 +56,13 @@ class Actions implements HookInterface
         $messages = apply_filters('cp-ispo-error_messages', self::customizableMessages('error'));
 
         return $messages[$type] ?? '';
+    }
+
+    public function localizeMessages()
+    {
+        $messages = apply_filters('cp-ispo-script_messages', $this->customizableMessages('script'));
+
+        wp_localize_script(Manifest::HANDLE_PREFIX . 'script', 'cardanoPressISPOMessages', $messages);
     }
 
     public static function getCardanoscanLink(string $network, string $endpoint): string

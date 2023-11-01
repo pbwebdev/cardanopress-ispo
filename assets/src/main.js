@@ -1,5 +1,10 @@
 import { handleDelegation, handleTracking } from './actions'
 
+const cardanoPressISPOMessages = window.cardanoPressISPOMessages || {
+    delegating: '',
+    tracking: '',
+}
+
 window.addEventListener('alpine:init', () => {
     const Alpine = window.Alpine || {}
     const cardanoPress = window.cardanoPress || {}
@@ -58,7 +63,7 @@ window.addEventListener('alpine:init', () => {
             cardanoPress.api.addNotice({
                 id: 'ispo-delegation',
                 type: 'info',
-                text: 'Processing...',
+                text: cardanoPressISPOMessages.delegating,
             })
 
             this.isProcessing = true
@@ -84,7 +89,7 @@ window.addEventListener('alpine:init', () => {
             cardanoPress.api.addNotice({
                 id: 'ispo-tracking',
                 type: 'info',
-                text: 'Tracking...',
+                text: cardanoPressISPOMessages.tracking,
             })
 
             this.isProcessing = true
