@@ -1,7 +1,6 @@
 .idea/
 .vscode/
+logs/
 node_modules/
-templates/.DS_Store
-.DS_Store
 .cache/
 vendor/

@@ -4,5 +4,10 @@ parameters:
     - vendor
   scanFiles:
     - cardanopress-ispo.php
+  scanDirectories:
+    - %currentWorkingDirectory%/.cache/wordpress
+    - %currentWorkingDirectory%/.cache/wordpress-tests-lib
+    - %currentWorkingDirectory%/dependencies
+    - %currentWorkingDirectory%/../cardanopress
   dynamicConstantNames:
     - CP_ISPO_FILE
