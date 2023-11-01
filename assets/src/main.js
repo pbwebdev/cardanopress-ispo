@@ -95,6 +95,8 @@ window.addEventListener('alpine:init', () => {
             if (response.success) {
                 this.trackedReward = response.data.amount.toFixed(6)
                 this.extraReward = response.data.extra
+
+                cardanoPress.api.addNotice({ type: 'info', text: response.data.message })
             } else {
                 cardanoPress.api.addNotice({ type: 'warning', text: response.data })
             }

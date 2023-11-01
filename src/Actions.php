@@ -99,6 +99,7 @@ class Actions implements HookInterface
                 wp_send_json_success([
                     'amount' => $userProfile->getCalculatedRewards(),
                     'extra' => apply_filters('cp-ispo-extra_tracked_rewards', null, $stakeAddress),
+                    'message' => __('Successfully tracked rewards.', 'cardanopress-ispo'),
                 ]);
             }
         }
@@ -116,6 +117,7 @@ class Actions implements HookInterface
         wp_send_json_success([
             'amount' => Manager::getRewards($stakeAddress, $queryNetwork),
             'extra' => apply_filters('cp-ispo-extra_tracked_rewards', null, $stakeAddress),
+            'message' => __('Successfully tracked rewards.', 'cardanopress-ispo'),
         ]);
     }
 
