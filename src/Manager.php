@@ -55,14 +55,14 @@ class Manager
                 $conclude = $settings['conclude'];
 
                 if ($history['active_epoch'] >= $commence && $history['active_epoch'] <= $conclude) {
-                    do_action('cp-ispo-qualified_epoch_for_rewards', $history['active_epoch'], $stakeAddress);
+                    do_action('cp-ispo-qualified_epoch_for_rewards', $history['active_epoch'], $stakeAddress, $history);
 
                     $lovelace = $history['amount'];
                     $rewards += apply_filters(
                         'cp-ispo-epoch_calculated_reward',
                         self::calculateReward($ration, $lovelace, $multiplier),
                         $history['active_epoch'],
-                        compact('ration', 'lovelace', 'multiplier', 'rewards'),
+                        compact('ration', 'lovelace', 'multiplier', 'rewards', 'history'),
                     );
                 }
             }
@@ -117,14 +117,14 @@ class Manager
         }
 
         if (! empty($account) && $account['active'] && in_array($account['pool_id'], $poolIds, true)) {
-            do_action('cp-ispo-qualified_epoch_for_rewards', $latest['epoch'], $stakeAddress);
+            do_action('cp-ispo-qualified_epoch_for_rewards', $latest['epoch'], $stakeAddress, $account);
 
             $lovelace = $account['controlled_amount'];
             $rewards += apply_filters(
                 'cp-ispo-epoch_calculated_reward',
                 self::calculateReward($ration, $lovelace, $multiplier),
                 $latest['epoch'],
-                compact('ration', 'lovelace', 'multiplier', 'rewards'),
+                compact('ration', 'lovelace', 'multiplier', 'rewards', 'account'),
             );
         }
 
