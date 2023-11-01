@@ -25,6 +25,34 @@ class Actions implements HookInterface
         add_action('wp_ajax_cp-ispo_delegation_data', [$this, 'getDelegationData']);
     }
 
+    protected static function customizableMessages(string $type): array
+    {
+        $data = [
+            'ajax' => [
+                'successfulTrack' => __('Successfully tracked rewards.', 'cardanopress-ispo'),
+            ],
+            'error' => [
+                'invalidAddress' => __('Invalid address format provided.', 'cardanopress-ispo'),
+            ],
+        ];
+
+        return $data[$type];
+    }
+
+    public static function getAjaxMessage(string $type): string
+    {
+        $messages = apply_filters('cp-ispo-ajax_messages', self::customizableMessages('ajax'));
+
+        return $messages[$type] ?? '';
+    }
+
+    public static function getErrorMessage(string $type): string
+    {
+        $messages = apply_filters('cp-ispo-error_messages', self::customizableMessages('error'));
+
+        return $messages[$type] ?? '';
+    }
+
     public static function getCardanoscanLink(string $network, string $endpoint): string
     {
         return WalletHelper::getCardanoscanLink($network, $endpoint);
@@ -99,13 +127,13 @@ class Actions implements HookInterface
                 wp_send_json_success([
                     'amount' => $userProfile->getCalculatedRewards(),
                     'extra' => apply_filters('cp-ispo-extra_tracked_rewards', null, $stakeAddress),
-                    'message' => __('Successfully tracked rewards.', 'cardanopress-ispo'),
+                    'message' => self::getAjaxMessage('successfulTrack'),
                 ]);
             }
         }
 
         if ('' === $stakeAddress) {
-            wp_send_json_error(__('Invalid address format provided.', 'cardanopress-ispo'));
+            wp_send_json_error(self::getErrorMessage('invalidAddress'));
         }
 
         $queryNetwork = WalletHelper::getNetworkFromStake($stakeAddress);
@@ -117,7 +145,7 @@ class Actions implements HookInterface
         wp_send_json_success([
             'amount' => Manager::getRewards($stakeAddress, $queryNetwork),
             'extra' => apply_filters('cp-ispo-extra_tracked_rewards', null, $stakeAddress),
-            'message' => __('Successfully tracked rewards.', 'cardanopress-ispo'),
+            'message' => self::getAjaxMessage('successfulTrack'),
         ]);
     }
 
