@@ -28,14 +28,9 @@ class Admin extends AbstractAdmin
         });
 
         add_action('init', function () {
-            $this->generalSettings();
-            $this->delegationSettings();
-            $this->rewardsSettings();
             $this->poolSettings();
             $this->dashboardSettings();
         });
-
-        add_action('themeplate_settings_cp-ispo_advanced', [$this, 'customStyle']);
     }
 
     protected function generalFields(): array
@@ -122,50 +117,6 @@ class Admin extends AbstractAdmin
         ];
     }
 
-    public function generalSettings(): void
-    {
-        $this->optionFields(__('General Settings', 'cardanopress-ispo'), [
-            'data_prefix' => '',
-            'fields' => $this->generalFields(),
-        ]);
-    }
-
-    public function delegationSettings(): void
-    {
-        $fields =  $this->delegationFields();
-
-        $fields['pool_id']['type'] = 'group';
-        $fields['pool_id'] += [
-            'default' => [
-                'mainnet' => '',
-                'testnet' => '',
-            ],
-                        'fields' => [
-                'mainnet' => [
-                    'title' => __('Mainnet', 'cardanopress-ispo'),
-                    'type' => 'text',
-                ],
-                'testnet' => [
-                    'title' => __('Testnet', 'cardanopress-ispo'),
-                    'type' => 'text',
-                ],
-            ],
-        ];
-
-        $this->optionFields(__('Delegation Settings', 'cardanopress-ispo'), [
-            'data_prefix' => 'delegation_',
-            'fields' => $fields,
-        ]);
-    }
-
-    public function rewardsSettings(): void
-    {
-        $this->optionFields(__('Rewards Settings', 'cardanopress-ispo'), [
-            'data_prefix' => 'rewards_',
-            'fields' => $this->rewardsFields(),
-        ]);
-    }
-
     public function poolSettings(): void
     {
         $fields = $this->delegationFields() + [
@@ -189,20 +140,6 @@ class Admin extends AbstractAdmin
                 ],
             ],
         ]);
-    }
-
-    public function customStyle(): void
-    {
-        ob_start(); ?>
-
-        <style>
-            #themeplate_general-settings, #themeplate_delegation-settings, #themeplate_rewards-settings {
-                display: none;
-            }
-        </style>
-
-        <?php
-        echo wp_kses(ob_get_clean(), ['style' => []]);
     }
 
     public function dashboardSettings(): void
