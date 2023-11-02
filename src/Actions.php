@@ -130,6 +130,11 @@ class Actions implements HookInterface
         }
 
         $stakeAddress = $this->filterStakeAddress($_POST['stakeAddress']);
+
+        if ('' === $stakeAddress) {
+            wp_send_json_error(self::getErrorMessage('invalidAddress'));
+        }
+
         $currentUser = wp_get_current_user();
 
         if (null !== $currentUser) {
@@ -142,10 +147,6 @@ class Actions implements HookInterface
                     'message' => self::getAjaxMessage('successfulTrack'),
                 ]);
             }
-        }
-
-        if ('' === $stakeAddress) {
-            wp_send_json_error(self::getErrorMessage('invalidAddress'));
         }
 
         $queryNetwork = WalletHelper::getNetworkFromStake($stakeAddress);
