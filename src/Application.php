@@ -111,4 +111,29 @@ class Application extends AbstractApplication
 
         return $this->admin->getOption($key);
     }
+
+    public function isUserDelegated(): bool
+    {
+        if (
+            !function_exists('cardanoPress') ||
+            !method_exists(cardanoPress(), 'userProfile') ||
+            !method_exists(cardanoPress()->userProfile(), 'getAccountInfo')
+        ) {
+            return false;
+        }
+
+        $account = cardanoPress()->userProfile()->getAccountInfo();
+
+        if (! ($account['active'] ?? false)) {
+            return false;
+        }
+
+        $delegation = $this->delegationPool();
+
+        if ('' === ($delegation['pool_id'] ?? '')) {
+            return false;
+        }
+
+        return $account['pool_id'] === $delegation['pool_id'];
+    }
 }

@@ -20,15 +20,19 @@ if (empty($textDelegated)) {
 ?>
 
 <div class="mt-3">
-    <template x-if="!isConnected">
-        <button class="btn btn-primary" type="button" disabled="true"><?php echo esc_html($text); ?></button>
-    </template>
-
-    <template x-if="isConnected && !transactionHash">
-        <button class="btn btn-primary" type="button" @click="handleDelegation()" x-bind:disabled="isProcessing"><?php echo esc_html($text); ?></button>
-    </template>
-
-    <template x-if="isConnected && transactionHash">
+    <?php if (cpISPO()->isUserDelegated()) : ?>
         <button class="btn btn-primary" type="button" disabled="true"><?php echo esc_html($textDelegated); ?></button>
-    </template>
+    <?php else : ?>
+        <template x-if="!isConnected">
+            <button class="btn btn-primary" type="button" disabled="true"><?php echo esc_html($text); ?></button>
+        </template>
+
+        <template x-if="isConnected && !transactionHash">
+            <button class="btn btn-primary" type="button" @click="handleDelegation()" x-bind:disabled="isProcessing"><?php echo esc_html($text); ?></button>
+        </template>
+
+        <template x-if="isConnected && transactionHash">
+            <button class="btn btn-primary" type="button" disabled="true"><?php echo esc_html($textDelegated); ?></button>
+        </template>
+    <?php endif; ?>
 </div>
