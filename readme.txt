@@ -2,9 +2,9 @@
 Contributors: pbwebdev
 Donate link: https://www.paypal.com/donate/?hosted_button_id=T8MR6AMVWWGK8
 Tags: cardano, blockchain, web3, metamask, nami, eternl, ada
-Requires at least: 4.9
-Tested up to: 6.1.1
-Stable tag: 1.0.0
+Requires at least: 5.8
+Tested up to: 6.4
+Stable tag: 1.4.0
 Requires PHP: 7.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/licenses.html
@@ -133,16 +133,31 @@ This plugin does not collect or process any personal user data unless you expres
 You can follow our [GitHub release](https://github.com/CardanoPress/plugin-ispo/releases) for full details on updates
 to the plugins.
 
+
+= 1.3.1 =
+fix ration to be parsed as float
+
+= 1.3.0 =
+Customizable toUTC date format; cp-ispo-date_format
+Re-use filterable core ajax error messages
+Added cp-ispo_component and cp-ispo_template shortcodes
+Support multi-pool with unique showcase pages
+
+= 1.2.0 =
+An updated framework with prefixed dependencies
+Handle data for unprepared pool network
+Sanitize input stake address
+
 = 1.1.0 =
 Official repository release (exact same version as 0.8.0)
+
+= 1.0.0 =
+First stable release (exact same version as 0.7.0)
 
 = 0.8.0 =
 Set and show the number of tokens allocated to the project
 Provide helper methods for epoch conversion
 Ready for translations
-
-= 1.0.0 =
-First stable release (exact same version as 0.7.0)
 
 = v0.7.0 =
 Check and clean URLs
