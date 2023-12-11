@@ -7,7 +7,6 @@
 
 namespace PBWebDev\CardanoPress\ISPO;
 
-use CardanoPress\Helpers\NumberHelper;
 use CardanoPress\ISPO\Dependencies\League\Csv\Writer;
 use Exception;
 use Psr\Log\LoggerInterface;
@@ -66,10 +65,7 @@ class Exporter implements HookInterface
             $settings = Manager::getSettings($index);
 
             $this->log(__METHOD__ . ' ' . $pool);
-            $csv->insertOne(array_merge(
-                ['stake_address', 'total_amount', 'total_reward'],
-                array_keys($this->prepareHolder($settings))
-            ));
+            $csv->insertOne(array_keys($this->prepareHolder($settings)));
             $csv->insertAll($this->getData($settings));
             $csv->output(date('Y-m-d-H-i') . '-data.csv');
         } catch (Exception $exception) {
@@ -99,9 +95,13 @@ class Exporter implements HookInterface
         wp_die($types[$type]['message'], __('Export Data', 'cardanopress-ispo'), $types[$type]['code']);
     }
 
-    protected function prepareHolder(array $settings): array
+    protected function prepareHolder(array $settings, string $stakeAddress = ''): array
     {
-        $prepared = [];
+        $prepared = [
+            'stake_address' => $stakeAddress,
+            'total_amount' => 0,
+            'total_reward' => 0,
+        ];
 
         for ($i = $settings['commence']; $i <= $settings['conclude']; $i++) {
             $prepared['amount_' . $i] = 0;
@@ -115,80 +115,42 @@ class Exporter implements HookInterface
     {
         $blockfrost = new Blockfrost($settings['network'] ?? 'mainnet');
         $delegations = [];
-        $page = 1;
 
-        do {
-            $response = $this->requestData($blockfrost, $settings['pool_id'], $page);
+        for ($epoch = $settings['commence']; $epoch <= $settings['conclude']; $epoch++) {
+            $page = 1;
 
-            $this->log(__METHOD__ . ' count=' . count($response));
+            do {
+                $response = $this->requestData($blockfrost, $settings['pool_id'], $epoch, $page);
 
-            foreach ($response as $delegation) {
-                $this->log(__CLASS__ . '::doScan ' . $delegation['address']);
-                $delegations[] = $this->getHistory($blockfrost, $delegation['address'], $settings);
-            }
+                $this->log(__METHOD__ . ' count=' . count($response));
 
-            $page++;
-        } while (100 === count($response));
+                foreach ($response as $delegation) {
+                    $address = $delegation['stake_address'];
+                    $amount = $delegation['amount'];
+                    $reward = Manager::calculateReward($settings['ration'], $amount, $settings['multiplier']);
+
+                    if (empty($delegations[$address])) {
+                        $delegations[$address] = $this->prepareHolder($settings, $address);
+                    }
+
+                    $delegations[$address]['amount_' . $epoch] = $amount;
+                    $delegations[$address]['reward_' . $epoch] = $reward;
+                    $delegations[$address]['total_amount'] += $amount;
+                    $delegations[$address]['total_reward'] += $reward;
+                }
+
+                $page++;
+            } while (100 === count($response));
+        }
 
         return $delegations;
     }
 
-    protected function requestData(Blockfrost $blockfrost, string $pool_id, int $page): array
+    protected function requestData(Blockfrost $blockfrost, string $pool_id, int $epoch, int $page): array
     {
-        $this->log(__METHOD__ . ' page #' . $page);
+        $this->log(__METHOD__ . ' epoch ' . $epoch . ' page #' . $page);
 
-        $response = $blockfrost->request('pools/' . $pool_id . '/delegators', compact('page'));
-
-        return 200 === $response['status_code'] ? $response['data'] : [];
-    }
-
-    protected function getHistory(Blockfrost $blockfrost, string $stake_address, array $settings): array
-    {
-        $application = Application::getInstance();
-        $ration = $application->option('rewards_ration');
-        $multiplier = $application->option('rewards_multiplier');
-        $total_amount = 0;
-        $total_reward = 0;
-        $delegation = array_merge(
-            compact('stake_address', 'total_amount', 'total_reward'),
-            $this->prepareHolder($settings)
-        );
-        $page = 1;
-
-        do {
-            $response = $this->requestHistory($blockfrost, $stake_address, $page);
-
-            $this->log(__METHOD__ . ' count=' . count($response));
-
-            foreach ($response as $history) {
-                if ($history['pool_id'] !== $settings['pool_id']) {
-                    continue;
-                }
-
-                $active_epoch = $history['active_epoch'];
-                $lovelace_amount = $history['amount'];
-                $calculated_reward = $ration / 100 * NumberHelper::lovelaceToAda($lovelace_amount) * $multiplier;
-                $total_amount += $lovelace_amount;
-                $total_reward += $calculated_reward;
-
-                $delegation['amount_' . $active_epoch] = $lovelace_amount;
-                $delegation['reward_' . $active_epoch] = $calculated_reward;
-            }
-
-            $page++;
-        } while (100 === count($response));
-
-        $delegation['total_amount'] = $total_amount;
-        $delegation['total_reward'] = $total_reward;
-
-        return $delegation;
-    }
-
-    protected function requestHistory(Blockfrost $blockfrost, string $stake_address, int $page): array
-    {
-        $this->log(__METHOD__ . ' page #' . $page);
-
-        $response = $blockfrost->request('accounts/' . $stake_address . '/history', compact('page'));
+        $response = $blockfrost->request('epochs/' . $epoch . '/stakes/' . $pool_id, compact('page'));
 
         return 200 === $response['status_code'] ? $response['data'] : [];
     }
