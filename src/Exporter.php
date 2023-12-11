@@ -54,7 +54,6 @@ class Exporter implements HookInterface
             $this->dieHandler('forbidden');
         }
 
-        $network = sanitize_key($_GET['network'] ?? 'mainnet');
         $pool = sanitize_key($_GET['pool'] ?? '');
 
         if (empty($pool) || ! in_array($pool, Manager::getPoolIDs(), true)) {
@@ -63,10 +62,15 @@ class Exporter implements HookInterface
 
         try {
             $csv = Writer::createFromStream(tmpfile());
+            $index = array_search($pool, Manager::getPoolIDs(), true);
+            $settings = Manager::getSettings($index);
 
             $this->log(__METHOD__ . ' ' . $pool);
-            $csv->insertOne(['stake_address', 'total_rewards', 'active_epoch', 'lovelace_amount', 'calculated_reward']);
-            $csv->insertAll($this->getData($network, $pool));
+            $csv->insertOne(array_merge(
+                ['stake_address', 'total_amount', 'total_reward'],
+                array_keys($this->prepareHolder($settings))
+            ));
+            $csv->insertAll($this->getData($settings));
             $csv->output(date('Y-m-d-H-i') . '-data.csv');
         } catch (Exception $exception) {
             $this->log($exception->getMessage());
@@ -95,20 +99,32 @@ class Exporter implements HookInterface
         wp_die($types[$type]['message'], __('Export Data', 'cardanopress-ispo'), $types[$type]['code']);
     }
 
-    protected function getData(string $network, string $pool_id): array
+    protected function prepareHolder(array $settings): array
     {
-        $blockfrost = new Blockfrost($network);
+        $prepared = [];
+
+        for ($i = $settings['commence']; $i <= $settings['conclude']; $i++) {
+            $prepared['amount_' . $i] = 0;
+            $prepared['reward_' . $i] = 0;
+        }
+
+        return $prepared;
+    }
+
+    protected function getData(array $settings): array
+    {
+        $blockfrost = new Blockfrost($settings['network'] ?? 'mainnet');
         $delegations = [];
         $page = 1;
 
         do {
-            $response = $this->requestData($blockfrost, $pool_id, $page);
+            $response = $this->requestData($blockfrost, $settings['pool_id'], $page);
 
             $this->log(__METHOD__ . ' count=' . count($response));
 
             foreach ($response as $delegation) {
                 $this->log(__CLASS__ . '::doScan ' . $delegation['address']);
-                $delegations[] = $this->getHistory($blockfrost, $delegation['address'], $pool_id);
+                $delegations[] = $this->getHistory($blockfrost, $delegation['address'], $settings);
             }
 
             $page++;
@@ -126,13 +142,17 @@ class Exporter implements HookInterface
         return 200 === $response['status_code'] ? $response['data'] : [];
     }
 
-    protected function getHistory(Blockfrost $blockfrost, string $stake_address, string $pool_id): array
+    protected function getHistory(Blockfrost $blockfrost, string $stake_address, array $settings): array
     {
         $application = Application::getInstance();
         $ration = $application->option('rewards_ration');
         $multiplier = $application->option('rewards_multiplier');
-        $total_rewards = 0;
-        $delegation = compact('stake_address', 'total_rewards');
+        $total_amount = 0;
+        $total_reward = 0;
+        $delegation = array_merge(
+            compact('stake_address', 'total_amount', 'total_reward'),
+            $this->prepareHolder($settings)
+        );
         $page = 1;
 
         do {
@@ -141,24 +161,25 @@ class Exporter implements HookInterface
             $this->log(__METHOD__ . ' count=' . count($response));
 
             foreach ($response as $history) {
-                if ($history['pool_id'] !== $pool_id) {
+                if ($history['pool_id'] !== $settings['pool_id']) {
                     continue;
                 }
 
                 $active_epoch = $history['active_epoch'];
                 $lovelace_amount = $history['amount'];
                 $calculated_reward = $ration / 100 * NumberHelper::lovelaceToAda($lovelace_amount) * $multiplier;
-                $total_rewards += $calculated_reward;
+                $total_amount += $lovelace_amount;
+                $total_reward += $calculated_reward;
 
-                $delegation['epoch_' . $active_epoch] = $active_epoch;
-                $delegation['lovelace_amount_' . $active_epoch] = $lovelace_amount;
-                $delegation['calculated_reward_' . $active_epoch] = $calculated_reward;
+                $delegation['amount_' . $active_epoch] = $lovelace_amount;
+                $delegation['reward_' . $active_epoch] = $calculated_reward;
             }
 
             $page++;
         } while (100 === count($response));
 
-        $delegation['total_rewards'] = $total_rewards;
+        $delegation['total_amount'] = $total_amount;
+        $delegation['total_reward'] = $total_reward;
 
         return $delegation;
     }
