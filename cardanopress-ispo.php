@@ -12,6 +12,11 @@
  *
  * Text Domain: cardanopress-ispo
  *
+ * Requires at least: 5.9
+ * Requires PHP:      7.4
+ *
+ * Requires Plugins: cardanopress
+ *
  * @package ThemePlate
  * @since   0.1.0
  */
