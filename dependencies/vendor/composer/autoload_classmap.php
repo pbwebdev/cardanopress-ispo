@@ -10,7 +10,6 @@ return array(
     'PBWebDev\\CardanoPress\\ISPO\\Actions' => $baseDir . '/../src/Actions.php',
     'PBWebDev\\CardanoPress\\ISPO\\Admin' => $baseDir . '/../src/Admin.php',
     'PBWebDev\\CardanoPress\\ISPO\\Application' => $baseDir . '/../src/Application.php',
-    'PBWebDev\\CardanoPress\\ISPO\\Exporter' => $baseDir . '/../src/Exporter.php',
     'PBWebDev\\CardanoPress\\ISPO\\Installer' => $baseDir . '/../src/Installer.php',
     'PBWebDev\\CardanoPress\\ISPO\\Manager' => $baseDir . '/../src/Manager.php',
     'PBWebDev\\CardanoPress\\ISPO\\Manifest' => $baseDir . '/../src/Manifest.php',

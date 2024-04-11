@@ -55,7 +55,6 @@ class ComposerStaticInitcdb091b026806e0f074ce99c52568d0a
         'PBWebDev\\CardanoPress\\ISPO\\Actions' => __DIR__ . '/../..' . '/../src/Actions.php',
         'PBWebDev\\CardanoPress\\ISPO\\Admin' => __DIR__ . '/../..' . '/../src/Admin.php',
         'PBWebDev\\CardanoPress\\ISPO\\Application' => __DIR__ . '/../..' . '/../src/Application.php',
-        'PBWebDev\\CardanoPress\\ISPO\\Exporter' => __DIR__ . '/../..' . '/../src/Exporter.php',
         'PBWebDev\\CardanoPress\\ISPO\\Installer' => __DIR__ . '/../..' . '/../src/Installer.php',
         'PBWebDev\\CardanoPress\\ISPO\\Manager' => __DIR__ . '/../..' . '/../src/Manager.php',
         'PBWebDev\\CardanoPress\\ISPO\\Manifest' => __DIR__ . '/../..' . '/../src/Manifest.php',
