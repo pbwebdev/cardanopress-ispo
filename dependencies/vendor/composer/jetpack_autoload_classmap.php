@@ -7,90 +7,90 @@ $baseDir   = dirname($vendorDir);
 
 return array(
 	'Autoloader' => array(
-		'version' => '2.11.16.0',
+		'version' => '2.12.0',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-autoloader.php'
 	),
 	'Autoloader_Handler' => array(
-		'version' => '2.11.16.0',
+		'version' => '2.12.0',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-autoloader-handler.php'
 	),
 	'Autoloader_Locator' => array(
-		'version' => '2.11.16.0',
+		'version' => '2.12.0',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-autoloader-locator.php'
 	),
 	'Automattic\\Jetpack\\Autoloader\\AutoloadFileWriter' => array(
-		'version' => '2.11.16.0',
+		'version' => '2.12.0',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/AutoloadFileWriter.php'
 	),
 	'Automattic\\Jetpack\\Autoloader\\AutoloadGenerator' => array(
-		'version' => '2.11.16.0',
+		'version' => '2.12.0',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/AutoloadGenerator.php'
 	),
 	'Automattic\\Jetpack\\Autoloader\\AutoloadProcessor' => array(
-		'version' => '2.11.16.0',
+		'version' => '2.12.0',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/AutoloadProcessor.php'
 	),
 	'Automattic\\Jetpack\\Autoloader\\CustomAutoloaderPlugin' => array(
-		'version' => '2.11.16.0',
+		'version' => '2.12.0',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/CustomAutoloaderPlugin.php'
 	),
 	'Automattic\\Jetpack\\Autoloader\\ManifestGenerator' => array(
-		'version' => '2.11.16.0',
+		'version' => '2.12.0',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/ManifestGenerator.php'
 	),
-	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\Autoloader' => array(
+	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\al2_12_0\\Autoloader' => array(
 		'version' => 'dev-main',
 		'path'    => $vendorDir . '/jetpack-autoloader/class-autoloader.php'
 	),
-	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\Autoloader_Handler' => array(
+	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\al2_12_0\\Autoloader_Handler' => array(
 		'version' => 'dev-main',
 		'path'    => $vendorDir . '/jetpack-autoloader/class-autoloader-handler.php'
 	),
-	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\Autoloader_Locator' => array(
+	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\al2_12_0\\Autoloader_Locator' => array(
 		'version' => 'dev-main',
 		'path'    => $vendorDir . '/jetpack-autoloader/class-autoloader-locator.php'
 	),
-	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\Container' => array(
+	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\al2_12_0\\Container' => array(
 		'version' => 'dev-main',
 		'path'    => $vendorDir . '/jetpack-autoloader/class-container.php'
 	),
-	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\Hook_Manager' => array(
+	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\al2_12_0\\Hook_Manager' => array(
 		'version' => 'dev-main',
 		'path'    => $vendorDir . '/jetpack-autoloader/class-hook-manager.php'
 	),
-	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\Latest_Autoloader_Guard' => array(
+	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\al2_12_0\\Latest_Autoloader_Guard' => array(
 		'version' => 'dev-main',
 		'path'    => $vendorDir . '/jetpack-autoloader/class-latest-autoloader-guard.php'
 	),
-	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\Manifest_Reader' => array(
+	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\al2_12_0\\Manifest_Reader' => array(
 		'version' => 'dev-main',
 		'path'    => $vendorDir . '/jetpack-autoloader/class-manifest-reader.php'
 	),
-	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\PHP_Autoloader' => array(
+	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\al2_12_0\\PHP_Autoloader' => array(
 		'version' => 'dev-main',
 		'path'    => $vendorDir . '/jetpack-autoloader/class-php-autoloader.php'
 	),
-	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\Path_Processor' => array(
+	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\al2_12_0\\Path_Processor' => array(
 		'version' => 'dev-main',
 		'path'    => $vendorDir . '/jetpack-autoloader/class-path-processor.php'
 	),
-	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\Plugin_Locator' => array(
+	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\al2_12_0\\Plugin_Locator' => array(
 		'version' => 'dev-main',
 		'path'    => $vendorDir . '/jetpack-autoloader/class-plugin-locator.php'
 	),
-	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\Plugins_Handler' => array(
+	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\al2_12_0\\Plugins_Handler' => array(
 		'version' => 'dev-main',
 		'path'    => $vendorDir . '/jetpack-autoloader/class-plugins-handler.php'
 	),
-	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\Shutdown_Handler' => array(
+	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\al2_12_0\\Shutdown_Handler' => array(
 		'version' => 'dev-main',
 		'path'    => $vendorDir . '/jetpack-autoloader/class-shutdown-handler.php'
 	),
-	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\Version_Loader' => array(
+	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\al2_12_0\\Version_Loader' => array(
 		'version' => 'dev-main',
 		'path'    => $vendorDir . '/jetpack-autoloader/class-version-loader.php'
 	),
-	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\Version_Selector' => array(
+	'Automattic\\Jetpack\\Autoloader\\jpcdb091b026806e0f074ce99c52568d0a\\al2_12_0\\Version_Selector' => array(
 		'version' => 'dev-main',
 		'path'    => $vendorDir . '/jetpack-autoloader/class-version-selector.php'
 	),
@@ -1342,6 +1342,14 @@ return array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/League/Csv/Exception.php'
 	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\FragmentFinder' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/FragmentFinder.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\FragmentNotFound' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/FragmentNotFound.php'
+	),
 	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\HTMLConverter' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/League/Csv/HTMLConverter.php'
@@ -1370,6 +1378,82 @@ return array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/League/Csv/ResultSet.php'
 	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\AfterMapping' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/Serializer/AfterMapping.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\ArrayShape' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/Serializer/ArrayShape.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\CallbackCasting' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/Serializer/CallbackCasting.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\CastToArray' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/Serializer/CastToArray.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\CastToBool' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/Serializer/CastToBool.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\CastToDate' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/Serializer/CastToDate.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\CastToEnum' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/Serializer/CastToEnum.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\CastToFloat' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/Serializer/CastToFloat.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\CastToInt' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/Serializer/CastToInt.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\CastToString' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/Serializer/CastToString.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\DenormalizationFailed' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/Serializer/DenormalizationFailed.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\Denormalizer' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/Serializer/Denormalizer.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\MapCell' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/Serializer/MapCell.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\MappingFailed' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/Serializer/MappingFailed.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\PropertySetter' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/Serializer/PropertySetter.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\SerializationFailed' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/Serializer/SerializationFailed.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\Type' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/Serializer/Type.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\TypeCasting' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/Serializer/TypeCasting.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\TypeCastingFailed' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/Serializer/TypeCastingFailed.php'
+	),
 	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Statement' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/League/Csv/Statement.php'
@@ -1378,6 +1462,10 @@ return array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/League/Csv/Stream.php'
 	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\SwapDelimiter' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/SwapDelimiter.php'
+	),
 	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\SyntaxError' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/League/Csv/SyntaxError.php'
@@ -1385,6 +1473,10 @@ return array(
 	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\TabularDataReader' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/League/Csv/TabularDataReader.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\TabularDataWriter' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/League/Csv/TabularDataWriter.php'
 	),
 	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\UnableToProcessCsv' => array(
 		'version' => 'dev-main',
@@ -1495,19 +1587,19 @@ return array(
 		'path'    => $vendorDir . '/composer/InstalledVersions.php'
 	),
 	'Container' => array(
-		'version' => '2.11.16.0',
+		'version' => '2.12.0',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-container.php'
 	),
 	'Hook_Manager' => array(
-		'version' => '2.11.16.0',
+		'version' => '2.12.0',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-hook-manager.php'
 	),
 	'Latest_Autoloader_Guard' => array(
-		'version' => '2.11.16.0',
+		'version' => '2.12.0',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-latest-autoloader-guard.php'
 	),
 	'Manifest_Reader' => array(
-		'version' => '2.11.16.0',
+		'version' => '2.12.0',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-manifest-reader.php'
 	),
 	'PBWebDev\\CardanoPress\\ISPO\\Actions' => array(
@@ -1555,31 +1647,31 @@ return array(
 		'path'    => $baseDir . '/../src/Templates.php'
 	),
 	'PHP_Autoloader' => array(
-		'version' => '2.11.16.0',
+		'version' => '2.12.0',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-php-autoloader.php'
 	),
 	'Path_Processor' => array(
-		'version' => '2.11.16.0',
+		'version' => '2.12.0',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-path-processor.php'
 	),
 	'Plugin_Locator' => array(
-		'version' => '2.11.16.0',
+		'version' => '2.12.0',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-plugin-locator.php'
 	),
 	'Plugins_Handler' => array(
-		'version' => '2.11.16.0',
+		'version' => '2.12.0',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-plugins-handler.php'
 	),
 	'Shutdown_Handler' => array(
-		'version' => '2.11.16.0',
+		'version' => '2.12.0',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-shutdown-handler.php'
 	),
 	'Version_Loader' => array(
-		'version' => '2.11.16.0',
+		'version' => '2.12.0',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-version-loader.php'
 	),
 	'Version_Selector' => array(
-		'version' => '2.11.16.0',
+		'version' => '2.12.0',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-version-selector.php'
 	),
 );
