@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => '__root__',
-        'pretty_version' => 'dev-develop',
-        'version' => 'dev-develop',
-        'reference' => '2e23ba95738b58fede91a1f2dfd886789fd913de',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '44fca3e85c23f1d6d5b742574f42c08dce8f2df0',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => 'dev-develop',
-            'version' => 'dev-develop',
-            'reference' => '2e23ba95738b58fede91a1f2dfd886789fd913de',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '44fca3e85c23f1d6d5b742574f42c08dce8f2df0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -29,9 +29,9 @@
             'dev_requirement' => false,
         ),
         'cardanopress/framework' => array(
-            'pretty_version' => 'v2.2.0',
-            'version' => '2.2.0.0',
-            'reference' => 'f1f006417fc618685210bff60b93794f03cdcdc5',
+            'pretty_version' => 'v2.3.1',
+            'version' => '2.3.1.0',
+            'reference' => 'e160b780bdd43e07603c739f727cf43433936524',
             'type' => 'library',
             'install_path' => __DIR__ . '/../cardanopress/framework',
             'aliases' => array(),

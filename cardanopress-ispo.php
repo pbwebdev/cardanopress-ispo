@@ -6,11 +6,16 @@
  * Author:      CardanoPress
  * Author URI:  https://cardanopress.io
  * Description: A CardanoPress extension for ISPO
- * Version:     1.4.0
+ * Version:     1.4.1
  * License:     GPL-2.0-only
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  *
  * Text Domain: cardanopress-ispo
+ *
+ * Requires at least: 5.9
+ * Requires PHP:      7.4
+ *
+ * Requires Plugins: cardanopress
  *
  * @package ThemePlate
  * @since   0.1.0

@@ -43,14 +43,10 @@
                 "psr-4": {
                     "Automattic\\Jetpack\\Autoloader\\": "src"
                 },
-                "classmap": [
-                    "src/AutoloadGenerator.php"
-                ]
+                "classmap": ["src/AutoloadGenerator.php"]
             },
             "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
+            "license": ["GPL-2.0-or-later"],
             "description": "Creates a custom autoloader for a plugin or theme.",
             "support": {
                 "source": "https://github.com/Automattic/jetpack-autoloader/tree/v2.11.16"
@@ -59,36 +55,35 @@
         },
         {
             "name": "cardanopress/framework",
-            "version": "v2.2.0",
+            "version": "v2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CardanoPress/framework.git",
-                "reference": "f1f006417fc618685210bff60b93794f03cdcdc5"
+                "reference": "e160b780bdd43e07603c739f727cf43433936524"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CardanoPress/framework/zipball/f1f006417fc618685210bff60b93794f03cdcdc5",
-                "reference": "f1f006417fc618685210bff60b93794f03cdcdc5",
+                "url": "https://api.github.com/repos/CardanoPress/framework/zipball/e160b780bdd43e07603c739f727cf43433936524",
+                "reference": "e160b780bdd43e07603c739f727cf43433936524",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "php": "^7.4|^8.0"
             },
+            "require-dev": {
+                "themeplate/tester": "^2.1"
+            },
             "type": "library",
             "autoload": {
-                "files": [
-                    "dependencies/compatibility.php"
-                ],
+                "files": ["dependencies/compatibility.php"],
                 "psr-4": {
                     "CardanoPress\\": "src/",
                     "CardanoPress\\Dependencies\\": "dependencies/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-only"
-            ],
+            "license": ["GPL-2.0-only"],
             "authors": [
                 {
                     "name": "Gene Alyson Fortunado Torcende",
@@ -97,16 +92,10 @@
                 }
             ],
             "description": "A ThemePlate project for Cardano WordPress integration",
-            "keywords": [
-                "cardano",
-                "cardanopress",
-                "generator-themeplate",
-                "themeplate",
-                "wordpress"
-            ],
+            "keywords": ["cardano", "cardanopress", "generator-themeplate", "themeplate", "wordpress"],
             "support": {
                 "issues": "https://github.com/CardanoPress/framework/issues",
-                "source": "https://github.com/CardanoPress/framework/tree/v2.2.0"
+                "source": "https://github.com/CardanoPress/framework/tree/v2.3.1"
             },
             "time": "2023-05-02T08:49:50+00:00"
         },
@@ -149,17 +138,13 @@
                 }
             },
             "autoload": {
-                "files": [
-                    "src/functions_include.php"
-                ],
+                "files": ["src/functions_include.php"],
                 "psr-4": {
                     "League\\Csv\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
+            "license": ["MIT"],
             "authors": [
                 {
                     "name": "Ignace Nyamagana Butera",
@@ -170,16 +155,7 @@
             ],
             "description": "CSV data manipulation made easy in PHP",
             "homepage": "https://csv.thephpleague.com",
-            "keywords": [
-                "convert",
-                "csv",
-                "export",
-                "filter",
-                "import",
-                "read",
-                "transform",
-                "write"
-            ],
+            "keywords": ["convert", "csv", "export", "filter", "import", "read", "transform", "write"],
             "support": {
                 "docs": "https://csv.thephpleague.com",
                 "issues": "https://github.com/thephpleague/csv/issues",
@@ -192,7 +168,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-01-04T00:13:07+00:00"
+            "time": "2024-03-07T05:32:42+00:00"
         }
     ],
     "packages-dev": [],

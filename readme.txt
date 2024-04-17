@@ -2,12 +2,13 @@
 Contributors: pbwebdev
 Donate link: https://www.paypal.com/donate/?hosted_button_id=T8MR6AMVWWGK8
 Tags: cardano, blockchain, web3, metamask, nami, eternl, ada
-Requires at least: 5.8
-Tested up to: 6.4
-Stable tag: 1.4.0
+Requires at least: 5.9
+Tested up to: 6.5.99
+Stable tag: 1.4.1
 Requires PHP: 7.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/licenses.html
+Requires Plugins: cardanopress
 
 Integrate the Cardano blockchain with your WordPress website. Merging Web2 and Web3.
 
