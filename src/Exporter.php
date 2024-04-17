@@ -97,11 +97,15 @@ class Exporter implements HookInterface
 
     protected function prepareHolder(array $settings, string $stakeAddress = ''): array
     {
-        $prepared = [
-            'stake_address' => $stakeAddress,
-            'total_amount' => 0,
-            'total_reward' => 0,
-        ];
+        $prepared = apply_filters(
+            'cp-ispo-export_csv_headers',
+            [
+                'stake_address' => $stakeAddress,
+                'total_amount' => 0,
+                'total_reward' => 0,
+            ],
+            compact('settings', 'stakeAddress')
+        );
 
         for ($i = $settings['commence']; $i <= $settings['conclude']; $i++) {
             $prepared['amount_' . $i] = 0;
@@ -137,13 +141,15 @@ class Exporter implements HookInterface
                     $delegations[$address]['reward_' . $epoch] = $reward;
                     $delegations[$address]['total_amount'] += $amount;
                     $delegations[$address]['total_reward'] += $reward;
+
+                    do_action('cp-ispo-export_qualified_epoch', $epoch, $delegation, $settings);
                 }
 
                 $page++;
             } while (100 === count($response));
         }
 
-        return $delegations;
+        return apply_filters('cp-ispo-export_csv_data', $delegations, $settings);
     }
 
     protected function requestData(Blockfrost $blockfrost, string $pool_id, int $epoch, int $page): array
