@@ -8,24 +8,24 @@
     "packages": [
         {
             "name": "automattic/jetpack-autoloader",
-            "version": "v2.11.16",
+            "version": "v2.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Automattic/jetpack-autoloader.git",
-                "reference": "43bc969fd90ce3d92e7b75fbf384a5fd03963dad"
+                "reference": "632b69cfc73ed5505f2b03165e7f68d414d0da12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Automattic/jetpack-autoloader/zipball/43bc969fd90ce3d92e7b75fbf384a5fd03963dad",
-                "reference": "43bc969fd90ce3d92e7b75fbf384a5fd03963dad",
+                "url": "https://api.github.com/repos/Automattic/jetpack-autoloader/zipball/632b69cfc73ed5505f2b03165e7f68d414d0da12",
+                "reference": "632b69cfc73ed5505f2b03165e7f68d414d0da12",
                 "shasum": ""
             },
             "require": {
                 "composer-plugin-api": "^1.1 || ^2.0"
             },
             "require-dev": {
-                "automattic/jetpack-changelogger": "^3.3.2",
-                "yoast/phpunit-polyfills": "1.0.4"
+                "automattic/jetpack-changelogger": "^3.3.11",
+                "yoast/phpunit-polyfills": "1.1.0"
             },
             "type": "composer-plugin",
             "extra": {
@@ -35,8 +35,11 @@
                 "changelogger": {
                     "link-template": "https://github.com/Automattic/jetpack-autoloader/compare/v${old}...v${new}"
                 },
+                "version-constants": {
+                    "::VERSION": "src/AutoloadGenerator.php"
+                },
                 "branch-alias": {
-                    "dev-trunk": "2.11.x-dev"
+                    "dev-trunk": "2.12.x-dev"
                 }
             },
             "autoload": {
@@ -52,23 +55,31 @@
                 "GPL-2.0-or-later"
             ],
             "description": "Creates a custom autoloader for a plugin or theme.",
+            "keywords": [
+                "autoload",
+                "autoloader",
+                "composer",
+                "jetpack",
+                "plugin",
+                "wordpress"
+            ],
             "support": {
-                "source": "https://github.com/Automattic/jetpack-autoloader/tree/v2.11.16"
+                "source": "https://github.com/Automattic/jetpack-autoloader/tree/v2.12.0"
             },
-            "time": "2023-02-20T19:47:16+00:00"
+            "time": "2023-09-28T18:33:34+00:00"
         },
         {
             "name": "cardanopress/framework",
-            "version": "v2.3.1",
+            "version": "v2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CardanoPress/framework.git",
-                "reference": "e160b780bdd43e07603c739f727cf43433936524"
+                "reference": "4b815373dd127cd6523e9a88dc8a778903c32abd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CardanoPress/framework/zipball/e160b780bdd43e07603c739f727cf43433936524",
-                "reference": "e160b780bdd43e07603c739f727cf43433936524",
+                "url": "https://api.github.com/repos/CardanoPress/framework/zipball/4b815373dd127cd6523e9a88dc8a778903c32abd",
+                "reference": "4b815373dd127cd6523e9a88dc8a778903c32abd",
                 "shasum": ""
             },
             "require": {
@@ -76,6 +87,7 @@
                 "php": "^7.4|^8.0"
             },
             "require-dev": {
+                "automattic/jetpack-autoloader": "^2.12",
                 "themeplate/tester": "^2.1"
             },
             "type": "library",
@@ -109,9 +121,9 @@
             ],
             "support": {
                 "issues": "https://github.com/CardanoPress/framework/issues",
-                "source": "https://github.com/CardanoPress/framework/tree/v2.3.1"
+                "source": "https://github.com/CardanoPress/framework/tree/v2.5.0"
             },
-            "time": "2024-03-07T05:32:42+00:00"
+            "time": "2024-05-17T03:25:25+00:00"
         }
     ],
     "packages-dev": [],
