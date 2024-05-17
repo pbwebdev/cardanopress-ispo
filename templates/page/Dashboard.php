@@ -22,7 +22,7 @@ $pool = cpISPO()->delegationPool();
 $network = cpISPO()->userProfile()->connectedNetwork();
 $link = Actions::getCardanoscanLink($network, 'pool/');
 
-get_header();
+cardanoPress()->compatibleHeader();
 
 ?>
 
@@ -134,4 +134,4 @@ get_header();
 
 <?php
 
-get_footer();
+cardanoPress()->compatibleFooter();
