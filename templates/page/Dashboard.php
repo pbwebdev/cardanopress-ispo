@@ -82,7 +82,7 @@ cardanoPress()->compatibleHeader();
                     <p>Search for the pool ticker <span class="fw-bold"><?php echo esc_html($pool['ticker']); ?></span>, or search using the Pool ID. Ensure you are delegating to the correct stake pool.</p>
                     <p>Pool ID: <span class="fw-bold"><?php echo esc_html($pool['pool_id']); ?></span></p>
                     <span class="m-1">
-                        <a href="#" @click.prevent="clipboardValue('<?php echo esc_js($pool['pool_id']); ?>')" title="Copy to clipboard">Copy</a>
+                        <a href="#" x-on:click.prevent="clipboardValue('<?php echo esc_js($pool['pool_id']); ?>')" title="Copy to clipboard">Copy</a>
                     </span>
                     <span class="m-1">
                         <a href="<?php echo esc_url($link . $pool['hex']); ?>" target="_blank" title="View on Cardanoscan">View</a>

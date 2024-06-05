@@ -21,5 +21,5 @@ if (empty($placeholder)) {
 
 <div class="input-group">
     <input x-model="address" type="text" class="form-control" placeholder="<?php echo esc_attr($placeholder); ?>">
-    <button class="btn btn-primary" @click="handleTracking()" x-bind:disabled="!address"><?php echo esc_html($text); ?></button>
+    <button class="btn btn-primary" x-on:click="handleTracking()" x-bind:disabled="!address"><?php echo esc_html($text); ?></button>
 </div>
