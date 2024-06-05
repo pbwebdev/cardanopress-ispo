@@ -70,9 +70,9 @@ class Actions implements HookInterface
         return WalletHelper::getCardanoscanLink($network, $endpoint);
     }
 
-    public static function toUnixTimestamp(string $epoch): string
+    public static function toUnixTimestamp(string $epoch): int
     {
-        return NumberHelper::toUnixTimestamp($epoch);
+        return NumberHelper::toUnixTimestamp((int) $epoch);
     }
 
     public static function toUTC(string $epoch): string
