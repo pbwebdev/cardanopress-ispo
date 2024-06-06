@@ -28,4 +28,16 @@ class Profile extends AbstractProfile
 
         return $saved ?: 0.0;
     }
+
+    public function saveExtraRewards(array $rewards): bool
+    {
+        return $this->updateMeta($this->prefix . 'extra_rewards', $rewards);
+    }
+
+    public function getExtraRewards(): array
+    {
+        $saved = $this->getMeta($this->prefix . 'extra_rewards', true);
+
+        return $saved ?: [];
+    }
 }

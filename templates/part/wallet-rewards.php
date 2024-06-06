@@ -30,3 +30,5 @@ $rewards = NumberHelper::adaPrecision($rewards);
 <template x-if="isConnected">
     <input value="<?php echo esc_attr($rewards); ?>" type="text" class="form-control text-center" readonly disabled>
 </template>
+
+<?php cpISPO()->template('part/extra-rewards', ['list' => json_encode(cpISPO()->userProfile()->getExtraRewards())]); ?>
