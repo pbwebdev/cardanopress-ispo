@@ -138,6 +138,11 @@ This plugin does not collect or process any personal user data unless you expres
 You can follow our [GitHub release](https://github.com/CardanoPress/plugin-ispo/releases) for full details on updates
 to the plugins.
 
+= 1.6.0 =
+- Use and return the correct types
+- Stop using `@`prefixed attributes
+- Sample template for extra rewards
+
 = 1.5.0 =
 - Correctly render provided templates in block themes
 
@@ -173,49 +178,6 @@ Official repository release (exact same version as 0.8.0)
 = 1.0.0 =
 First stable release (exact same version as 0.7.0)
 
-= 0.8.0 =
-Set and show the number of tokens allocated to the project
-Provide helper methods for epoch conversion
-Ready for translations
-
-= v0.7.0 =
-Check and clean URLs
-Update all dependencies
-
-= v0.6.0 =
-Escape template outputs / echoed variables
-Include bootstrap assets locally
-
-= v0.5.1 =
-Filter the address to track; check the inputted value if in the correct format or grab the required stake
-
-= v0.5.0 =
-Number input field in the estimator section for more granule control
-Filter hook for forcing custom rewards to a wallet; cp-ispo-force_wallet_rewards
-
-= v0.4.0 =
-Keep the pool data up to date; cached every 15minutes
-Nag a notice if no delegation pool ID is set; mainnet required
-Full Changelog: v0.3.0...v0.4.0
-
-= v0.3.1 =
-Bump Guzzle version to 7.4.4 for security patch
-
-= v0.3.0 =
-Available hooks on calculating rewards
-Filter cp-ispo-epoch_calculated_reward
-Filter cp-ispo-total_accumulated_rewards
-Action cp-ispo-qualified_epoch_for_rewards
-Support for bonuses; multiplied every qualifying epoch
-image
-
-= v0.2.0 =
-CardanoScan link to the correct network
-Working Pool ID actions; copy and view
-Serve production built assets
-
-= v0.1.0 =
-Initial release; full working concept
 
 == Upgrade Notice ==
 Please ensure that you back up your website before upgrading or modifying any of the code.
