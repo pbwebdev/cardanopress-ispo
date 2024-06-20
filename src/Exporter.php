@@ -49,6 +49,10 @@ class Exporter implements HookInterface
 
     public function doAction(): void
     {
+        if (! Application::getInstance()->isReady()) {
+            $this->dieHandler('unready');
+        }
+
         if (! wp_verify_nonce($_REQUEST['nonce'] ?? '', self::ACTION)) {
             $this->dieHandler('forbidden');
         }
@@ -89,6 +93,10 @@ class Exporter implements HookInterface
             'forbidden' => [
                 'message' => __('Invalid nonce value provided', 'cardanopress-ispo'),
                 'code' => 403,
+            ],
+            'unready' => [
+                'message' => __('Application not ready to process', 'cardanopress-ispo'),
+                'code' => 409,
             ],
         ];
 
