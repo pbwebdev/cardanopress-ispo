@@ -1,8 +1,8 @@
 {
-  "new_version"    : "1.6.0",
+  "new_version"    : "1.7.0",
   "homepage"       : "https://wordpress.org/plugins/cardanopress-ispo/",
   "download_link"  : "https://downloads.wordpress.org/plugin/cardanopress-ispo.zip",
-  "last_updated"   : "2024-06-06",
+  "last_updated"   : "2024-06-20",
   "author"         : "Gene Alyson Fortunado Torcende",
   "author_profile" : "https://cardanopress.io",
   "requires"       : "5.9.0",
