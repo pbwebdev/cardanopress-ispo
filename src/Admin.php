@@ -29,8 +29,11 @@ class Admin extends AbstractAdmin
 
         add_action('init', function () {
             $this->poolSettings();
+            $this->exportSettings();
             $this->dashboardSettings();
         });
+
+        add_action('themeplate_settings_cp-ispo_advanced', [$this, 'customStyle']);
     }
 
     protected function generalFields(): array
@@ -142,6 +145,26 @@ class Admin extends AbstractAdmin
         ]);
     }
 
+    public function exportSettings(): void
+    {
+        $fields = array_combine(
+            Manager::getPoolIDs(),
+            array_map(function ($setting) {
+                return [
+                    'title' => $setting['pool_id'],
+                    'type' => 'html',
+                    'default' => Exporter::actionButton($setting['network'], $setting['pool_id']),
+                ];
+            }, Manager::getSettings())
+        );
+
+        $this->optionFields(__('Export Data', 'cardanopress-ispo'), [
+            'data_prefix' => 'export_',
+            'context' => 'side',
+            'fields' => $fields,
+        ]);
+    }
+
     public function dashboardSettings(): void
     {
         $postMeta = new PostMeta(__('ISPO Settings', 'cardanopress-ispo'), [
@@ -161,5 +184,19 @@ class Admin extends AbstractAdmin
         ])->location('page')->create();
 
         $this->storeConfig($postMeta->get_config());
+    }
+
+    public function customStyle(): void
+    {
+        ob_start(); ?>
+
+        <style>
+            #themeplate_export-data .field-label {
+                word-break: break-all;
+            }
+        </style>
+
+        <?php
+        echo wp_kses(ob_get_clean(), ['style' => []]);
     }
 }

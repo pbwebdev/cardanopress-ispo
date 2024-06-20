@@ -1330,6 +1330,254 @@ return array(
 		'version' => '2.6.0.0',
 		'path'    => $vendorDir . '/cardanopress/framework/src/Helpers/WalletHelper.php'
 	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\AbstractCsv' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/AbstractCsv.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Bom' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Bom.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\ByteSequence' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/ByteSequence.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\CannotInsertRecord' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/CannotInsertRecord.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\CharsetConverter' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/CharsetConverter.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\ColumnConsistency' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/ColumnConsistency.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\EncloseField' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/EncloseField.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\EscapeFormula' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/EscapeFormula.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Exception' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Exception.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\FragmentFinder' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/FragmentFinder.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\FragmentNotFound' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/FragmentNotFound.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\HTMLConverter' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/HTMLConverter.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Info' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Info.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\InvalidArgument' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/InvalidArgument.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\MapIterator' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/MapIterator.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Query\\Constraint\\Column' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Query/Constraint/Column.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Query\\Constraint\\Comparison' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Query/Constraint/Comparison.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Query\\Constraint\\Criteria' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Query/Constraint/Criteria.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Query\\Constraint\\Offset' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Query/Constraint/Offset.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Query\\Constraint\\TwoColumns' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Query/Constraint/TwoColumns.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Query\\Limit' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Query/Limit.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Query\\Ordering\\Column' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Query/Ordering/Column.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Query\\Ordering\\MultiSort' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Query/Ordering/MultiSort.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Query\\Predicate' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Query/Predicate.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Query\\PredicateCombinator' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Query/PredicateCombinator.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Query\\QueryException' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Query/QueryException.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Query\\Row' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Query/Row.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Query\\Sort' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Query/Sort.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Query\\SortCombinator' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Query/SortCombinator.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\RFC4180Field' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/RFC4180Field.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Reader' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Reader.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\ResultSet' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/ResultSet.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\AfterMapping' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Serializer/AfterMapping.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\ArrayShape' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Serializer/ArrayShape.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\CallbackCasting' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Serializer/CallbackCasting.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\CastToArray' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Serializer/CastToArray.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\CastToBool' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Serializer/CastToBool.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\CastToDate' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Serializer/CastToDate.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\CastToEnum' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Serializer/CastToEnum.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\CastToFloat' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Serializer/CastToFloat.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\CastToInt' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Serializer/CastToInt.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\CastToString' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Serializer/CastToString.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\DenormalizationFailed' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Serializer/DenormalizationFailed.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\Denormalizer' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Serializer/Denormalizer.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\MapCell' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Serializer/MapCell.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\MappingFailed' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Serializer/MappingFailed.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\PropertySetter' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Serializer/PropertySetter.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\SerializationFailed' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Serializer/SerializationFailed.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\Type' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Serializer/Type.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\TypeCasting' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Serializer/TypeCasting.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Serializer\\TypeCastingFailed' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Serializer/TypeCastingFailed.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Statement' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Statement.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Stream' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Stream.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\SwapDelimiter' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/SwapDelimiter.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\SyntaxError' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/SyntaxError.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\TabularDataReader' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/TabularDataReader.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\TabularDataWriter' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/TabularDataWriter.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\UnableToProcessCsv' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/UnableToProcessCsv.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\UnavailableFeature' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/UnavailableFeature.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\UnavailableStream' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/UnavailableStream.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\Writer' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/Writer.php'
+	),
+	'CardanoPress\\ISPO\\Dependencies\\League\\Csv\\XMLConverter' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/League/Csv/XMLConverter.php'
+	),
 	'CardanoPress\\Interfaces\\AdminInterface' => array(
 		'version' => '2.6.0.0',
 		'path'    => $vendorDir . '/cardanopress/framework/src/Interfaces/AdminInterface.php'
@@ -1445,6 +1693,10 @@ return array(
 	'PBWebDev\\CardanoPress\\ISPO\\Application' => array(
 		'version' => 'dev-develop',
 		'path'    => $baseDir . '/../src/Application.php'
+	),
+	'PBWebDev\\CardanoPress\\ISPO\\Exporter' => array(
+		'version' => 'dev-develop',
+		'path'    => $baseDir . '/../src/Exporter.php'
 	),
 	'PBWebDev\\CardanoPress\\ISPO\\Installer' => array(
 		'version' => 'dev-develop',
