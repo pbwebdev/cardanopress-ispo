@@ -9,6 +9,6 @@
  * file that was distributed with this source code.
  */
 
-if (!function_exists('CardanoPress\ISPO\Dependencies\League\Csv\delimiter_detect')) {
+if (!function_exists('CardanoPress\ISPO\Dependencies\League\Csv\bom_match')) {
     require __DIR__.'/functions.php';
 }

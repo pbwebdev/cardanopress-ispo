@@ -17,8 +17,7 @@ namespace CardanoPress\ISPO\Dependencies\League\Csv;
  * DEPRECATION WARNING! This class will be removed in the next major point release.
  *
  * @deprecated since version 9.7.0
- * @see Bom::tryFromSequence()
- * @codeCoverageIgnore
+ * @see Info::fetchBOMSequence()
  *
  * Returns the BOM sequence found at the start of the string.
  *
@@ -26,7 +25,7 @@ namespace CardanoPress\ISPO\Dependencies\League\Csv;
  */
 function bom_match(string $str): string
 {
-    return Bom::tryFromSequence($str)?->value ?? '';
+    return Info::fetchBOMSequence($str) ?? '';
 }
 
 /**
@@ -35,7 +34,6 @@ function bom_match(string $str): string
  * @return array<string,int>
  * @deprecated since version 9.7.0
  * @see Info::getDelimiterStats()
- * @codeCoverageIgnore
  *
  * Detect Delimiters usage in a {@link Reader} object.
  *

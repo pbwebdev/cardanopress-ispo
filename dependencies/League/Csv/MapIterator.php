@@ -13,12 +13,12 @@ declare(strict_types=1);
 
 namespace CardanoPress\ISPO\Dependencies\League\Csv;
 
-use ArrayIterator;
 use IteratorIterator;
+use ReturnTypeWillChange;
 use Traversable;
 
 /**
- * Maps value from an iterator before yielding.
+ * Map value from an iterator before yielding.
  *
  * @internal used internally to modify CSV content
  */
@@ -33,15 +33,11 @@ final class MapIterator extends IteratorIterator
         $this->callable = $callable;
     }
 
-    public static function fromIterable(iterable $iterator, callable $callable): self
-    {
-        return match (true) {
-            is_array($iterator) => new self(new ArrayIterator($iterator), $callable),
-            default => new self($iterator, $callable),
-        };
-    }
-
-    public function current(): mixed
+    /**
+     * @return mixed The value of the current element.
+     */
+    #[ReturnTypeWillChange]
+    public function current()
     {
         return ($this->callable)(parent::current(), parent::key());
     }

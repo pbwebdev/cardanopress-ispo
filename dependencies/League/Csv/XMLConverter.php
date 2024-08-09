@@ -23,15 +23,29 @@ use DOMException;
  */
 class XMLConverter
 {
-    /** XML Root name. */
+    /**
+     * XML Root name.
+     */
     protected string $root_name = 'csv';
-    /** XML Node name. */
+
+    /**
+     * XML Node name.
+     */
     protected string $record_name = 'row';
-    /** XML Item name. */
+
+    /**
+     * XML Item name.
+     */
     protected string $field_name = 'cell';
-    /** XML column attribute name. */
+
+    /**
+     * XML column attribute name.
+     */
     protected string $column_attr = '';
-    /** XML offset attribute name. */
+
+    /**
+     * XML offset attribute name.
+     */
     protected string $offset_attr = '';
 
     public static function create(): self
@@ -50,7 +64,7 @@ class XMLConverter
     }
 
     /**
-     * Converts a Record collection into a DOMDocument.
+     * Convert a Record collection into a DOMDocument.
      */
     public function convert(iterable $records): DOMDocument
     {
@@ -62,7 +76,7 @@ class XMLConverter
     }
 
     /**
-     * Creates a new DOMElement related to the given DOMDocument.
+     * Create a new DOMElement related to the given DOMDocument.
      *
      * **DOES NOT** attach to the DOMDocument
      */
@@ -78,7 +92,7 @@ class XMLConverter
     }
 
     /**
-     * Converts a CSV record into a DOMElement and
+     * Convert a CSV record into a DOMElement and
      * adds its offset as DOMElement attribute.
      */
     protected function recordToElement(DOMDocument $doc, array $record, int $offset): DOMElement
@@ -97,12 +111,14 @@ class XMLConverter
     }
 
     /**
-     * Converts Cell to Item.
+     * Convert Cell to Item.
      *
-     * Converts the CSV item into a DOMElement and adds the item offset
+     * Convert the CSV item into a DOMElement and adds the item offset
      * as attribute to the returned DOMElement
+     *
+     * @param int|string $node_name
      */
-    protected function fieldToElement(DOMDocument $doc, string $value, int|string $node_name): DOMElement
+    protected function fieldToElement(DOMDocument $doc, string $value, $node_name): DOMElement
     {
         $item = $doc->createElement($this->field_name);
         $item->appendChild($doc->createTextNode($value));
@@ -116,8 +132,6 @@ class XMLConverter
 
     /**
      * XML root element setter.
-     *
-     * @throws DOMException
      */
     public function rootElement(string $node_name): self
     {
@@ -128,7 +142,7 @@ class XMLConverter
     }
 
     /**
-     * Filters XML element name.
+     * Filter XML element name.
      *
      * @throws DOMException If the Element name is invalid
      */
@@ -139,8 +153,6 @@ class XMLConverter
 
     /**
      * XML Record element setter.
-     *
-     * @throws DOMException
      */
     public function recordElement(string $node_name, string $record_offset_attribute_name = ''): self
     {
@@ -152,7 +164,7 @@ class XMLConverter
     }
 
     /**
-     * Filters XML attribute name.
+     * Filter XML attribute name.
      *
      * @param string $value Element name
      *
@@ -169,8 +181,6 @@ class XMLConverter
 
     /**
      * XML Field element setter.
-     *
-     * @throws DOMException
      */
     public function fieldElement(string $node_name, string $fieldname_attribute_name = ''): self
     {

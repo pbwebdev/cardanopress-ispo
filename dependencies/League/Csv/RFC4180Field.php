@@ -15,8 +15,6 @@ namespace CardanoPress\ISPO\Dependencies\League\Csv;
 
 use InvalidArgumentException;
 use php_user_filter;
-use TypeError;
-
 use function array_map;
 use function in_array;
 use function is_string;
@@ -27,7 +25,6 @@ use function stream_bucket_make_writeable;
 use function stream_filter_register;
 use function stream_get_filters;
 use function strlen;
-
 use const STREAM_FILTER_READ;
 use const STREAM_FILTER_WRITE;
 
@@ -48,19 +45,20 @@ class RFC4180Field extends php_user_filter
     /**
      * The value being search for.
      *
-     * @var array<string>
+     * @var string[]
      */
-    protected array $search = [];
+    protected array $search;
 
     /**
      * The replacement value that replace found $search values.
      *
-     * @var array<string>
+     * @var string[]
      */
-    protected array $replace = [];
+    protected array $replace;
 
     /**
      * Characters that triggers enclosure with PHP fputcsv.
+     *
      */
     protected static string $force_enclosure = "\n\r\t ";
 
@@ -74,10 +72,10 @@ class RFC4180Field extends php_user_filter
         $params = [
             'enclosure' => $csv->getEnclosure(),
             'escape' => $csv->getEscape(),
-            'mode' => $csv->supportsStreamFilterOnWrite() ? STREAM_FILTER_WRITE : STREAM_FILTER_READ,
+            'mode' => $csv->getStreamFilterMode(),
         ];
 
-        if ($csv instanceof Writer && '' !== $whitespace_replace) {
+        if ($csv instanceof Writer && '' != $whitespace_replace) {
             self::addFormatterTo($csv, $whitespace_replace);
             $params['whitespace_replace'] = $whitespace_replace;
         }
@@ -91,8 +89,8 @@ class RFC4180Field extends php_user_filter
      */
     public static function addFormatterTo(Writer $csv, string $whitespace_replace): Writer
     {
-        if ('' == $whitespace_replace || strlen($whitespace_replace) !== strcspn($whitespace_replace, self::$force_enclosure)) {
-            throw new InvalidArgumentException('The sequence contains a character that enforces enclosure or is a CSV control character or is an empty string.');
+        if ('' == $whitespace_replace || strlen($whitespace_replace) != strcspn($whitespace_replace, self::$force_enclosure)) {
+            throw new InvalidArgumentException('The sequence contains a character that enforces enclosure or is a CSV control character or is the empty string.');
         }
 
         $mapper = fn ($value) => is_string($value)
@@ -123,9 +121,10 @@ class RFC4180Field extends php_user_filter
     /**
      * @param resource $in
      * @param resource $out
-     * @param int $consumed
+     * @param int      $consumed
+     * @param bool     $closing
      */
-    public function filter($in, $out, &$consumed, bool $closing): int
+    public function filter($in, $out, &$consumed, $closing): int
     {
         while (null !== ($bucket = stream_bucket_make_writeable($in))) {
             $bucket->data = str_replace($this->search, $this->replace, $bucket->data);
@@ -138,23 +137,13 @@ class RFC4180Field extends php_user_filter
 
     public function onCreate(): bool
     {
-        if (!is_array($this->params)) {
-            throw new TypeError('The filter parameters must be an array.');
-        }
-
-        static $mode_list = [STREAM_FILTER_READ => 1, STREAM_FILTER_WRITE => 1];
-
-        $state = isset($this->params['enclosure'], $this->params['escape'], $this->params['mode'], $mode_list[$this->params['mode']])
-            && 1 === strlen($this->params['enclosure'])
-            && 1 === strlen($this->params['escape']);
-
-        if (false === $state) {
+        if (!$this->isValidParams($this->params)) {
             return false;
         }
 
         $this->search = [$this->params['escape'].$this->params['enclosure']];
         $this->replace = [$this->params['enclosure'].$this->params['enclosure']];
-        if (STREAM_FILTER_WRITE !== $this->params['mode']) {
+        if (STREAM_FILTER_WRITE != $this->params['mode']) {
             return true;
         }
 
@@ -169,7 +158,6 @@ class RFC4180Field extends php_user_filter
     }
 
     /**
-     * @codeCoverageIgnore
      * Validate params property.
      */
     protected function isValidParams(array $params): bool
@@ -177,16 +165,18 @@ class RFC4180Field extends php_user_filter
         static $mode_list = [STREAM_FILTER_READ => 1, STREAM_FILTER_WRITE => 1];
 
         return isset($params['enclosure'], $params['escape'], $params['mode'], $mode_list[$params['mode']])
-            && 1 === strlen($params['enclosure'])
-            && 1 === strlen($params['escape']);
+            && 1 == strlen($params['enclosure'])
+            && 1 == strlen($params['escape']);
     }
 
     /**
      * Is Valid White space replaced sequence.
+     *
+     * @return bool
      */
-    protected function isValidSequence(array $params): bool
+    protected function isValidSequence(array $params)
     {
         return isset($params['whitespace_replace'])
-            && strlen($params['whitespace_replace']) === strcspn($params['whitespace_replace'], self::$force_enclosure);
+            && strlen($params['whitespace_replace']) == strcspn($params['whitespace_replace'], self::$force_enclosure);
     }
 }

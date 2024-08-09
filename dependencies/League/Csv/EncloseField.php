@@ -15,7 +15,6 @@ namespace CardanoPress\ISPO\Dependencies\League\Csv;
 
 use InvalidArgumentException;
 use php_user_filter;
-
 use function array_map;
 use function in_array;
 use function str_replace;
@@ -29,20 +28,15 @@ use function strlen;
 /**
  * A stream filter to improve enclosure character usage.
  *
- * DEPRECATION WARNING! This class will be removed in the next major point release
- *
- * @deprecated since version 9.10.0
- * @see Writer::forceEnclosure()
- *
  * @see https://tools.ietf.org/html/rfc4180#section-2
  * @see https://bugs.php.net/bug.php?id=38301
  */
 class EncloseField extends php_user_filter
 {
-    public const FILTERNAME = 'convert.league.csv.enclosure';
+    const FILTERNAME = 'convert.league.csv.enclosure';
 
     /** Default sequence. */
-    protected string $sequence = '';
+    protected string $sequence;
     /** Characters that triggers enclosure in PHP. */
     protected static string $force_enclosure = "\n\r\t ";
 
@@ -86,33 +80,29 @@ class EncloseField extends php_user_filter
     /**
      * Filter type and sequence parameters.
      *
-     * The sequence to force enclosure MUST contain one of the following character ("\n\r\t ")
+     * The sequence to force enclosure MUST contains one of the following character ("\n\r\t ")
      */
     protected static function isValidSequence(string $sequence): bool
     {
-        return strlen($sequence) !== strcspn($sequence, self::$force_enclosure);
+        return strlen($sequence) != strcspn($sequence, self::$force_enclosure);
     }
 
     public function onCreate(): bool
     {
-        return is_array($this->params)
-            && isset($this->params['sequence'])
+        return isset($this->params['sequence'])
             && self::isValidSequence($this->params['sequence']);
     }
 
     /**
      * @param resource $in
      * @param resource $out
-     * @param int $consumed
+     * @param int      $consumed
+     * @param bool     $closing
      */
-    public function filter($in, $out, &$consumed, bool $closing): int
+    public function filter($in, $out, &$consumed, $closing): int
     {
-        /** @var array $params */
-        $params = $this->params;
-        /** @var string $sequence */
-        $sequence = $params['sequence'];
         while (null !== ($bucket = stream_bucket_make_writeable($in))) {
-            $bucket->data = str_replace($sequence, '', $bucket->data);
+            $bucket->data = str_replace($this->params['sequence'], '', $bucket->data);
             $consumed += $bucket->datalen;
             stream_bucket_append($out, $bucket);
         }
